@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ZapIcon, SearchIcon, CheckCircleIcon } from '@lucide/vue'
+import { SearchIcon, CheckCircleIcon, Zap } from '@lucide/vue'
+import ButtonBase from '@/shared/components/ButtonBase.vue'
+import InputBase from '@/shared/components/InputBase.vue'
+import { Motion } from 'motion-v'
 
 const router = useRouter()
 const query = ref('')
 
 const popularTags = ['Software Engineering', 'Product Design', 'Data Science', 'Marketing']
 
-function handleSearch() {
-  if (query.value.trim()) {
-    router.push(`/internships?q=${encodeURIComponent(query.value.trim())}`)
-  }
+const handleSearch = () => {
+  // if (query.value.trim()) {
+  //   router.push(`/internships?q=${encodeURIComponent(query.value.trim())}`)
+  // }
+
+  console.log('searching...')
 }
 </script>
 
 <template>
   <section class="relative pt-24 pb-20 overflow-hidden" id="hero">
-    <!-- BG Decoration -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
       <div
         class="absolute -top-40 -right-40 w-150 h-150 rounded-full opacity-10 gradient-primary blur-3xl"
@@ -26,94 +30,89 @@ function handleSearch() {
         class="absolute -bottom-20 -left-40 w-125 h-125 rounded-full bg-violet-500 opacity-10 blur-3xl"
       />
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 rounded-full border border-indigo-500/5"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 rounded-full border border-primary/5"
       />
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-indigo-500/5"
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 rounded-full border border-primary/5"
       />
     </div>
 
-    <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="text-center mx-auto">
-        <Transition
-          appear
-          enter-active-class="transition-all duration-500 ease-out"
-          enter-from-class="opacity-0 translate-y-5"
-          enter-to-class="opacity-100 translate-y-0"
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ duration: 0.5 }"
+          ><div>
+            <span
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent border border-primary/20 text-primary text-sm font-medium mb-8"
+            >
+              <Zap class="w-4 h-4" />
+              AI-Powered Internship Matching
+              <span class="text-muted-foreground">— Just launched!</span>
+            </span>
+          </div></Motion
         >
-          <span
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent border border-primary/20 text-primary text-sm mb-8"
-          >
-            <ZapIcon class="w-4 h-4" />
-            AI-Powered Internship Matching
-            <span class="text-muted-foreground">— Just launched!</span>
-          </span>
-        </Transition>
 
-        <Transition
-          appear
-          enter-active-class="transition-all duration-500 ease-out delay-100"
-          enter-from-class="opacity-0 translate-y-5"
-          enter-to-class="opacity-100 translate-y-0"
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ delay: 0.1, duration: 0.5 }"
         >
-          <h1 class="font-bold text-5xl sm:text-6xl lg:text-7xl hero-heading leading-[1.1] mb-6">
+          <h1
+            class="font-poppins font-bold text-5xl sm:text-6xl lg:text-7xl text-foreground leading-[1.1] mb-6"
+          >
             Land Your Dream<br />
             <span class="text-gradient">Internship</span> Today
           </h1>
-        </Transition>
+        </Motion>
 
-        <Transition
-          appear
-          enter-active-class="transition-all duration-500 ease-out delay-200"
-          enter-from-class="opacity-0 translate-y-5"
-          enter-to-class="opacity-100 translate-y-0"
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ delay: 0.2, duration: 0.5 }"
         >
           <p
-            class="text-lg sm:text-xl text-muted-foreground! mb-10 max-w-2xl mx-auto leading-relaxed"
+            class="text-lg sm:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
           >
             Connect with 3,500+ verified companies. Get matched to internships that align with your
             skills, interests, and career goals.
           </p>
-        </Transition>
+        </Motion>
 
-        <Transition
-          appear
-          enter-active-class="transition-all duration-500 ease-out delay-300"
-          enter-from-class="opacity-0 translate-y-5"
-          enter-to-class="opacity-100 translate-y-0"
+        <Motion
+          :initial="{ opacity: 0, y: 20 }"
+          :animate="{ opacity: 1, y: 0 }"
+          :transition="{ delay: 0.3, duration: 0.5 }"
         >
           <div class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto mb-8">
             <div class="relative flex-1">
               <SearchIcon
                 class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground"
               />
-              <input
+              <InputBase
                 v-model="query"
                 type="text"
                 placeholder="Search internships, skills, companies..."
-                class="search-input w-full pl-12 pr-4 py-4 text-base rounded-2xl border focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-                @keydown.enter="handleSearch"
+                class="pl-12 pr-4 py-6 text-base rounded-2xl border-border bg-card shadow-card"
               />
             </div>
-            <button
-              class="gradient-primary text-white border-0 rounded-2xl px-8 py-4 text-base font-semibold hover:opacity-90 shadow-glow transition-opacity"
+
+            <ButtonBase
+              class="gradient-primary text-white border-0 rounded-2xl px-8 py-6 text-base font-semibold hover:opacity-90 shadow-glow"
               @click="handleSearch"
             >
               Find Internships
-            </button>
+            </ButtonBase>
           </div>
-        </Transition>
+        </Motion>
 
-        <Transition
-          appear
-          enter-active-class="transition-opacity duration-500 delay-[400ms]"
-          enter-from-class="opacity-0"
-          enter-to-class="opacity-100"
-        >
+        <Motions :initial="{ opacity: 0 }" :animate="{ opacity: 1 }" :transition="{ delay: 0.4 }">
           <div
             class="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground"
           >
             <span>Popular:</span>
+
             <RouterLink
               v-for="tag in popularTags"
               :key="tag"
@@ -123,14 +122,13 @@ function handleSearch() {
               {{ tag }}
             </RouterLink>
           </div>
-        </Transition>
+        </Motions>
       </div>
 
-      <Transition
-        appear
-        enter-active-class="transition-all duration-600 ease-out delay-500"
-        enter-from-class="opacity-0 translate-y-10"
-        enter-to-class="opacity-100 translate-y-0"
+      <Motion
+        :initial="{ opacity: 0, y: 40 }"
+        :animate="{ opacity: 1, y: 0 }"
+        :transition="{ delay: 0.5, duration: 0.6 }"
       >
         <div class="mt-16 relative">
           <div class="relative max-w-7xl mx-auto">
@@ -144,22 +142,22 @@ function handleSearch() {
             <div
               class="absolute top-6 left-6 bg-card/90 backdrop-blur-xl rounded-2xl p-4 shadow-glass border border-border hidden sm:block animate-float-up"
             >
-              <div className="flex items-center gap-3">
+              <div class="flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center text-white font-bold text-sm"
+                  class="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center text-white font-bold text-sm"
                 >
                   G
                 </div>
                 <div>
-                  <p className="font-semibold text-sm text-foreground">Google</p>
-                  <p className="text-xs text-muted-foreground">Software Intern</p>
+                  <p class="font-semibold text-sm text-foreground">Google</p>
+                  <p class="text-xs text-muted-foreground">Software Intern</p>
                 </div>
               </div>
-              <div className="mt-3 flex items-center gap-2">
-                <span className="badge-success text-xs px-2 py-0.5 rounded-full font-medium"
+              <div class="mt-3 flex items-center gap-2">
+                <span class="badge-success text-xs px-2 py-0.5 rounded-full font-medium"
                   >Remote</span
                 >
-                <span className="text-xs text-muted-foreground">$8,000/mo</span>
+                <span class="text-xs text-muted-foreground">$8,000/mo</span>
               </div>
             </div>
 
@@ -174,7 +172,7 @@ function handleSearch() {
             </div>
           </div>
         </div>
-      </Transition>
+      </Motion>
     </div>
   </section>
 </template>

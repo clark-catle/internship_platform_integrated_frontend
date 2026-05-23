@@ -1,5 +1,4 @@
 import { ref, watch, onMounted } from 'vue'
-import type { useThemeReturnType } from '../types'
 
 const saved = localStorage.getItem('theme')
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
