@@ -15,3 +15,5 @@ export type buttonBase = {
   variant?: 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
   size?: 'sm' | 'lg' | 'icon'
 }
+
+export type userRole = 'company' | 'student'
