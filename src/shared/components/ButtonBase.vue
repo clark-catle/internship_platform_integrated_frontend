@@ -33,8 +33,6 @@ const size = computed(() => {
       return 'h-9 px-4 py-2'
   }
 })
-
-console.log(size)
 </script>
 
 <template>

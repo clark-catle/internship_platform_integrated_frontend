@@ -16,7 +16,7 @@ export const useSignIn = () => {
     console.log('logging in')
     console.log()
     console.log('credentials')
-    console.log(form.email)
+    console.log('email: ' + form.email)
     console.log('password: ' + form.password)
     console.log('calling api')
 
@@ -28,12 +28,6 @@ export const useSignIn = () => {
   }
 
   const toggleLoading = () => (loading.value = !loading.value)
-
-  setInterval(() => {
-    console.log(form.email)
-
-    console.log(form.password)
-  }, 1500)
 
   return { form, signIn, loading }
 }
@@ -51,12 +45,13 @@ export const useSignUp = () => {
   // simmulating a real api call
   const signUp = () => {
     toggleLoading()
-    console.log('logging in')
+    console.log('signing up')
     console.log()
     console.log('credentials')
     console.log('email: ' + form.email)
     console.log('password: ' + form.password)
     console.log('confirm password: ' + form.confirmPassword)
+    console.log('user_role: ' + form.role)
     console.log('calling api')
 
     setTimeout(() => {

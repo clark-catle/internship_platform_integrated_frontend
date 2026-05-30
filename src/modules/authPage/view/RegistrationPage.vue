@@ -7,6 +7,7 @@ import type { cardRole } from '../types'
 import LabelBase from '@/shared/components/LabelBase.vue'
 import InputBase from '@/shared/components/InputBase.vue'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
+import InputPass from '@/shared/components/InputPass.vue'
 
 const { form, signUp, loading, changeRole } = useSignUp()
 
@@ -149,7 +150,7 @@ const cardRoles: cardRole[] = [
             <form class="space-y-5" @submit.prevent="signUp">
               <div class="space-y-4">
                 <div class="space-y-1.5">
-                  <LabelBase>Full Name</LabelBase>
+                  <LabelBase>Email</LabelBase>
                   <InputBase
                     v-model="form.email"
                     :placeholder="form.role === 'student' ? 'Jane Smith' : 'Acme Corp'"
@@ -158,23 +159,15 @@ const cardRoles: cardRole[] = [
                 </div>
 
                 <div class="space-y-1.5">
-                  <LabelBase>Email Address</LabelBase>
-                  <InputBase
-                    type="email"
-                    v-model="form.email"
-                    placeholder="jane@university.edu"
-                    class="rounded-xl py-5"
-                  />
+                  <LabelBase>Password</LabelBase>
+
+                  <InputPass v-model="form.password" />
                 </div>
 
                 <div class="space-y-1.5">
-                  <LabelBase>Password</LabelBase>
-                  <InputBase
-                    type="password"
-                    v-model="form.email"
-                    placeholder="Create a strong password"
-                    class="rounded-xl py-5"
-                  />
+                  <LabelBase>Confirm Password</LabelBase>
+
+                  <InputPass v-model="form.confirmPassword" />
                 </div>
               </div>
 

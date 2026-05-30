@@ -2,15 +2,12 @@
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 import InputBase from '@/shared/components/InputBase.vue'
 import LabelBase from '@/shared/components/LabelBase.vue'
-import { ArrowRight, Briefcase, Eye, EyeOff, Lock, Mail } from '@lucide/vue'
+import { ArrowRight, Briefcase, Mail } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import { useSignIn } from '../composables/auth'
-import { ref } from 'vue'
 import InputPass from '@/shared/components/InputPass.vue'
 
 const { form, signIn, loading } = useSignIn()
-
-const showPass = ref(false)
 
 const analyticItems = [
   ['50K+', 'Students'],
@@ -18,8 +15,6 @@ const analyticItems = [
   ['94%', 'Placed'],
   ['3.5K+', 'Companies'],
 ]
-
-const toggleShowPass = () => (showPass.value = !showPass.value)
 </script>
 
 <template>
