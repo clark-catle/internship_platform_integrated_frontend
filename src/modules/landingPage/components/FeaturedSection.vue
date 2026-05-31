@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight } from '@lucide/vue'
-import type { featuredSection } from '../types'
+import type { featuredSection } from '../types/index.ts'
 import InternshipCard from './InternshipCard.vue'
 
 const features: featuredSection[] = [
