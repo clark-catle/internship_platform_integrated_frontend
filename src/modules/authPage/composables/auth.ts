@@ -10,6 +10,8 @@ export const useSignIn = () => {
 
   const loading = ref(false)
 
+  const toggleLoading = () => (loading.value = !loading.value)
+
   // simmulating a real api call
   const signIn = () => {
     toggleLoading()
@@ -27,30 +29,43 @@ export const useSignIn = () => {
     }, 2000)
   }
 
-  const toggleLoading = () => (loading.value = !loading.value)
-
   return { form, signIn, loading }
 }
 
 export const useSignUp = () => {
-  const form = reactive<signUpForm>({
-    email: '',
-    password: '',
-    confirmPassword: '',
+  const form = reactive<{ acc: signUpForm; role?: userRole }>({
+    acc: { email: '', password: '', confirmPassword: '' },
     role: undefined,
   })
 
+  const step = ref<number>(1)
+
   const loading = ref(false)
 
+  const changeRole = (value: userRole) => {
+    step.value = 2
+    form.role = value
+  }
+
+  const addAcc = (val: signUpForm) => {
+    form.acc.email = val.email
+    form.acc.password = val.password
+    form.acc.confirmPassword = val.confirmPassword
+
+    signUp()
+  }
+
+  const toggleLoading = () => (loading.value = !loading.value)
+
   // simmulating a real api call
-  const signUp = () => {
+  const signUp = async () => {
     toggleLoading()
     console.log('signing up')
     console.log()
     console.log('credentials')
-    console.log('email: ' + form.email)
-    console.log('password: ' + form.password)
-    console.log('confirm password: ' + form.confirmPassword)
+    console.log('email: ' + form.acc.email)
+    console.log('password: ' + form.acc.password)
+    console.log('confirm password: ' + form.acc.confirmPassword)
     console.log('user_role: ' + form.role)
     console.log('calling api')
 
@@ -61,9 +76,5 @@ export const useSignUp = () => {
     }, 2000)
   }
 
-  const changeRole = (value: userRole) => (form.role = value)
-
-  const toggleLoading = () => (loading.value = !loading.value)
-
-  return { form, signUp, loading, changeRole }
+  return { form, loading, step, changeRole, addAcc }
 }

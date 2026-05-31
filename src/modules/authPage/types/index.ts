@@ -8,7 +8,6 @@ export type signInForm = {
 
 export type signUpForm = signInForm & {
   confirmPassword: string
-  role?: userRole
 }
 
 export type cardRole = {
