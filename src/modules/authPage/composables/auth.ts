@@ -1,6 +1,7 @@
 import { reactive, ref } from 'vue'
 import type { signInForm, signUpForm } from '../types'
 import type { userRole } from '@/shared/types'
+import { useRouter } from 'vue-router'
 
 export const useSignIn = () => {
   const form = reactive<signInForm>({
@@ -9,6 +10,8 @@ export const useSignIn = () => {
   })
 
   const loading = ref(false)
+
+  const router = useRouter()
 
   const toggleLoading = () => (loading.value = !loading.value)
 
@@ -22,10 +25,12 @@ export const useSignIn = () => {
     console.log('password: ' + form.password)
     console.log('calling api')
 
-    setTimeout(() => {
+    setTimeout(async () => {
       console.log('done calling api')
 
       toggleLoading()
+
+      await router.replace({ name: 'studentDashboard' })
     }, 2000)
   }
 
@@ -42,12 +47,14 @@ export const useSignUp = () => {
 
   const loading = ref(false)
 
+  const router = useRouter()
+
   const changeRole = (value: userRole) => {
     step.value = 2
     form.role = value
   }
 
-  const addAcc = (val: signUpForm) => {
+  const addAcc = async (val: signUpForm) => {
     form.acc.email = val.email
     form.acc.password = val.password
     form.acc.confirmPassword = val.confirmPassword
@@ -58,7 +65,9 @@ export const useSignUp = () => {
   const toggleLoading = () => (loading.value = !loading.value)
 
   // simmulating a real api call
-  const signUp = async () => {
+  const signUp = () => {
+    if (!form.role) return
+
     toggleLoading()
     console.log('signing up')
     console.log()
@@ -69,10 +78,12 @@ export const useSignUp = () => {
     console.log('user_role: ' + form.role)
     console.log('calling api')
 
-    setTimeout(() => {
+    setTimeout(async () => {
       console.log('done calling api')
 
       toggleLoading()
+
+      await router.replace({ name: `${form.role}Dashboard` })
     }, 2000)
   }
 

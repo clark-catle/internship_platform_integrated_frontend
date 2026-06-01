@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft } from '@lucide/vue'
+import { ArrowLeft, Briefcase, Check } from '@lucide/vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import { useSignUp } from '../composables/auth'
 import ButtonBase from '@/shared/components/ButtonBase.vue'

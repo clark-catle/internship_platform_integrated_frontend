@@ -46,6 +46,8 @@ const handleSignUp = () => {
             v-model="form.email"
             :placeholder="role === 'student' ? 'Jane Smith' : 'Acme Corp'"
             class="rounded-xl py-5"
+            type="email"
+            required
           />
         </div>
 

@@ -19,6 +19,7 @@ const { form, signIn, loading } = useSignIn()
           placeholder="you@university.edu"
           v-model="form.email"
           class="pl-10 rounded-xl py-5"
+          type="email"
           required
         />
       </div>
