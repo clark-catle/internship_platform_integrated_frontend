@@ -2,13 +2,9 @@
 import { Briefcase } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import LoginForm from '../components/LoginForm.vue'
+import { loginAnalyticItem } from '@/data/shared.ts'
 
-const analyticItems = [
-  ['50K+', 'Students'],
-  ['12K+', 'Internships'],
-  ['94%', 'Placed'],
-  ['3.5K+', 'Companies'],
-]
+const analyticItems = loginAnalyticItem
 </script>
 
 <template>

@@ -1,41 +1,11 @@
 <script setup lang="ts">
-import { Heart, Shield, TrendingUp, Zap } from '@lucide/vue'
-import type { whyFeature, whySectionColor } from '../types'
 import { Motion } from 'motion-v'
+import { whyColorSection, whyFeatureSection } from '@/data/shared'
+import type { whyFeature, whySectionColor } from '@/shared/types'
 
-const color: Record<whySectionColor, string> = {
-  indigo: 'bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400',
-  green: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400',
-  rose: 'bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400',
-  amber: 'bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400',
-}
+const color: Record<whySectionColor, string> = whyColorSection
 
-const features: whyFeature[] = [
-  {
-    icon: Zap,
-    title: 'AI-Powered Matching',
-    desc: 'Smart algorithms match you with internships that fit your skills and goals.',
-    color: 'indigo',
-  },
-  {
-    icon: Shield,
-    title: 'Verified Companies',
-    desc: 'All companies are verified to ensure you apply to legitimate opportunities.',
-    color: 'green',
-  },
-  {
-    icon: Heart,
-    title: 'Student-First Design',
-    desc: 'Built with students in mind — intuitive, fast, and stress-free.',
-    color: 'rose',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Track Progress',
-    desc: 'Real-time application tracking with status updates and interview scheduling.',
-    color: 'amber',
-  },
-]
+const features: whyFeature[] = whyFeatureSection
 </script>
 
 <template>

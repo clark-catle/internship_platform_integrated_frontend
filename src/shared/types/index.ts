@@ -1,3 +1,5 @@
+import type { LucideIcon } from '@lucide/vue'
+
 export type internshipSetup = 'on site' | 'hybrid' | 'remote'
 
 export type internshipDurationUnit = 'hr' | 'day' | 'month'
@@ -17,3 +19,24 @@ export type buttonBase = {
 }
 
 export type userRole = 'company' | 'student'
+
+export type landingFeaturedSection = internshipDuration & {
+  id: string
+  company: string
+  role: string
+  type: internshipSetup
+  category: internshipCategory
+  skills: string[]
+  location: string
+  allowance: internshipAllowance
+  isFeatured: boolean
+}
+
+export type whySectionColor = 'indigo' | 'green' | 'rose' | 'amber'
+
+export type whyFeature = {
+  icon: LucideIcon
+  title: string
+  desc: string
+  color: whySectionColor
+}

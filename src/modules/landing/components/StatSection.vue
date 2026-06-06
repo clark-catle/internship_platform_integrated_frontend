@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import { Briefcase, Globe, TrendingUp, Users } from '@lucide/vue'
+import { landingStatSection } from '@/data/shared'
 import { Motion } from 'motion-v'
 
-const stats = [
-  { value: '50K+', label: 'Active Students', icon: Users },
-  { value: '12K+', label: 'Internships Posted', icon: Briefcase },
-  { value: '3.5K+', label: 'Partner Companies', icon: Globe },
-  { value: '94%', label: 'Placement Rate', icon: TrendingUp },
-]
+const stats = landingStatSection
 </script>
 
 <template>

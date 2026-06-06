@@ -1,25 +1,15 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-import type { featuredSection } from '../types'
-import type { internshipCategory, internshipSetup } from '@/shared/types'
+import type { internshipCategory, internshipSetup, landingFeaturedSection } from '@/shared/types'
 import { ArrowRight, Bookmark, Clock, DollarSign, Heart, MapPin, Zap } from '@lucide/vue'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
+import { internshipCartCategoryColors, internshipCartTypeColors } from '@/data/shared'
 
-const props = defineProps<featuredSection>()
+const props = defineProps<landingFeaturedSection>()
 
-const typeColors: Record<internshipSetup, string> = {
-  remote: 'badge-success',
-  'on site': 'badge-info',
-  hybrid: 'badge-warning',
-}
+const typeColors: Record<internshipSetup, string> = internshipCartTypeColors
 
-const categoryColors: Record<internshipCategory, string> = {
-  technology: 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400',
-  design: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400',
-  marketing: 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
-  finance: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  'data science': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
-}
+const categoryColors: Record<internshipCategory, string> = internshipCartCategoryColors
 
 const logoPlaceholder = props.company?.[0]?.toUpperCase() || 'C'
 </script>

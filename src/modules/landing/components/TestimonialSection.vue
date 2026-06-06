@@ -1,30 +1,9 @@
 <script setup lang="ts">
+import { testimonialsSectionItems } from '@/data/shared'
 import { Star } from '@lucide/vue'
 import { Motion } from 'motion-v'
 
-const testimonials = [
-  {
-    name: 'Aria Chen',
-    role: 'CS Student, MIT',
-    text: 'I found my dream internship at Google within 2 weeks of signing up. The matching was incredibly accurate!',
-    avatar: 'AC',
-    company: 'Google',
-  },
-  {
-    name: 'Marcus Rivera',
-    role: 'Business Student, NYU',
-    text: 'InternMatch made the whole application process so much less overwhelming. The status tracking is a game changer.',
-    avatar: 'MR',
-    company: 'Deloitte',
-  },
-  {
-    name: 'Priya Sharma',
-    role: 'Design Student, RISD',
-    text: 'As a designer, I was impressed by the UX and the quality of design internships available.',
-    avatar: 'PS',
-    company: 'Figma',
-  },
-]
+const testimonials = testimonialsSectionItems
 </script>
 
 <template>

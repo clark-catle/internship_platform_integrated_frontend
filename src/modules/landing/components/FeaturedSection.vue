@@ -1,49 +1,10 @@
 <script setup lang="ts">
 import { ArrowRight } from '@lucide/vue'
-import type { featuredSection } from '../types/index.ts'
 import InternshipCard from './InternshipCard.vue'
+import { landingFeaturesItem } from '@/data/shared.ts'
+import type { landingFeaturedSection } from '@/shared/types/index.ts'
 
-const features: featuredSection[] = [
-  {
-    id: '1',
-    company: 'Google',
-    role: 'Frontend Development',
-    type: 'hybrid',
-    category: 'technology',
-    skills: ['React', 'TypeScript'],
-    location: 'Mountain View, CA',
-    duration: 3,
-    durationUnit: 'month',
-    allowance: 'non',
-    isFeatured: true,
-  },
-  {
-    id: '2',
-    company: 'Figma',
-    role: 'Product Design Intern',
-    type: 'remote',
-    category: 'design',
-    skills: ['Figma', 'UX Research'],
-    location: 'San Francisco, CA',
-    duration: 3,
-    durationUnit: 'month',
-    allowance: 'discuss',
-    isFeatured: true,
-  },
-  {
-    id: '3',
-    company: 'Netflix',
-    role: 'Data Science Intern',
-    type: 'on site',
-    category: 'data science',
-    skills: ['Python', 'SQL'],
-    location: 'Los Gatos, CA',
-    duration: 6,
-    durationUnit: 'month',
-    allowance: 'provided',
-    isFeatured: true,
-  },
-]
+const features: landingFeaturedSection[] = landingFeaturesItem
 </script>
 
 <template>

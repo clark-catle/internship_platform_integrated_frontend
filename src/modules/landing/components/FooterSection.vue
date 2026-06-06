@@ -1,22 +1,10 @@
 <script setup lang="ts">
+import { footerItems, footerLists } from '@/data/shared'
 import { Briefcase } from '@lucide/vue'
 
-const lists = [
-  {
-    title: 'For Students',
-    links: ['Browse Internships', 'My Applications', 'Student Profile', 'Resources'],
-  },
-  {
-    title: 'For Companies',
-    links: ['Post Internship', 'Manage Applicants', 'Analytics', 'Pricing'],
-  },
-  {
-    title: 'Company',
-    links: ['About Us', 'Blog', 'Careers', 'Contact'],
-  },
-]
+const lists = footerLists
 
-const items = ['Privacy', 'Terms', 'Cookies']
+const items = footerItems
 </script>
 
 <template>
