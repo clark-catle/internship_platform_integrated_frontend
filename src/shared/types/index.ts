@@ -44,6 +44,5 @@ export type whyFeature = {
 export type studentNav = {
   icon: LucideIcon
   label: string
-  href: string
-  badge?: number
+  hrefTo: string
 }
