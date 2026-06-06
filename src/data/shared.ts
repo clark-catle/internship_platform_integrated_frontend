@@ -2,10 +2,24 @@ import type {
   internshipCategory,
   internshipSetup,
   landingFeaturedSection,
+  studentNav,
   whyFeature,
   whySectionColor,
 } from '@/shared/types'
-import { Briefcase, Globe, Heart, Shield, TrendingUp, Users, Zap } from '@lucide/vue'
+import {
+  Bell,
+  Briefcase,
+  FileText,
+  Globe,
+  Heart,
+  LayoutDashboard,
+  Search,
+  Shield,
+  TrendingUp,
+  User,
+  Users,
+  Zap,
+} from '@lucide/vue'
 
 export const loginAnalyticItem = [
   ['50K+', 'Students'],
@@ -150,4 +164,13 @@ export const whyFeatureSection: whyFeature[] = [
     desc: 'Real-time application tracking with status updates and interview scheduling.',
     color: 'amber',
   },
+]
+
+export const studentNavItems: studentNav[] = [
+  { icon: LayoutDashboard, label: 'Dashboard', href: '/student/dashboard' },
+  { icon: Search, label: 'Browse Internships', href: '/internships' },
+  { icon: FileText, label: 'My Applications', href: '/student/applications' },
+  { icon: Heart, label: 'Saved', href: '/student/saved' },
+  { icon: Bell, label: 'Notifications', href: '/student/notifications', badge: 3 },
+  { icon: User, label: 'My Profile', href: '/student/profile' },
 ]

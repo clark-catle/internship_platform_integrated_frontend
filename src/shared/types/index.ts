@@ -40,3 +40,10 @@ export type whyFeature = {
   desc: string
   color: whySectionColor
 }
+
+export type studentNav = {
+  icon: LucideIcon
+  label: string
+  href: string
+  badge?: number
+}

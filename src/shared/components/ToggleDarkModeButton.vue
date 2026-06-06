@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { MoonIcon, SunIcon } from '@lucide/vue'
-import { useTheme } from '../composables/useTheme'
+import { useTheme } from '../stores/useTheme'
 
 const { isDark, toggleTheme } = useTheme()
 </script>

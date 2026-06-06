@@ -1,14 +1,11 @@
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 
 const saved = localStorage.getItem('theme')
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-const isDark = ref(saved ? saved === 'dark' : prefersDark)
+const prefer = window.matchMedia('(prefers-color-scheme: dark)').matches
+const isDark = ref(saved ? saved === 'dark' : prefer)
 
 export function useTheme() {
-  const toggleTheme = () => {
-    isDark.value = !isDark.value
-    console.log('toogle')
-  }
+  const toggleTheme = () => (isDark.value = !isDark.value)
 
   const applyTheme = (val: boolean) => {
     if (val) {
@@ -20,9 +17,7 @@ export function useTheme() {
     }
   }
 
-  applyTheme(isDark.value)
-
-  watch(isDark, (val) => applyTheme(val))
+  watch(isDark, applyTheme, { immediate: true })
 
   return { isDark, toggleTheme }
 }
