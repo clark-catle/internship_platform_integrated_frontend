@@ -45,4 +45,5 @@ export type studentNav = {
   icon: LucideIcon
   label: string
   hrefTo: string
+  badge?: number
 }

@@ -168,9 +168,9 @@ export const whyFeatureSection: whyFeature[] = [
 
 export const studentNavItems: studentNav[] = [
   { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
-  { icon: Search, label: 'Browse Internships', hrefTo: '/internships' },
+  // { icon: Search, label: 'Browse Internships', hrefTo: '/student/internships' },
   { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
-  { icon: Heart, label: 'Saved', hrefTo: '/student/saved' },
-  { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification' },
+  // { icon: Heart, label: 'Saved', hrefTo: '/student/saved' },
+  { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: 3 },
   { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
 ]

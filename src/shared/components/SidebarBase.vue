@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { studentNavItems } from '@/data/shared'
-import { ChevronLeft, ChevronRight, LogOut } from '@lucide/vue'
+import { Briefcase, ChevronLeft, ChevronRight, LogOut } from '@lucide/vue'
 import { Motion } from 'motion-v'
-import { ref } from 'vue'
 import { useCollapseSidebar } from '../stores/useCollapseSidebar'
 
-const navItems = studentNavItems
-const { collapsed, toggleCollapsed, currentUrl } = useCollapseSidebar()
+const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
+
 const logout = () => console.log('logging out')
+
+const navItems = studentNavItems
 </script>
 
 <template>
@@ -15,20 +16,19 @@ const logout = () => console.log('logging out')
     as="aside"
     :animate="{ width: collapsed ? 72 : 240 }"
     :transition="{ duration: 0.3, ease: 'easeInOut' }"
-    class="fixed left-0 top-0 h-full z-40 flex flex-col overflow-hidden"
-    :style="{ background: 'hsl(238, 30%, 15%)' }"
+    class="fixed left-0 top-0 h-full bg-sidebar z-40 flex flex-col overflow-hidden"
+    :style="{ background: 'hsl(var(--sidebar-background))' }"
   >
-    <div
-      class="flex items-center h-16 px-4 border-b"
-      :style="{ borderColor: 'hsl(238, 30%, 20%)' }"
-    >
+    <div class="flex items-center h-16 px-4 border-b border-sidebar-border">
       <div
         class="w-8 h-8 gradient-primary rounded-xl flex items-center justify-center shrink-0 shadow-glow"
       >
         <Briefcase class="w-4 h-4 text-white" />
       </div>
+
       <Motion
         as="span"
+        v-if="!collapsed"
         :initial="{ opacity: 0 }"
         :animate="{ opacity: 1 }"
         class="ml-3 font-poppins font-bold text-white text-lg whitespace-nowrap"
@@ -39,33 +39,41 @@ const logout = () => console.log('logging out')
 
     <button
       @click="toggleCollapsed(!collapsed)"
-      class="absolute right-0 top-20 translate-x-1/2 w-6 h-6 rounded-full flex items-center justify-center border text-white hover:opacity-80 transition-opacity z-10"
-      :style="{ background: 'hsl(238, 40%, 30%)', borderColor: 'hsl(238, 30%, 25%)' }"
+      class="absolute right-0 top-20 translate-x-1/2 w-6 h-6 bg-sidebar-accent rounded-full flex items-center justify-center border border-sidebar-border text-sidebar-foreground hover:bg-sidebar-primary transition-colors z-10"
     >
       <ChevronRight v-if="collapsed" class="w-3 h-3" />
       <ChevronLeft else class="w-3 h-3" />
     </button>
 
     <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-      <RouterLink v-for="navItem in navItems" :key="navItem.hrefTo" :to="navItem.hrefTo">
+      <RouterLink v-for="navItem in navItems" :key="navItem.hrefTo" :to="{ name: navItem.hrefTo }">
         <div
           class="sidebar-item"
           :class="[
-            currentUrl
-              ? 'bg-white/15 text-white border border-white/20'
-              : 'text-white/60 hover:bg-white/10 hover:text-white',
+            currentUrlName === navItem.hrefTo
+              ? 'bg-sidebar-primary/20 text-white border border-sidebar-primary/30'
+              : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-white',
           ]"
         >
-          <component :is="navItem.icon" class="w-5 h-5 shrink-0" />
+          <div class="relative shrink-0">
+            <component :is="navItem.icon" class="w-5 h-5" />
+            <span
+              v-if="navItem.badge"
+              className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center font-bold"
+            >
+              {{ navItem.badge }}
+            </span>
+          </div>
+
           <span v-if="!collapsed" class="whitespace-nowrap">{{ navItem.label }}</span>
         </div>
       </RouterLink>
     </nav>
 
-    <div class="px-3 py-4 border-t space-y-1" :style="{ borderColor: 'hsl(238, 30%, 20%)' }">
+    <div class="px-3 py-4 border-t border-sidebar-border space-y-1">
       <button
         @click="logout"
-        class="w-full sidebar-item text-white/60 hover:bg-red-500/20 hover:text-red-400"
+        class="w-full sidebar-item text-sidebar-foreground hover:bg-red-500/20 hover:text-red-400"
       >
         <LogOut class="w-5 h-5 shrink-0" />
         <span v-if="!collapsed">Logout</span>
