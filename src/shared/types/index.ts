@@ -47,3 +47,15 @@ export type studentNav = {
   hrefTo: string
   badge?: number
 }
+
+export type notificationType = 'submitted' | 'accepted' | 'rejected' | 'report'
+
+export type emptyStateProps = {
+  icon: LucideIcon
+  title: string
+  description: string
+  action?: {
+    action: () => void
+    actionLabel: string
+  }
+}
