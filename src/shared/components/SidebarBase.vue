@@ -16,7 +16,7 @@ const navItems = studentNavItems
     as="aside"
     :animate="{ width: collapsed ? 72 : 240 }"
     :transition="{ duration: 0.3, ease: 'easeInOut' }"
-    class="fixed left-0 top-0 h-full bg-sidebar z-40 flex flex-col overflow-hidden"
+    class="relative left-0 top-0 h-full min-h-screen bg-sidebar z-40 flex flex-col"
     :style="{ background: 'hsl(var(--sidebar-background))' }"
   >
     <div class="flex items-center h-16 px-4 border-b border-sidebar-border">
@@ -39,19 +39,19 @@ const navItems = studentNavItems
 
     <button
       @click="toggleCollapsed(!collapsed)"
-      class="absolute right-0 top-20 translate-x-1/2 w-6 h-6 bg-sidebar-accent rounded-full flex items-center justify-center border border-sidebar-border text-sidebar-foreground hover:bg-sidebar-primary transition-colors z-10"
+      class="absolute right-0 top-13 translate-x-1/2 w-6 h-6 bg-sidebar-accent rounded-full flex items-center justify-center border border-sidebar-border text-sidebar-foreground hover:bg-sidebar-primary transition-colors z-10"
     >
       <ChevronRight v-if="collapsed" class="w-3 h-3" />
-      <ChevronLeft else class="w-3 h-3" />
+      <ChevronLeft v-else class="w-3 h-3" />
     </button>
 
-    <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+    <nav class="flex-1 flex flex-col gap-2 px-3 py-4">
       <RouterLink v-for="navItem in navItems" :key="navItem.hrefTo" :to="{ name: navItem.hrefTo }">
         <div
           class="sidebar-item"
           :class="[
             currentUrlName === navItem.hrefTo
-              ? 'bg-sidebar-primary/20 text-white border border-sidebar-primary/30'
+              ? 'bg-sidebar-primary/20 text-white ring-2 ring-sidebar-primary/50'
               : 'text-sidebar-foreground hover:bg-sidebar-accent hover:text-white',
           ]"
         >
