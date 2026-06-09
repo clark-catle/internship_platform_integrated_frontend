@@ -1,4 +1,5 @@
 import type { LucideIcon } from '@lucide/vue'
+import type { ComputedRef } from 'vue'
 
 export type internshipSetup = 'on site' | 'hybrid' | 'remote'
 
@@ -45,7 +46,7 @@ export type studentNav = {
   icon: LucideIcon
   label: string
   hrefTo: string
-  badge?: number
+  badge?: ComputedRef<number>
 }
 
 export type notificationType = 'submitted' | 'accepted' | 'rejected' | 'report'
@@ -59,3 +60,7 @@ export type emptyStateProps = {
     actionLabel: string
   }
 }
+
+export type applicationStatus = 'pending' | 'in_review' | 'accepted' | 'rejected'
+
+export type applicationProgress = 'applied' | 'in review' | 'interview' | 'decision'

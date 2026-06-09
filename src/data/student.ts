@@ -1,6 +1,7 @@
+import type { applicationStatusDesign, applicationTab } from '@/modules/student/application/type'
 import type { notificationIconType, studentNotification } from '@/modules/student/notification/type'
-import type { notificationType } from '@/shared/types'
-import { Bell, Briefcase, CheckCircle, Flag, XCircle } from '@lucide/vue'
+import type { applicationProgress, notificationType } from '@/shared/types'
+import { AlertCircle, Bell, Briefcase, CheckCircle, Clock, Eye, Flag, XCircle } from '@lucide/vue'
 
 export const studentNotifications: studentNotification[] = [
   {
@@ -60,3 +61,56 @@ export const notificationTypeIcons: Record<notificationType | 'default', notific
     color: 'text-gray-600 dark:text-gray-400',
   },
 }
+
+export const applicationTabs: applicationTab[] = [
+  'all',
+  'pending',
+  'in_review',
+  'accepted',
+  'rejected',
+]
+
+export const studentApplication = [
+  {
+    id: 1,
+    company: 'Google',
+    title: 'Frontend Development Intern',
+    status: 'accepted',
+    date: '2 days ago',
+  },
+  {
+    id: 2,
+    company: 'Figma',
+    title: 'Product Design Intern',
+    status: 'in_review',
+    date: '5 days ago',
+  },
+  {
+    id: 3,
+    company: 'Netflix',
+    title: 'Data Science Intern',
+    status: 'pending',
+    date: '1 week ago',
+  },
+  {
+    id: 4,
+    company: 'Stripe',
+    title: 'Software Engineering Intern',
+    status: 'rejected',
+    date: '2 weeks ago',
+  },
+]
+
+export const studentApplicationStatus: applicationStatusDesign[] = [
+  {
+    label: 'accepted',
+    icon: CheckCircle,
+    class: 'badge-success',
+    dot: 'bg-green-400',
+  },
+  { label: 'in_review', icon: Eye, class: 'badge-info', dot: 'bg-blue-400' },
+  { label: 'pending', icon: Clock, class: 'badge-warning', dot: 'bg-amber-400' },
+  { label: 'rejected', icon: AlertCircle, class: 'badge-danger', dot: 'bg-red-400' },
+]
+
+export const progress: applicationProgress[] = ['applied', 'in review', 'interview', 'decision']

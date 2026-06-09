@@ -1,3 +1,4 @@
+import { useNotif } from '@/modules/student/notification/composables/useNotif'
 import type {
   internshipCategory,
   internshipSetup,
@@ -166,11 +167,12 @@ export const whyFeatureSection: whyFeature[] = [
   },
 ]
 
+const { unreadCount } = useNotif()
 export const studentNavItems: studentNav[] = [
   { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
   // { icon: Search, label: 'Browse Internships', hrefTo: '/student/internships' },
   { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
   // { icon: Heart, label: 'Saved', hrefTo: '/student/saved' },
-  { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: 3 },
+  { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
   { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
 ]
