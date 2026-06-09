@@ -17,6 +17,7 @@
   "dependencies": {
     "@lucide/vue": "^1.14.0",
     "@tailwindcss/vite": "^4.3.0",
+    "date-fns": "^4.4.0",
     "motion-v": "^2.2.1",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.3.0",
