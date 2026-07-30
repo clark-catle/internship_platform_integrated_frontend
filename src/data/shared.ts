@@ -169,7 +169,7 @@ export const whyFeatureSection: whyFeature[] = [
 
 const { unreadCount } = useNotif()
 export const studentNavItems: studentNav[] = [
-  { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
+  { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
   // { icon: Search, label: 'Browse Internships', hrefTo: '/student/internships' },
   { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
   // { icon: Heart, label: 'Saved', hrefTo: '/student/saved' },

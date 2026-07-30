@@ -30,7 +30,7 @@ export const useSignIn = () => {
 
       toggleLoading()
 
-      await router.replace({ name: 'studentDashboard' })
+      await router.replace({ name: 'studentInternship' })
     }, 2000)
   }
 

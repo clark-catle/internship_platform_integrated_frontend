@@ -22,12 +22,12 @@ const router = createRouter({
     {
       path: '/student',
       component: () => import('@/layouts/StudentLayout.vue'),
-      redirect: { name: 'studentDashboard' },
+      redirect: { name: 'studentInternship' },
       children: [
         {
-          path: 'dashboard',
-          name: 'studentDashboard',
-          component: () => import('@/modules/student/dashboard/views/StudentDashboard.vue'),
+          path: 'internship',
+          name: 'studentInternship',
+          component: () => import('@/modules/student/internship/views/StudentInternship.vue'),
         },
         {
           path: 'application',
@@ -40,7 +40,7 @@ const router = createRouter({
           component: () => import('@/modules/student/notification/views/StudentNotification.vue'),
         },
         {
-          path: 'dashboard',
+          path: 'profile',
           name: 'studentProfile',
           component: () => import('@/modules/student/profile/views/StudentProfile.vue'),
         },
