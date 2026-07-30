@@ -18,7 +18,6 @@ const internships: string[] = [];
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Search */}
           <div className="mb-8">
             <SearchFilterPanel
               initialQuery={query}
