@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import ButtonBase from '@/shared/components/ButtonBase.vue';
 import InputBase from '@/shared/components/InputBase.vue';
-import { Search, SlidersHorizontal } from '@lucide/vue';
+import { Search, SlidersHorizontal, X } from '@lucide/vue';
 import { useSearch } from '../composables/useSearch';
 import { AnimatePresence, Motion } from 'motion-v';
 import FilterGroup from './FilterGroup.vue';
 import type { internshipAllowance, internshipSetup } from '@/shared/types/index.ts';
 
-const { searchQuery, showFilter, filter, countFilter } = useSearch();
+const { searchQuery, showFilter, filter, countFilter, clearFilter } = useSearch();
  
-const types: internshipAllowance = ["All", "Remote", "On-site", "Hybrid"];
-const setup: internshipSetup = ["All", "1-2 months", "3-4 months", "5-6 months", "6+ months"];
+const allowance: (internshipAllowance | 'all')[] = ["all", "non", "provided", "discuss"];
+const setup: (internshipSetup | 'all')[] = ["all", "remote", "on site", "hybrid"];
 
 </script>
 
@@ -46,15 +46,14 @@ const setup: internshipSetup = ["All", "1-2 months", "3-4 months", "5-6 months",
             :exit="{opacity: 0, height: 0}"
             className="overflow-hidden">
             <div className="pt-4 mt-4 border-t border-border space-y-4">
-              <FilterGroup label="Domain" options={domains} value={filters.domain} onChange={(v) => updateFilter("domain", v)} />
-              <FilterGroup label="Type" options={types} value={filters.type} onChange={(v) => updateFilter("type", v)} />
-              <FilterGroup label="Duration" options={durations} value={filters.duration} onChange={(v) => updateFilter("duration", v)} />
+              <FilterGroup label="Allowance" :options="allowance" :value="filter.allowance" @select="addFilter"/>
+              <FilterGroup label="Setup" :options="setup" :value="filter.setup" onChange={(v) => updateFilter("type", v)} />
+              <!-- <FilterGroup label="Duration" options={durations} value={filters.duration} onChange={(v) => updateFilter("duration", v)} /> -->
 
-              {hasActiveFilters && (
-                <button onClick={clearFilters} className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors">
+                
+                <button v-if="countFilter" @click="clearFilter" className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors">
                   <X className="w-3 h-3" /> Clear all filters
-                </button>
-              )}
+                </button> 
             </div>
           </Motion>
       </AnimatePresence>
