@@ -6,6 +6,10 @@ export const useSearch = () => {
   const showFilter = ref(false)
   const filter = reactive<filtersType>({ setup: 'all', allowance: 'all', duration: 'all' })
 
+  const search = () => {
+    console.log(searchQuery)
+  }
+
   const addFilter = <K extends keyof filtersType>(filterKey: K, val: filtersType[K]) => {
     filter[filterKey] = val
   }
@@ -18,5 +22,5 @@ export const useSearch = () => {
     filter.duration = 'all'
   }
 
-  return { searchQuery, showFilter, filter, addFilter, countFilter, clearFilter }
+  return { searchQuery, search, showFilter, filter, addFilter, countFilter, clearFilter }
 }
