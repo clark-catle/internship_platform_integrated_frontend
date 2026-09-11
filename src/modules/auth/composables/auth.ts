@@ -2,6 +2,7 @@ import { reactive, ref } from 'vue'
 import type { signInForm, signUpForm } from '../types'
 import type { userRole } from '@/shared/types'
 import { useRouter } from 'vue-router'
+import auth from '@/api/auth'
 
 export const useSignIn = () => {
   const form = reactive<signInForm>({
@@ -69,22 +70,8 @@ export const useSignUp = () => {
     if (!form.role) return
 
     toggleLoading()
-    console.log('signing up')
-    console.log()
-    console.log('credentials')
-    console.log('email: ' + form.acc.email)
-    console.log('password: ' + form.acc.password)
-    console.log('confirm password: ' + form.acc.confirmPassword)
-    console.log('user_role: ' + form.role)
-    console.log('calling api')
 
-    setTimeout(async () => {
-      console.log('done calling api')
-
-      toggleLoading()
-
-      await router.replace({ name: `${form.role}Dashboard` })
-    }, 2000)
+    const res = auth.register(form.acc)
   }
 
   return { form, loading, step, changeRole, addAcc }
