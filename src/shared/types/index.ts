@@ -64,3 +64,11 @@ export type emptyStateProps = {
 export type applicationStatus = 'pending' | 'in_review' | 'accepted' | 'rejected'
 
 export type applicationProgress = 'applied' | 'in review' | 'interview' | 'decision'
+
+export type apiMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
+
+export type requestArg<T> = {
+  endpoint: string
+  body?: T
+  method?: apiMethod
+}
