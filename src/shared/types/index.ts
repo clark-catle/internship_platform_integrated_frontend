@@ -71,4 +71,5 @@ export type requestArg<T> = {
   endpoint: string
   body?: T
   method?: apiMethod
+  version?: string
 }

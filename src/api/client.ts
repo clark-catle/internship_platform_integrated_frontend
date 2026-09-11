@@ -2,11 +2,11 @@ import type { apiMethod, requestArg } from '@/shared/types'
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL
 
-async function request<T>({ endpoint, method = 'GET', body }: requestArg<T>) {
+async function request<T>({ endpoint, method = 'GET', body, version = 'V1' }: requestArg<T>) {
   const token = localStorage.getItem('token')
 
   try {
-    const res = await fetch(`${BASE_URL}${endpoint}`, {
+    const res = await fetch(`${BASE_URL}/${version}${endpoint}`, {
       method: method,
       headers: {
         'Content-Type': 'application/json',
@@ -30,8 +30,10 @@ async function request<T>({ endpoint, method = 'GET', body }: requestArg<T>) {
 }
 
 export default {
-  get: (endpoint: string) => request({ endpoint }),
-  post: <T>(endpoint: string, body: T) => request({ endpoint, body, method: 'POST' }),
-  put: <T>(endpoint: string, body: T) => request({ endpoint, body, method: 'PUT' }),
-  delete: (endpoint: string) => request({ endpoint, method: 'DELETE' }),
+  get: (endpoint: string, version?: string) => request({ endpoint, version }),
+  post: <T>(endpoint: string, body: T, version?: string) =>
+    request({ endpoint, body, version, method: 'POST' }),
+  put: <T>(endpoint: string, body: T, version?: string) =>
+    request({ endpoint, body, version, method: 'PUT' }),
+  delete: (endpoint: string, version?: string) => request({ endpoint, version, method: 'DELETE' }),
 }
