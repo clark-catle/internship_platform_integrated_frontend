@@ -1,23 +1,30 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v';
+import { Motion } from 'motion-v'
 
-const internships: string[] = [];
-
+const internships: string[] = []
 </script>
 
 <template>
-<div className="pt-16"> 
-        <div className="gradient-hero py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <Motion as="h1" :initial="{ opacity: 0, y: 20 }" :animate="{ opacity: 1, y: 0 }"
-              className="font-poppins font-bold text-3xl sm:text-4xl text-white mb-3">
-              Find Your Perfect Internship
-            </Motion>
-            <p className="text-white/80 text-lg"> <span v-if="internships.length > 0">{{internships.length}} opportunities waiting for you</span><span v-else>Explore curated internship opportunities</span></p>
-          </div>
-        </div>
+  <div className="">
+    <div className="gradient-hero py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto text-center">
+        <Motion
+          as="h1"
+          :initial="{ opacity: 0, y: 20 }"
+          :animate="{ opacity: 1, y: 0 }"
+          className="font-poppins font-bold text-3xl sm:text-4xl text-white mb-3"
+        >
+          Find Your Perfect Internship
+        </Motion>
+        <p className="text-white/80 text-lg">
+          <span v-if="internships.length > 0"
+            >{{ internships.length }} opportunities waiting for you</span
+          ><span v-else>Explore curated internship opportunities</span>
+        </p>
+      </div>
+    </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="mb-8">
             <SearchFilterPanel
               initialQuery={query}
@@ -30,10 +37,10 @@ const internships: string[] = [];
           <div className="flex items-center justify-between mb-6">
             <p className="text-sm text-muted-foreground">
               {loading ? "Loading..." : `${filtered.length} internship${filtered.length !== 1 ? "s" : ""} found`}
-            </p>
-          </div>
+            </p> 
+          </div>-->
 
-          {/* Grid */}
+    <!-- {/* Grid */}
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {Array(6).fill(0).map((_, i) => <CardSkeleton key={i} />)}
@@ -78,6 +85,6 @@ const internships: string[] = [];
               )}
             </>
           )}
-        </div>
-      </div>
+        </div> -->
+  </div>
 </template>

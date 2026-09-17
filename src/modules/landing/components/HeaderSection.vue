@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { SearchIcon, CheckCircleIcon, Zap } from '@lucide/vue'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 import InputBase from '@/shared/components/InputBase.vue'
 import { Motion } from 'motion-v'
 
-const router = useRouter()
+// const router = useRouter()
 const query = ref('')
 
 const popularTags = ['Software Engineering', 'Product Design', 'Data Science', 'Marketing']

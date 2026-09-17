@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SidebarBase from '@/shared/components/SidebarBase.vue'
+import TopbarBase from '@/shared/components/TopbarBase.vue'
 import { useCollapseSidebar } from '@/shared/stores/useCollapseSidebar'
 import { computed } from 'vue'
 
@@ -16,6 +17,7 @@ const sidebarWidth = computed(() => (collapsed.value ? 72 : 240))
       class="flex-1 min-h-screen transition-all duration-300"
       :style="{ marginLeft: sidebarWidth }"
     >
+      <TopbarBase />
       <router-view />
     </main>
   </div>

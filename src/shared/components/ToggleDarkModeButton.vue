@@ -10,7 +10,7 @@ const { isDark, toggleTheme } = useTheme()
     class="rounded-xl p-2 hover:bg-muted transition-colors cursor-pointer"
     @click="toggleTheme"
   >
-    <SunIcon v-if="isDark" class="w-4 h-4" />
-    <MoonIcon v-else class="w-4 h-4" />
+    <SunIcon v-if="isDark" class="size-4" />
+    <MoonIcon v-else class="size-4" />
   </button>
 </template>
