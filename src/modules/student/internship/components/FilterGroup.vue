@@ -4,10 +4,6 @@ import type { filterGroupProp } from '../type'
 const { label, options, value } = defineProps<filterGroupProp>()
 
 const emit = defineEmits(['select'])
-
-const select = (val: string) => {
-  emit('select', val)
-}
 </script>
 
 <template>
@@ -16,7 +12,7 @@ const select = (val: string) => {
       {{ label }}
     </p>
 
-    <div class="flex flex-wrap gap-2">
+    <div class="flex gap-2">
       <button
         v-for="opt in options"
         :key="opt"
@@ -26,7 +22,7 @@ const select = (val: string) => {
             ? 'gradient-primary text-white shadow-sm'
             : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground',
         ]"
-        :click="select"
+        @click="emit('select', label, opt)"
       >
         {{ opt }}
       </button>

@@ -7,7 +7,7 @@ const { isDark } = useTheme()
 </script>
 
 <template>
-  <div class="p-6 flex justify-end items-center gap-3">
+  <div class="py-4 px-10 flex justify-end items-center gap-3">
     <ToggleDarkModeButton />
 
     <RouterLink to="studentNotification">

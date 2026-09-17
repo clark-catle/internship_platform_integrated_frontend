@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
+import SearchFilterPanel from '../components/SearchFilterPanel.vue'
 
 const internships: string[] = []
 </script>
@@ -24,21 +25,20 @@ const internships: string[] = []
       </div>
     </div>
 
-    <!-- <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="mb-8">
-            <SearchFilterPanel
-              initialQuery={query}
-              onSearch={(q) => { setQuery(q); applyFilters(q, filters); }}
-              onFilter={(f) => { setFilters(f); applyFilters(query, f); }}
-            />
-          </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-8">
+        <SearchFilterPanel />
+      </div>
 
-          {/* Results header */}
-          <div className="flex items-center justify-between mb-6">
-            <p className="text-sm text-muted-foreground">
-              {loading ? "Loading..." : `${filtered.length} internship${filtered.length !== 1 ? "s" : ""} found`}
-            </p> 
-          </div>-->
+      <div className="flex items-center justify-between mb-6">
+        <p className="text-sm text-muted-foreground">
+          8 found
+
+          <!-- loading when searching, after it will show how many internship, but at default
+          its the count of internship -->
+        </p>
+      </div>
+    </div>
 
     <!-- {/* Grid */}
           {loading ? (

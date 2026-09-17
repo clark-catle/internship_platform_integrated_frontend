@@ -4,7 +4,7 @@ import type { filtersType } from '../type'
 export const useSearch = () => {
   const searchQuery = ref('')
   const showFilter = ref(false)
-  const filter = reactive<filtersType>({ setup: 'all', allowance: 'all', duration: 'all' })
+  const filter = reactive<filtersType>({ setup: 'all', allowance: 'all' })
 
   const search = () => {
     console.log(searchQuery)
@@ -19,8 +19,18 @@ export const useSearch = () => {
   const clearFilter = () => {
     filter.setup = 'all'
     filter.allowance = 'all'
-    filter.duration = 'all'
   }
 
-  return { searchQuery, search, showFilter, filter, addFilter, countFilter, clearFilter }
+  const toggleShowFilter = () => (showFilter.value = !showFilter.value)
+
+  return {
+    searchQuery,
+    search,
+    showFilter,
+    toggleShowFilter,
+    filter,
+    addFilter,
+    countFilter,
+    clearFilter,
+  }
 }
