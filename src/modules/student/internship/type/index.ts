@@ -1,9 +1,9 @@
 import type { internshipAllowance, internshipDuration, internshipSetup } from '@/shared/types'
 
-export type filterGroupProp = {
-  label: filterTypeKey
-  options: string[]
-  value: string
+export type filterGroupProp<T extends filterTypeKey> = {
+  label: T
+  options: filtersType[T][]
+  value: filtersType[T]
 }
 
 export type filtersType = {
@@ -12,3 +12,7 @@ export type filtersType = {
 }
 
 export type filterTypeKey = keyof filtersType
+
+export type searchFilterPanelPropType = {
+  filterCount: number
+}

@@ -2,24 +2,35 @@
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 import InputBase from '@/shared/components/InputBase.vue'
 import { Search, SlidersHorizontal, X } from '@lucide/vue'
-import { useSearch } from '../composables/useSearch'
 import { AnimatePresence, Motion } from 'motion-v'
 import FilterGroup from './FilterGroup.vue'
-import type { internshipAllowance, internshipSetup } from '@/shared/types/index.ts'
+import type { filtersType, filterTypeKey, searchFilterPanelPropType } from '../type/index.ts'
+import { ref } from 'vue'
 
-const {
-  searchQuery,
-  search,
-  showFilter,
-  toggleShowFilter,
-  filter,
-  addFilter,
-  countFilter,
-  clearFilter,
-} = useSearch()
+const { filterCount } = defineProps<searchFilterPanelPropType>()
 
-const allowance: (internshipAllowance | 'all')[] = ['all', 'non', 'provided', 'discuss']
-const setup: (internshipSetup | 'all')[] = ['all', 'remote', 'on site', 'hybrid']
+const emit = defineEmits<{
+  (e: 'clearFilter'): void
+  (e: 'search'): void
+  (e: 'addFilter', key: filterTypeKey, val: filtersType[filterTypeKey]): void
+}>()
+
+const searchQueryModel = defineModel<string>('searchQuery', { required: true })
+
+const filter = defineModel<filtersType>('filterModel', { required: true })
+
+const showFilter = ref(false)
+
+const toggleFilter = () => (showFilter.value = !showFilter.value)
+
+const closeAndClearFilter = () => {
+  showFilter.value = false
+
+  emit('clearFilter')
+}
+
+const allowance: filtersType['allowance'][] = ['all', 'non', 'provided', 'discuss']
+const setup: filtersType['setup'][] = ['all', 'remote', 'on site', 'hybrid']
 </script>
 
 <template>
@@ -31,23 +42,23 @@ const setup: (internshipSetup | 'all')[] = ['all', 'remote', 'on site', 'hybrid'
         <InputBase
           placeholder="Search internships, companies, skills..."
           class="pl-10 rounded-xl border-border bg-background"
-          v-model="searchQuery"
-          @keydown="search"
+          v-model="searchQueryModel"
+          @keydown="emit('search')"
         />
       </div>
 
-      <div v-if="showFilter" class="absolute inset-0 z-10" @click="toggleShowFilter" />
+      <div v-if="showFilter" class="absolute inset-0 z-10" @click="toggleFilter" />
 
       <div class="relative z-20">
-        <ButtonBase variant="outline" class="rounded-xl gap-2 relative" @click="toggleShowFilter">
+        <ButtonBase variant="outline" class="rounded-xl gap-2 relative" @click="toggleFilter">
           <SlidersHorizontal class="w-4 h-4" />
           <span class="hidden sm:inline">Filters</span>
 
           <span
-            v-if="countFilter !== 0"
+            v-if="filterCount !== 0"
             class="absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full text-white text-[10px] flex items-center justify-center"
           >
-            {{ countFilter }}
+            {{ filterCount }}
           </span>
         </ButtonBase>
 
@@ -65,19 +76,19 @@ const setup: (internshipSetup | 'all')[] = ['all', 'remote', 'on site', 'hybrid'
                 label="allowance"
                 :options="allowance"
                 :value="filter.allowance"
-                @select="addFilter"
+                @select="(...args) => emit('addFilter', ...args)"
               />
 
               <FilterGroup
                 label="setup"
                 :options="setup"
                 :value="filter.setup"
-                @select="addFilter"
+                @select="(...args) => emit('addFilter', ...args)"
               />
 
               <button
-                v-if="countFilter"
-                @click="clearFilter"
+                v-if="filterCount"
+                @click="closeAndClearFilter"
                 class="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
               >
                 <X class="w-3 h-3" /> Clear all filters

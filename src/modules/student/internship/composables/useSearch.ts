@@ -1,36 +1,29 @@
 import { computed, reactive, ref } from 'vue'
-import type { filtersType } from '../type'
+import type { filtersType, filterTypeKey } from '../type'
 
 export const useSearch = () => {
   const searchQuery = ref('')
-  const showFilter = ref(false)
   const filter = reactive<filtersType>({ setup: 'all', allowance: 'all' })
 
   const search = () => {
     console.log(searchQuery)
   }
 
-  const addFilter = <K extends keyof filtersType>(filterKey: K, val: filtersType[K]) => {
-    filter[filterKey] = val
-  }
-
-  const countFilter = computed(() => Object.values(filter).filter((v) => v !== 'all').length)
+  const addFilter = <K extends filterTypeKey>(key: K, val: filtersType[K]) => (filter[key] = val)
 
   const clearFilter = () => {
     filter.setup = 'all'
     filter.allowance = 'all'
   }
 
-  const toggleShowFilter = () => (showFilter.value = !showFilter.value)
+  const countFilter = computed(() => Object.values(filter).filter((v) => v !== 'all').length)
 
   return {
     searchQuery,
     search,
-    showFilter,
-    toggleShowFilter,
     filter,
     addFilter,
-    countFilter,
     clearFilter,
+    countFilter,
   }
 }

@@ -1,9 +1,11 @@
-<script setup lang="ts">
-import type { filterGroupProp } from '../type'
+<script setup lang="ts" generic="T extends filterTypeKey">
+import type { filterGroupProp, filtersType, filterTypeKey } from '../type'
 
-const { label, options, value } = defineProps<filterGroupProp>()
+const { label, options, value } = defineProps<filterGroupProp<T>>()
 
-const emit = defineEmits(['select'])
+const emit = defineEmits<{
+  (e: 'select', key: filterTypeKey, val: filtersType[filterTypeKey]): void
+}>()
 </script>
 
 <template>
