@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
 import SearchFilterPanel from '../components/SearchFilterPanel.vue'
-import { useSearch } from '../composables/useSearch.ts'
+import { useInternship } from '../composables/useInternship.ts'
+import CardSkeleton from '@/shared/components/CardSkeleton.vue'
+import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
+import { Briefcase } from '@lucide/vue'
+import InternshipCard from '../components/InternshipCard.vue'
 
-const { searchQuery, search, filter, addFilter, clearFilter, countFilter } = useSearch()
-
-const internships: string[] = []
+const { internships, loading, searchQuery, search, filter, addFilter, clearFilter, countFilter } =
+  useInternship()
 </script>
 
 <template>
@@ -47,6 +50,28 @@ const internships: string[] = []
           <!-- loading when searching, after it will show how many internship, but at default
           its the count of internship -->
         </p>
+      </div>
+    </div>
+
+    <div v-if="loading" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <CardSkeleton v-for="val in 6" :key="val" />
+    </div>
+
+    <EmptyStateBase
+      v-else-if="internships.length === 0"
+      :icon="Briefcase"
+      title="No internships found"
+      description="Try adjusting your search or filters to find more opportunities"
+    />
+
+    <div v-else>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <InternshipCard
+          v-for="(internship, i) in internships"
+          :key="internship.id"
+          :internship="internship"
+          :index="i"
+        />
       </div>
     </div>
 

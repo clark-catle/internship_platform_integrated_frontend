@@ -1,4 +1,7 @@
 import type { internship } from '@/shared/types'
+import { mockCompanies } from './companies'
+
+const byId = (id: number) => mockCompanies.find((c) => c.id === id)
 
 export const mockInternships: internship[] = [
   {
@@ -18,6 +21,7 @@ export const mockInternships: internship[] = [
       { id: 4, name: 'PHP' },
       { id: 11, name: 'PostgreSQL' },
     ],
+    company: byId(1),
     deleted_at: null,
   },
   {
@@ -39,6 +43,7 @@ export const mockInternships: internship[] = [
       { id: 5, name: 'JavaScript' },
       { id: 17, name: 'Tailwind CSS' },
     ],
+    company: byId(2),
     deleted_at: null,
   },
   {
@@ -56,6 +61,7 @@ export const mockInternships: internship[] = [
       { id: 7, name: 'Figma' },
       { id: 8, name: 'UI/UX Design' },
     ],
+    company: byId(3),
     deleted_at: null,
   },
   {
@@ -74,6 +80,7 @@ export const mockInternships: internship[] = [
       { id: 10, name: 'SQL' },
       { id: 14, name: 'Data Analysis' },
     ],
+    company: byId(4),
     deleted_at: null,
   },
   {
@@ -93,6 +100,7 @@ export const mockInternships: internship[] = [
       { id: 15, name: 'Git & GitHub' },
       { id: 16, name: 'REST APIs' },
     ],
+    company: byId(5),
     deleted_at: null,
   },
   {
@@ -110,6 +118,7 @@ export const mockInternships: internship[] = [
       { id: 18, name: 'Content Writing' },
       { id: 12, name: 'Communication' },
     ],
+    company: byId(6),
     deleted_at: null,
   },
   {
@@ -127,6 +136,7 @@ export const mockInternships: internship[] = [
       { id: 12, name: 'Communication' },
       { id: 13, name: 'Project Management' },
     ],
+    company: byId(1),
     deleted_at: null,
   },
 ]

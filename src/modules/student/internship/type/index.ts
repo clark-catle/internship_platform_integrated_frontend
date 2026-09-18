@@ -1,4 +1,9 @@
-import type { internshipAllowance, internshipDuration, internshipSetup } from '@/shared/types'
+import type {
+  internship,
+  internshipAllowance,
+  internshipDuration,
+  internshipSetup,
+} from '@/shared/types'
 
 export type filterGroupProp<T extends filterTypeKey> = {
   label: T
@@ -15,4 +20,9 @@ export type filterTypeKey = keyof filtersType
 
 export type searchFilterPanelPropType = {
   filterCount: number
+}
+
+export type internshipCardPropType = {
+  internship: internship
+  index: number
 }
