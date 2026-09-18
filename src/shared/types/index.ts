@@ -73,3 +73,38 @@ export type requestArg<T> = {
   method?: apiMethod
   version?: string
 }
+
+export type internship = {
+  id: number
+  title: string
+  description: string
+  requirements: string
+  setup: internshipSetup
+  location: locationType
+  allowance: internshipAllowance
+  duration: number
+  duration_unit: internshipDurationUnit
+  internship_skill: internshipSkill[]
+  company?: company
+  deleted_at: null
+}
+
+export type internshipSkill = {
+  id: number
+  name: string
+}
+
+export type company = {
+  id: number
+  company_name: string
+  description: string
+  website: string
+  is_verified: boolean
+  location: locationType
+  logo_url: string
+}
+
+export type locationType = {
+  region: string
+  city: string
+}
