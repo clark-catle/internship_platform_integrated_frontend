@@ -108,3 +108,19 @@ export type locationType = {
   region: string
   city: string
 }
+
+export type notification = {
+  id: number
+  data: notificationData
+  read_at: string | null
+  created_at: string
+}
+
+export type notificationData = {
+  type: notificationDataType
+  application_id: number
+  title: string
+  message: string
+}
+
+export type notificationDataType = 'success' | 'warning' | 'info'

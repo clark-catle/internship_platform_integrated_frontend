@@ -1,4 +1,4 @@
-import type { notificationType } from '@/shared/types'
+import type { notification, notificationType } from '@/shared/types'
 import type { LucideIcon } from '@lucide/vue'
 
 export type studentNotification = {
@@ -13,4 +13,9 @@ export type notificationIconType = {
   icon: LucideIcon
   bg: string
   color: string
+}
+
+export type notificationProp = {
+  notification: notification
+  index: number
 }

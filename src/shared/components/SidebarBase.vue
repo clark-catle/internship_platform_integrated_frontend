@@ -70,7 +70,7 @@ const navItems = studentNavItems
             <div class="relative shrink-0">
               <component :is="navItem.icon" class="w-5 h-5" />
               <span
-                v-if="navItem.badge"
+                v-if="navItem.badge?.value"
                 className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center font-bold"
               >
                 {{ navItem.badge }}

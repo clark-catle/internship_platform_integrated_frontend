@@ -1,13 +1,18 @@
-import { studentNotifications } from '@/data/student'
+import { mockNotifications } from '@/data/notification'
 import { computed, ref } from 'vue'
-import type { studentNotification } from '../type'
-
-const notifications = ref(studentNotifications)
 
 export const useNotif = () => {
-  const markAllRead = () => notifications.value.forEach((val) => (val.isRead = true))
+  const notifications = ref(mockNotifications)
 
-  const unreadCount = computed(() => notifications.value.filter((val) => !val.isRead).length)
+  const markAllRead = () => {
+    notifications.value.forEach((val) =>
+      val.read_at ? val : (val.read_at = new Date().toISOString()),
+    )
+
+    console.log(notifications.value)
+  }
+
+  const unreadCount = computed(() => notifications.value.filter((val) => !val.read_at).length)
 
   return { notifications, unreadCount, markAllRead }
 }
