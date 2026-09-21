@@ -5,8 +5,6 @@ import type { internship } from '@/shared/types'
 
 export const useInternship = () => {
   const mockData = mockInternships // source of the mock
-  let searchedData: null | internship[] = null
-  let filteredData: null | internship[] = null
   const internships = ref(mockData) // result of the filter or search
   const loading = ref(false)
   const searchQuery = ref('')
@@ -24,23 +22,7 @@ export const useInternship = () => {
 
     loading.value = true
 
-    await new Promise<void>((resolve) =>
-      setTimeout(() => {
-        const result = (filteredData === null ? mockData : filteredData).filter(
-          (v) =>
-            v.description.toLowerCase().includes(searchQuery.value) ||
-            v.requirements.toLowerCase().includes(searchQuery.value) ||
-            v.title.toLowerCase().includes(searchQuery.value) ||
-            (v.internship_skill.length > 0 &&
-              v.internship_skill.some((skill) => skill.name.includes(searchQuery.value))),
-        )
-
-        internships.value = result
-        searchedData = result
-
-        resolve()
-      }, 2000),
-    )
+    await searchAndFilter()
 
     loading.value = false
   }
@@ -56,31 +38,7 @@ export const useInternship = () => {
 
     filter[key] = val
 
-    /**
-     * if the val is all, meaning then
-     */
-    if (val === 'all') {
-      const result = searchedData === null ? mockData : searchedData
-
-      internships.value = result
-      filteredData = result
-
-      return
-    }
-
-    await new Promise<void>((resolve) =>
-      setTimeout(() => {
-        const result = (searchedData === null ? mockData : searchedData).filter(
-          (v) =>
-            (filter.allowance === 'all' || v.allowance === filter.allowance) &&
-            (filter.setup === 'all' || v.setup === filter.setup),
-        )
-
-        internships.value = result
-        filteredData = result
-        resolve()
-      }, 2000),
-    )
+    await searchAndFilter()
 
     loading.value = false
   }
@@ -88,8 +46,12 @@ export const useInternship = () => {
   const searchAndFilter = async () => {
     await new Promise<void>((resolve) =>
       setTimeout(() => {
+        /**
+         * if the `searchQuery` isnt an empty string, meaning there's something to be searched
+         * so it will be filtered, but if there no, it will just return the mock data
+         */
         const searchResult =
-          searchQuery.value === ''
+          searchQuery.value !== ''
             ? mockData.filter(
                 (v) =>
                   v.description.toLowerCase().includes(searchQuery.value) ||
@@ -100,12 +62,19 @@ export const useInternship = () => {
               )
             : mockData
 
-after this, you need to filter the search result, but if theres nothing to filter, then just return the previous result
-        const filterResult = searchResult.filter(
-          (v) =>
-            (filter.allowance === 'all' || v.allowance === filter.allowance) &&
-            (filter.setup === 'all' || v.setup === filter.setup),
-        )
+        /**
+         * if the filter value doesnt have an all, it means it would proceed to filtering,
+         * but if both is all value then it will just return the search result
+         */
+        const filterResult = Object.values(filter).some((val) => val !== 'all')
+          ? searchResult.filter(
+              (v) =>
+                (filter.allowance === 'all' || v.allowance === filter.allowance) &&
+                (filter.setup === 'all' || v.setup === filter.setup),
+            )
+          : searchResult
+
+        internships.value = filterResult
 
         resolve()
       }, 2000),
@@ -116,16 +85,23 @@ after this, you need to filter the search result, but if theres nothing to filte
    * clears the filter by making the filte.setup and filter.allowance value intno all
    * and retaining the default value of internship list by inserting the mock data in internship
    */
-  const clearFilter = () => {
-    loading.value = false
+  const clearFilter = async () => {
+    loading.value = true
 
     filter.setup = 'all'
     filter.allowance = 'all'
+    searchQuery.value = ''
 
     loading.value = false
   }
 
-  const countFilter = computed(() => Object.values(filter).filter((v) => v !== 'all').length)
+  const countFilter = computed(() => {
+    const filterCount = Object.values(filter).filter((v) => v !== 'all').length
+
+    const search = searchQuery.value !== ''
+
+    return search ? filterCount + 1 : filterCount
+  })
 
   watch(searchQuery, () => {
     if (searchQuery.value === '') internships.value = mockData
