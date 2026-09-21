@@ -61,9 +61,9 @@ export type emptyStateProps = {
   }
 }
 
-export type applicationStatus = 'pending' | 'in_review' | 'accepted' | 'rejected'
+export type applicationStatus = 'pending' | 'in review' | 'accepted' | 'rejected'
 
-export type applicationProgress = 'applied' | 'in review' | 'interview' | 'decision'
+export type applicationProgress = 'applied' | 'interview' | 'decision'
 
 export type apiMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
@@ -124,3 +124,11 @@ export type notificationData = {
 }
 
 export type notificationDataType = 'success' | 'warning' | 'info'
+
+export type application = {
+  id: number
+  status: applicationStatus
+  progress: applicationProgress
+  applied_at: string
+  internship?: internship
+}

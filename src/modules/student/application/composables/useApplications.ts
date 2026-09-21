@@ -1,13 +1,13 @@
 import { ref } from 'vue'
-import type { applicationTab } from '../type'
+import type { applicationStatusTab } from '../type'
+import { mockApplications } from '@/data/applications'
 
 export const useApplication = () => {
+  const applications = ref(mockApplications)
   const loading = ref(false)
-  const activeTab = ref<applicationTab>('all')
+  const activeTab = ref<applicationStatusTab>('all')
 
-  const changeTab = (val: applicationTab) => (activeTab.value = val)
+  const changeTab = (val: applicationStatusTab) => (activeTab.value = val)
 
-  const applicationTabCount
-
-  return { loading, activeTab, changeTab }
+  return { applications, loading, activeTab, changeTab }
 }
