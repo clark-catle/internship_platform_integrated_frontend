@@ -91,6 +91,7 @@ export const useInternship = () => {
     filter.setup = 'all'
     filter.allowance = 'all'
     searchQuery.value = ''
+    internships.value = mockData
 
     loading.value = false
   }

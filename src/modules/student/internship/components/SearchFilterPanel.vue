@@ -43,7 +43,7 @@ const setup: filtersType['setup'][] = ['all', 'remote', 'on site', 'hybrid']
           placeholder="Search internships, companies, skills..."
           class="pl-10 rounded-xl border-border bg-background"
           v-model="searchQueryModel"
-          @keydown.enter="emit('search')"
+          @keydown="emit('search')"
         />
       </div>
 
