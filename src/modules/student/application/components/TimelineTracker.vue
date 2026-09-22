@@ -18,11 +18,13 @@ const currentIndex = statusOrder.indexOf(status)
 const stepStates = steps.map((step, i) => {
   const stepStatus = i === 0 ? 'pending' : i === 1 ? 'in review' : 'accepted'
   const stepIndex = statusOrder.indexOf(stepStatus)
-  const isDone = isRejected && currentIndex >= stepIndex
-  const isCurrent = isRejected && currentIndex === stepIndex
+  const isDone = !isRejected && currentIndex >= stepIndex
+  const isCurrent = !isRejected && currentIndex === stepIndex
 
   return { ...step, stepIndex, isDone, isCurrent }
 })
+
+console.log(stepStates)
 </script>
 
 <template>

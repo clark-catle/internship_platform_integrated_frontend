@@ -6,10 +6,12 @@ import { Building2, Calendar, ChevronDown, ChevronUp, FileText } from '@lucide/v
 import { AnimatePresence, Motion } from 'motion-v'
 import { formatDistanceToNow } from 'date-fns'
 import TimelineTracker from '../components/TimelineTracker.vue'
+import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
+import { ref } from 'vue'
 
-const { applications, loading, activeTab, changeTab } = useApplication()
+const { applications, filteredApplication, loading, activeTab, changeTab } = useApplication()
 
-const expanded = true
+const expandedApplication = ref<number | null>(null)
 
 const count = (val: applicationStatusTab) =>
   val === 'all'
@@ -17,6 +19,16 @@ const count = (val: applicationStatusTab) =>
     : applications.value.filter((app) => app.status === val).length
 
 const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted', 'rejected']
+
+/**
+ * if the passed id is the id that was currently opened, it will be closed,
+ * but if not, it will open another accordion
+ */
+const toggle = (id: number) => {
+  if (expandedApplication.value === id) return (expandedApplication.value = null)
+
+  return (expandedApplication.value = id)
+}
 </script>
 
 <template>
@@ -71,7 +83,7 @@ const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted',
         <AnimatePresence>
           <Motion
             as="div"
-            v-for="(application, i) in applications"
+            v-for="(application, i) in filteredApplication"
             :key="application.id"
             :initial="{ opacity: 0, y: 15 }"
             :animate="{ opacity: 1, y: 0 }"
@@ -80,13 +92,12 @@ const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted',
           >
             <div
               class="flex items-center gap-4 p-5 cursor-pointer hover:bg-muted/30 transition-colors"
+              @click="toggle(application.id)"
             >
-              <!-- onClick={() => setExpanded(expanded === app.id ? null : app.id)} action of the div above-->
-
               <div
                 class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center text-white font-bold text-sm shrink-0"
               >
-                {{ application.internship?.company?.company_name }}
+                {{ application.internship?.company?.company_name[0]?.toUpperCase() }}
               </div>
 
               <div class="flex-1 min-w-0">
@@ -106,18 +117,21 @@ const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted',
                 </div>
               </div>
               <div class="flex items-center gap-3">
-                <ApplicationStatusBadge status="{app.status}" />
+                <ApplicationProgressBadge
+                  :progress="application.progress"
+                  :status="application.status"
+                />
 
                 <!-- should show of the expanded list was this -->
                 <!-- {expanded === app.id ? <ChevronUp class="w-4 h-4 text-muted-foreground" /> : <ChevronDown class="w-4 h-4 text-muted-foreground" />} -->
-                <ChevronUp v-if="expanded" class="w-4 h-4 text-muted-foreground" />
+                <ChevronUp v-if="expandedApplication" class="w-4 h-4 text-muted-foreground" />
                 <ChevronDown v-else class="w-4 h-4 text-muted-foreground" />
               </div>
             </div>
 
             <AnimatePresence>
               <Motion
-                v-if="expanded"
+                v-if="expandedApplication === application.id"
                 as="div"
                 :initial="{ height: 0 }"
                 :animate="{ height: 'auto' }"
