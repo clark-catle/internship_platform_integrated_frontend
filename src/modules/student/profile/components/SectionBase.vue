@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { GraduationCap, LinkIcon, User } from '@lucide/vue'
+import { GraduationCap, Key, Mail, User } from '@lucide/vue'
 import type { ProfileSection, SectionData } from '../type'
 
 const activeSection = defineModel<ProfileSection>('activeSection', { required: true })
 
 const sections: SectionData[] = [
-  { key: 'basic', label: 'Basic Info', icon: User },
-  { key: 'education', label: 'Education', icon: GraduationCap },
-  { key: 'links', label: 'Links', icon: LinkIcon },
+  { key: 'basic', icon: User },
+  { key: 'education', icon: GraduationCap },
+  { key: 'email', icon: Mail },
+  { key: 'password', icon: Key },
 ]
 
 const change = (val: ProfileSection) => {
@@ -21,7 +22,7 @@ const change = (val: ProfileSection) => {
       <button
         v-for="s in sections"
         :key="s.key"
-        class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
+        class="capitalized w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
         :class="[
           activeSection === s.key
             ? 'gradient-primary text-white'
@@ -29,7 +30,7 @@ const change = (val: ProfileSection) => {
         ]"
         @click="change(s.key)"
       >
-        <component :is="s.icon" class="w-4 h-4" /> {{ s.label }}
+        <component :is="s.icon" class="w-4 h-4" /> {{ s.key }}
       </button>
     </div>
   </div>

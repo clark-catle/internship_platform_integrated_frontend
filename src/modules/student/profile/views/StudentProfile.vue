@@ -66,7 +66,7 @@ const { user, loading, saving, activeSection, addSkill, removeSkill, addCourse }
       <SectionBase v-model:activeSection="activeSection" />
 
       <div class="lg:col-span-3 space-y-5">
-        <BasicFormSection v-if="activeSection === 'basic'" :user="user" />
+        <BasicFormSection v-if="activeSection === 'basic'" v-model:user="user" />
 
         <EducationFormSection
           v-else-if="activeSection === 'education'"
@@ -75,7 +75,7 @@ const { user, loading, saving, activeSection, addSkill, removeSkill, addCourse }
           @removeSkill="removeSkill"
           @addCourse="addCourse"
         />
-        <div v-else>hi</div>
+        <div v-else-if="activeSection === 'links'">hi</div>
       </div>
     </div>
 

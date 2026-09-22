@@ -18,10 +18,9 @@ export type UserStudent = User & {
   student_info: Student
 }
 
-export type ProfileSection = 'basic' | 'education' | 'links'
+export type ProfileSection = 'basic' | 'education' | 'password' | 'email'
 
 export type SectionData = {
   key: ProfileSection
-  label: string
   icon: LucideIcon
 }
