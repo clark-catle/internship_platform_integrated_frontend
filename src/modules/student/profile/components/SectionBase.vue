@@ -2,13 +2,17 @@
 import { GraduationCap, LinkIcon, User } from '@lucide/vue'
 import type { ProfileSection, SectionData } from '../type'
 
-const { activeSection } = defineProps<{ activeSection: ProfileSection }>()
+const activeSection = defineModel<ProfileSection>('activeSection', { required: true })
 
 const sections: SectionData[] = [
   { key: 'basic', label: 'Basic Info', icon: User },
   { key: 'education', label: 'Education', icon: GraduationCap },
   { key: 'links', label: 'Links', icon: LinkIcon },
 ]
+
+const change = (val: ProfileSection) => {
+  activeSection.value = val
+}
 </script>
 
 <template>
@@ -23,8 +27,9 @@ const sections: SectionData[] = [
             ? 'gradient-primary text-white'
             : 'text-muted-foreground hover:bg-muted hover:text-foreground',
         ]"
+        @click="change(s.key)"
       >
-        <s.icon class="w-4 h-4" /> {{ s.label }}
+        <component :is="s.icon" class="w-4 h-4" /> {{ s.label }}
       </button>
     </div>
   </div>

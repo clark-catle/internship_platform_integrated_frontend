@@ -6,8 +6,9 @@ import { Camera, Save } from '@lucide/vue'
 import SectionBase from '../components/SectionBase.vue'
 import LoadingBase from '@/shared/components/LoadingBase.vue'
 import BasicFormSection from '../components/BasicFormSection.vue'
+import EducationFormSection from '../components/EducationFormSection.vue'
 
-const { user, loading, saving, activeSection, addSkill, removeSkill } = useProfile()
+const { user, loading, saving, activeSection, addSkill, removeSkill, addCourse } = useProfile()
 </script>
 
 <template>
@@ -62,10 +63,19 @@ const { user, loading, saving, activeSection, addSkill, removeSkill } = useProfi
     </Motion>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-      <SectionBase :activeSection="activeSection" />
+      <SectionBase v-model:activeSection="activeSection" />
 
       <div class="lg:col-span-3 space-y-5">
-        <BasicFormSection :user="user" @addSkill="addSkill" @removeSkill="removeSkill" />
+        <BasicFormSection v-if="activeSection === 'basic'" :user="user" />
+
+        <EducationFormSection
+          v-else-if="activeSection === 'education'"
+          v-model:user="user"
+          @addSkill="addSkill"
+          @removeSkill="removeSkill"
+          @addCourse="addCourse"
+        />
+        <div v-else>hi</div>
       </div>
     </div>
 
@@ -83,32 +93,7 @@ const { user, loading, saving, activeSection, addSkill, removeSkill } = useProfi
               )}
 
               {activeSection === "education" && (
-                <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
-                  class="bg-card rounded-2xl border border-border shadow-card p-6 space-y-4">
-                  <h3 class="font-semibold text-foreground">Education</h3>
-                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="space-y-1.5">
-                      <Label>University / College</Label>
-                      <Input value={profile?.university || ""} onChange={(e) => setProfile({ ...profile, university: e.target.value })}
-                        placeholder="e.g. MIT" class="rounded-xl" />
-                    </div>
-                    <div class="space-y-1.5">
-                      <Label>Major / Field of Study</Label>
-                      <Input value={profile?.major || ""} onChange={(e) => setProfile({ ...profile, major: e.target.value })}
-                        placeholder="e.g. Computer Science" class="rounded-xl" />
-                    </div>
-                    <div class="space-y-1.5">
-                      <Label>Expected Graduation Year</Label>
-                      <Input value={profile?.graduation_year || ""} onChange={(e) => setProfile({ ...profile, graduation_year: e.target.value })}
-                        placeholder="e.g. 2026" class="rounded-xl" />
-                    </div>
-                    <div class="space-y-1.5">
-                      <Label>GPA (optional)</Label>
-                      <Input value={profile?.gpa || ""} onChange={(e) => setProfile({ ...profile, gpa: e.target.value })}
-                        placeholder="e.g. 3.8" class="rounded-xl" />
-                    </div>
-                  </div>
-                </motion.div>
+                
               )}
 
               {activeSection === "links" && (

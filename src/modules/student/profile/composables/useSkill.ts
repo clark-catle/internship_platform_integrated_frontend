@@ -3,17 +3,17 @@ import type { skill } from '@/shared/types'
 import { ref, watch } from 'vue'
 
 export const useSkill = () => {
-  const searchQuery = ref('')
+  const searchSkill = ref('')
   const skillResult = ref<skill[]>(mockSkills)
-  const showChoices = ref(false)
+  const showSkillChoices = ref(false)
 
   const search = () => {
     skillResult.value = mockSkills.filter((v) =>
-      v.name.toLocaleLowerCase().includes(searchQuery.value.toLowerCase()),
+      v.name.toLocaleLowerCase().includes(searchSkill.value.toLowerCase()),
     )
   }
 
-  watch(searchQuery, search)
+  watch(searchSkill, search)
 
-  return { searchQuery, skillResult, showChoices }
+  return { searchSkill, skillResult, showSkillChoices }
 }
