@@ -42,4 +42,11 @@ export const mockApplications: application[] = [
     applied_at: '2026-09-10T16:20:00+08:00',
     internship: internshipById(2),
   },
+  {
+    id: 106,
+    status: 'in review',
+    progress: 'decision',
+    applied_at: '2026-09-10T16:20:00+08:00',
+    internship: internshipById(1),
+  },
 ]

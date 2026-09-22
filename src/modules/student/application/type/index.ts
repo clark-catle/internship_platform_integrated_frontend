@@ -11,6 +11,7 @@ export type applicationStatusDesign = {
 }
 
 export type timelineTrackerProp = {
+  progress: applicationProgress
   status: applicationStatus
 }
 
@@ -26,4 +27,9 @@ export type statusConfigDataType = {
   label: applicationStatus
   icon: LucideIcon
   class: string
+}
+
+export type stepsDate = {
+  label: applicationProgress
+  icon: LucideIcon
 }

@@ -145,7 +145,10 @@ const toggle = (id: number) => {
                     >
                       Application Progress
                     </p>
-                    <TimelineTracker :status="application.status" />
+                    <TimelineTracker
+                      :progress="application.progress"
+                      :status="application.status"
+                    />
                   </div>
 
                   <div v-if="application.internship?.description">
