@@ -80,16 +80,16 @@ export type internship = {
   description: string
   requirements: string
   setup: internshipSetup
-  location: locationType
+  location: LocationType
   allowance: internshipAllowance
   duration: number
   duration_unit: internshipDurationUnit
-  internship_skill: internshipSkill[]
+  internship_skill: skill[]
   company?: company
   deleted_at: null
 }
 
-export type internshipSkill = {
+export type skill = {
   id: number
   name: string
 }
@@ -100,11 +100,11 @@ export type company = {
   description: string
   website: string
   is_verified: boolean
-  location: locationType
+  location: LocationType
   logo_url: string
 }
 
-export type locationType = {
+export type LocationType = {
   region: string
   city: string
 }
@@ -131,4 +131,20 @@ export type application = {
   progress: applicationProgress
   applied_at: string
   internship?: internship
+}
+
+export type User = {
+  id: number
+  email: string
+  status: UserStatus
+  role: UserRole
+}
+
+export type UserStatus = 'active' | 'block' | 'deleted'
+
+export type UserRole = 'student' | 'company' | 'admin'
+
+export type Course = {
+  id: number
+  name: string
 }

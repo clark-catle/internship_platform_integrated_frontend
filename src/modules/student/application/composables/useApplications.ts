@@ -9,6 +9,8 @@ export const useApplication = () => {
   const activeTab = ref<applicationStatusTab>('all')
 
   const changeTab = (val: applicationStatusTab) => {
+    activeTab.value = val
+
     if (val === 'all') return (filteredApplication.value = mockApplications)
 
     filteredApplication.value = mockApplications.filter((v) => v.status === val)
