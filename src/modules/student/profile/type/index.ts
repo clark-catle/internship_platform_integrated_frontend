@@ -24,3 +24,9 @@ export type SectionData = {
   key: ProfileSection
   icon: LucideIcon
 }
+
+export type ChangePassword = {
+  oldPassword: string
+  newPassword: string
+  confirmPassword: string
+}

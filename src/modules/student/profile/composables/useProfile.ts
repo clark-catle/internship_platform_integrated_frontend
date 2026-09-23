@@ -1,5 +1,5 @@
 import { onMounted, reactive, ref } from 'vue'
-import type { ProfileSection, UserStudent } from '../type'
+import type { ChangePassword, ProfileSection, UserStudent } from '../type'
 import { mockUserStudent } from '@/data/user'
 import { mockSkills } from '@/data/skill'
 import { mockCourses } from '@/data/course'
@@ -48,11 +48,29 @@ export const useProfile = () => {
   }
 
   /**
+   * sending the value in the backend for changing a new password
+   * @param val
+   */
+  const changePassword = (val: ChangePassword) => {
+    console.log(val)
+  }
+
+  /**
    * to virtualize the loading
    */
   onMounted(async () => {
     setTimeout(() => (loading.value = false), 1000)
   })
 
-  return { user, loading, saving, activeSection, addSkill, removeSkill, addCourse, changeEmail }
+  return {
+    user,
+    loading,
+    saving,
+    activeSection,
+    addSkill,
+    removeSkill,
+    addCourse,
+    changeEmail,
+    changePassword,
+  }
 }
