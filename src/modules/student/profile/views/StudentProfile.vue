@@ -7,8 +7,10 @@ import SectionBase from '../components/SectionBase.vue'
 import LoadingBase from '@/shared/components/LoadingBase.vue'
 import BasicFormSection from '../components/BasicFormSection.vue'
 import EducationFormSection from '../components/EducationFormSection.vue'
+import EmailSection from '../components/EmailSection.vue'
 
-const { user, loading, saving, activeSection, addSkill, removeSkill, addCourse } = useProfile()
+const { user, loading, saving, activeSection, addSkill, removeSkill, addCourse, changeEmail } =
+  useProfile()
 </script>
 
 <template>
@@ -75,7 +77,14 @@ const { user, loading, saving, activeSection, addSkill, removeSkill, addCourse }
           @removeSkill="removeSkill"
           @addCourse="addCourse"
         />
-        <div v-else-if="activeSection === 'links'">hi</div>
+
+        <EmailSection
+          v-model:user="user"
+          @changeEmail="changeEmail"
+          v-else-if="activeSection === 'email'"
+        />
+
+        <div v-else-if="activeSection === 'password'">hi</div>
       </div>
     </div>
 

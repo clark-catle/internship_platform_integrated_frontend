@@ -39,11 +39,20 @@ export const useProfile = () => {
   }
 
   /**
+   * will pass a request in backedn where it will send an email in the user's current
+   * email for verification, after the verification, it will change the user's email
+   * @param email
+   */
+  const changeEmail = (email: string) => {
+    console.log('new email ' + email)
+  }
+
+  /**
    * to virtualize the loading
    */
   onMounted(async () => {
     setTimeout(() => (loading.value = false), 1000)
   })
 
-  return { user, loading, saving, activeSection, addSkill, removeSkill, addCourse }
+  return { user, loading, saving, activeSection, addSkill, removeSkill, addCourse, changeEmail }
 }
