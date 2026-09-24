@@ -35,6 +35,7 @@ const {
         </p>
       </div>
       <ButtonBase
+        v-if="activeSection === 'basic' || activeSection === 'education'"
         onClick="{save}"
         :disabled="saving"
         class="gradient-primary text-white border-0 rounded-xl gap-2 shadow-glow hover:opacity-90"

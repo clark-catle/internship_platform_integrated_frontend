@@ -131,6 +131,7 @@ export type application = {
   progress: applicationProgress
   applied_at: string
   internship?: internship
+  student?: Student
 }
 
 export type User = {
@@ -147,4 +148,21 @@ export type UserRole = 'student' | 'company' | 'admin'
 export type Course = {
   id: number
   name: string
+}
+
+export type Student = {
+  id: number
+  name: {
+    first_name: string
+    last_name: string
+  }
+  school: string
+  cellphone_number: string
+  course: Course
+  location: LocationType
+  student_skill: skill[]
+}
+
+export type UserStudent = User & {
+  student_info: Student
 }

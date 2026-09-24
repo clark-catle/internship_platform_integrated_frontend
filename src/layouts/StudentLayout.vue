@@ -14,7 +14,7 @@ const sidebarWidth = computed(() => (collapsed.value ? 72 : 240))
     <SidebarBase />
 
     <main
-      class="flex-1 min-h-screen transition-all duration-300"
+      class="flex-1 min-h-screen transition-all duration-300 pb-5"
       :style="{ marginLeft: sidebarWidth }"
     >
       <TopbarBase />

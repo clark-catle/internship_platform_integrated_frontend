@@ -1,4 +1,4 @@
-import type { Student } from '@/modules/student/profile/type'
+import type { Student } from '@/shared/types'
 import { mockCourses } from './course'
 
 export const mockStudent: Student = {

@@ -30,6 +30,12 @@ const router = createRouter({
           component: () => import('@/modules/student/internship/views/StudentInternship.vue'),
         },
         {
+          path: 'internship/:id',
+          name: 'studentInternshipDetail',
+          props: true,
+          component: () => import('@/modules/student/internship/views/StudentInternshipDetail.vue'),
+        },
+        {
           path: 'application',
           name: 'studentApplication',
           component: () => import('@/modules/student/application/views/StudentApplications.vue'),

@@ -3,10 +3,10 @@ import InputBase from '@/shared/components/InputBase.vue'
 import LabelBase from '@/shared/components/LabelBase.vue'
 import { Motion } from 'motion-v'
 import { useSkill } from '../composables/useSkill'
-import type { UserStudent } from '../type'
-import { X } from '@lucide/vue'
 import { useCourse } from '../composables/useCourse'
 import { onMounted } from 'vue'
+import type { UserStudent } from '@/shared/types'
+import SkillChip from '@/shared/components/SkillChip.vue'
 
 const { searchSkill, skillResult, showSkillChoices } = useSkill()
 const { searchCourse, courseResult, showCourseChoices } = useCourse()
@@ -110,20 +110,14 @@ onMounted(() => (searchCourse.value = user.value.student_info.course.name))
       </div>
 
       <div class="flex flex-wrap gap-2">
-        <span
+        <SkillChip
           v-for="skill in user.student_info.student_skill"
           :key="skill.id"
-          class="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-accent text-accent-foreground font-medium"
+          :removeable="true"
+          @remove-skill="emit('removeSkill', skill.id)"
         >
           {{ skill.name }}
-
-          <button
-            @click="emit('removeSkill', skill.id)"
-            class="hover:text-destructive transition-colors"
-          >
-            <X class="w-3 h-3" />
-          </button>
-        </span>
+        </SkillChip>
       </div>
     </div>
   </Motion>
