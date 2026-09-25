@@ -41,6 +41,13 @@ const router = createRouter({
           component: () => import('@/modules/student/application/views/StudentApplications.vue'),
         },
         {
+          path: 'application/:id',
+          name: 'studentApplicationDetail',
+          props: true,
+          component: () =>
+            import('@/modules/student/application/views/StudentApplicationDetail.vue'),
+        },
+        {
           path: 'notification',
           name: 'studentNotification',
           component: () => import('@/modules/student/notification/views/StudentNotification.vue'),
