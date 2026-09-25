@@ -10,6 +10,8 @@ import type {
 import {
   Bell,
   Briefcase,
+  Building,
+  Building2,
   FileText,
   Globe,
   Heart,
@@ -170,9 +172,8 @@ export const whyFeatureSection: whyFeature[] = [
 const { unreadCount } = useNotif()
 export const studentNavItems: studentNav[] = [
   { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
-  // { icon: Search, label: 'Browse Internships', hrefTo: '/student/internships' },
+  { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
   { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
-  // { icon: Heart, label: 'Saved', hrefTo: '/student/saved' },
   { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
   { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
 ]
