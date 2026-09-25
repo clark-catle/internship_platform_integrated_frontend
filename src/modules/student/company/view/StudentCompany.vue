@@ -23,13 +23,10 @@ const { companies, isVerified, search } = useCompany()
     />
 
     <div v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- <RouterLink
-        :to="{ name: 'student-company-detail', params: { id: c.id } }"
-        class="card-hover flex flex-col rounded-2xl border border-border bg-card p-5"
-      > -->
-      <div
+      <RouterLink
         v-for="c in companies"
         :key="c.id"
+        :to="{ name: 'studentCompanyDetail', params: { id: c.id } }"
         class="card-hover flex flex-col rounded-2xl border border-border bg-card p-5"
       >
         <div class="flex items-start gap-4">
@@ -52,7 +49,7 @@ const { companies, isVerified, search } = useCompany()
           </div>
         </div>
         <p class="mt-3 line-clamp-3 text-sm text-muted-foreground">{{ c.description }}</p>
-      </div>
+      </RouterLink>
     </div>
   </div>
 </template>

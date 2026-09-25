@@ -102,6 +102,7 @@ export type company = {
   is_verified: boolean
   location: LocationType
   logo_url: string
+  internship?: internship[]
 }
 
 export type LocationType = {

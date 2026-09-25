@@ -1,4 +1,7 @@
 import type { company } from '@/shared/types'
+import { mockInternships } from './internship'
+
+const byId = (id: number) => mockInternships.find((c) => c.id === id)!
 
 export const mockCompanies: company[] = [
   {
@@ -10,6 +13,7 @@ export const mockCompanies: company[] = [
     is_verified: true,
     location: { region: 'NCR', city: 'Pasig City' },
     logo_url: 'https://api.dicebear.com/9.x/initials/svg?seed=Opalus&backgroundType=gradientLinear',
+    internship: [byId(1), byId(6)],
   },
   {
     id: 2,
@@ -21,6 +25,7 @@ export const mockCompanies: company[] = [
     location: { region: 'Calabarzon', city: 'Santa Rosa' },
     logo_url:
       'https://api.dicebear.com/9.x/initials/svg?seed=Northwind&backgroundType=gradientLinear',
+    internship: [byId(2), byId(7)],
   },
   {
     id: 3,
@@ -32,6 +37,7 @@ export const mockCompanies: company[] = [
     location: { region: 'NCR', city: 'Makati City' },
     logo_url:
       'https://api.dicebear.com/9.x/initials/svg?seed=Brightleaf&backgroundType=gradientLinear',
+    internship: [byId(3)],
   },
   {
     id: 4,
@@ -43,6 +49,7 @@ export const mockCompanies: company[] = [
     location: { region: 'Central Visayas', city: 'Cebu City' },
     logo_url:
       'https://api.dicebear.com/9.x/initials/svg?seed=Vantage&backgroundType=gradientLinear',
+    internship: [byId(4)],
   },
   {
     id: 5,
@@ -54,6 +61,7 @@ export const mockCompanies: company[] = [
     location: { region: 'Calabarzon', city: 'Tanauan City' },
     logo_url:
       'https://api.dicebear.com/9.x/initials/svg?seed=Fieldstone&backgroundType=gradientLinear',
+    internship: [byId(5)],
   },
   {
     id: 6,
