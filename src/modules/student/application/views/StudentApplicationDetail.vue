@@ -7,9 +7,15 @@ import TimelineTracker from '../components/TimelineTracker.vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
+import { mockInternships } from '@/data/internship.ts'
+import { mockCompanies } from '@/data/companies.ts'
 
 const route = useRoute()
 const { application } = useApplicationDetail(Number(route.params.id))
+
+const internship = mockInternships.find((val) => val.id === application?.internshipId)
+
+const companyOfInternship = mockCompanies.find((val) => val.id === internship?.companyId)!
 </script>
 
 <template>
@@ -40,17 +46,17 @@ const { application } = useApplicationDetail(Number(route.params.id))
             <div class="flex flex-wrap items-start justify-between gap-3">
               <div class="flex items-center gap-3">
                 <img
-                  v-if="application.internship?.company?.logo_url"
-                  :src="application.internship.company.logo_url"
-                  :alt="application.internship.company.company_name"
+                  v-if="companyOfInternship?.logo_url"
+                  :src="companyOfInternship.logo_url"
+                  :alt="companyOfInternship.company_name"
                   class="h-12 w-12 shrink-0 rounded-xl object-cover"
                 />
                 <div>
                   <h1 class="text-lg font-semibold text-card-foreground">
-                    {{ application.internship?.title }}
+                    {{ internship?.title }}
                   </h1>
                   <p class="text-sm text-muted-foreground">
-                    {{ application.internship?.company?.company_name }}
+                    {{ companyOfInternship?.company_name }}
                   </p>
                 </div>
               </div>
@@ -70,31 +76,27 @@ const { application } = useApplicationDetail(Number(route.params.id))
             </div>
           </div>
 
-          <div v-if="application.internship" class="rounded-2xl border border-border bg-card p-6">
+          <div v-if="internship" class="rounded-2xl border border-border bg-card p-6">
             <h2 class="mb-3 text-base font-semibold text-card-foreground">Internship details</h2>
             <div class="flex flex-wrap gap-4 text-sm text-muted-foreground">
               <span class="flex items-center gap-1.5">
                 <MapPin class="h-4 w-4" />
-                {{
-                  application.internship.location.city +
-                  ' ' +
-                  application.internship.location.region
-                }}
+                {{ internship.location.city + ' ' + internship.location.region }}
               </span>
               <span class="badge-primary rounded-full px-2.5 py-1 text-xs font-medium capitalize">
-                {{ application.internship.setup }}
+                {{ internship.setup }}
               </span>
               <span class="flex items-center gap-1.5">
                 <Clock class="h-4 w-4" />
-                {{ application.internship.duration + ' ' + application.internship.duration_unit }}
+                {{ internship.duration + ' ' + internship.duration_unit }}
               </span>
               <span class="flex items-center gap-1.5">
                 <Wallet class="h-4 w-4" />
-                {{ application.internship.allowance }}
+                {{ internship.allowance }}
               </span>
             </div>
             <div class="mt-4 flex flex-wrap gap-2">
-              <SkillChip v-for="s in application.internship.internship_skill" :key="s.id">
+              <SkillChip v-for="s in internship.internship_skill" :key="s.id">
                 {{ s.name }}
               </SkillChip>
             </div>
@@ -103,13 +105,13 @@ const { application } = useApplicationDetail(Number(route.params.id))
               <div class="rounded-2xl border border-border bg-card p-6">
                 <h2 class="mb-2 text-base font-semibold text-card-foreground">Description</h2>
                 <p class="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-                  {{ application.internship.description }}
+                  {{ internship.description }}
                 </p>
               </div>
               <div class="rounded-2xl border border-border bg-card p-6">
                 <h2 class="mb-2 text-base font-semibold text-card-foreground">Requirements</h2>
                 <p class="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
-                  {{ application.internship.requirements }}
+                  {{ internship.requirements }}
                 </p>
               </div>
             </div>

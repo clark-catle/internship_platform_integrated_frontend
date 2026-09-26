@@ -133,7 +133,7 @@ export type application = {
   status: applicationStatus
   progress: applicationProgress
   applied_at: string
-  internship?: internship
+  internshipId?: number
   student?: Student
 }
 
