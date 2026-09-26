@@ -18,6 +18,7 @@ import { mockStudent } from '@/data/student'
 import SkillChip from '@/shared/components/SkillChip.vue'
 import ConfirmDialog from '@/shared/components/ConfirmDialog.vue'
 import { useTheme } from '@/shared/stores/useTheme'
+import { internshipCompany } from '@/data/internship'
 
 const router = useRouter()
 const { internship } = useInternshipDetail(4)
@@ -37,6 +38,8 @@ const submitApplication = () => {
   applyOpen.value = false
   router.push({ name: 'studentInternship' })
 }
+
+const company = internshipCompany(internship.companyId)
 
 const { isDark } = useTheme()
 </script>
@@ -68,22 +71,15 @@ const { isDark } = useTheme()
             />
             <div>
               <h1 class="text-xl font-semibold text-card-foreground">{{ internship.title }}</h1>
-              <!-- pressable if the company detail is now available
-              <RouterLink
-                v-if="internship.company"
-                :to="{ name: 'student-company-detail', params: { id: internship.company.id } }"
-                class="mt-0.5 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
-              >
-                {{ internship.company.company_name }}
-                <BadgeCheck v-if="internship.company.is_verified" class="h-3.5 w-3.5" />
-              </RouterLink> -->
 
-              <div
+              <RouterLink
+                v-if="company"
+                :to="{ name: 'studentCompanyDetail', params: { id: company.id } }"
                 class="mt-0.5 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
               >
-                {{ internship.company?.company_name }}
-                <BadgeCheck v-if="internship.company?.is_verified" class="h-3.5 w-3.5" />
-              </div>
+                {{ company?.company_name }}
+                <BadgeCheck v-if="company?.is_verified" class="h-3.5 w-3.5" />
+              </RouterLink>
             </div>
           </div>
 
@@ -144,23 +140,20 @@ const { isDark } = useTheme()
         </p>
       </div>
 
-      <div v-if="internship.company" class="rounded-2xl border border-border bg-card p-6">
+      <div v-if="company" class="rounded-2xl border border-border bg-card p-6">
         <h2 class="mb-3 text-base font-semibold text-card-foreground">
-          About {{ internship.company.company_name }}
+          About {{ company.company_name }}
         </h2>
         <p class="text-sm leading-relaxed text-muted-foreground">
-          {{ internship.company.description }}
+          {{ company.description }}
         </p>
-        <!-- pressable if the company detail is now available
+
         <RouterLink
-          :to="{ name: 'student-company-detail', params: { id: internship.company.id } }"
+          :to="{ name: 'studentCompanyDetail', params: { id: company.id } }"
           class="mt-3 inline-block text-sm font-medium text-primary hover:underline"
         >
           View company profile →
-        </RouterLink> -->
-        <div class="mt-3 inline-block text-sm font-medium text-primary hover:underline">
-          View company profile →
-        </div>
+        </RouterLink>
       </div>
     </template>
 

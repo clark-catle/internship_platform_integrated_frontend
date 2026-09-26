@@ -4,8 +4,8 @@ import InputBase from '@/shared/components/InputBase.vue'
 import LabelBase from '@/shared/components/LabelBase.vue'
 import { Motion } from 'motion-v'
 import { Mail } from '@lucide/vue'
-import type { UserStudent } from '../type'
 import { useEmail } from '../composables/useEmail'
+import type { UserStudent } from '@/shared/types'
 
 const user = defineModel<UserStudent>('user', { required: true })
 

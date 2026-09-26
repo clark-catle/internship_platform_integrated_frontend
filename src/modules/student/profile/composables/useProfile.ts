@@ -1,8 +1,9 @@
 import { onMounted, reactive, ref } from 'vue'
-import type { ChangePassword, ProfileSection, UserStudent } from '../type'
+import type { ChangePassword, ProfileSection } from '../type'
 import { mockUserStudent } from '@/data/user'
 import { mockSkills } from '@/data/skill'
 import { mockCourses } from '@/data/course'
+import type { UserStudent } from '@/shared/types'
 
 export const useProfile = () => {
   const user = reactive<UserStudent>(mockUserStudent)

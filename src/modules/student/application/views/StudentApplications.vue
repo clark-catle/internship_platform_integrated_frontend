@@ -6,6 +6,8 @@ import { Building2, Calendar, FileText } from '@lucide/vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import { formatDistanceToNow } from 'date-fns'
 import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
+import { applicationInternship } from '@/data/applications.ts'
+import { internshipCompany } from '@/data/internship.ts'
 
 const { applications, filteredApplication, loading, activeTab, changeTab } = useApplication()
 
@@ -15,6 +17,10 @@ const count = (val: applicationStatusTab) =>
     : applications.value.filter((app) => app.status === val).length
 
 const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted', 'rejected']
+
+const internship = (id: number | undefined) => applicationInternship(id)
+
+const company = (id: number | undefined) => internshipCompany(internship(id)?.companyId)
 </script>
 
 <template>
@@ -83,17 +89,17 @@ const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted',
               <div
                 class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center text-white font-bold text-sm shrink-0"
               >
-                {{ application.internship?.company?.company_name[0]?.toUpperCase() }}
+                {{ company(application.internshipId)?.company_name[0]?.toUpperCase() }}
               </div>
 
               <div class="flex-1 min-w-0">
                 <p class="font-semibold text-foreground truncate">
-                  {{ application.internship?.title }}
+                  {{ internship(application.internshipId)?.title }}
                 </p>
                 <div class="flex items-center gap-2 mt-0.5">
                   <span class="text-xs text-muted-foreground flex items-center gap-1">
                     <Building2 class="w-3 h-3" />
-                    {{ application.internship?.company?.company_name }}
+                    {{ company(application.internshipId)?.company_name }}
                   </span>
 
                   <span class="text-xs text-muted-foreground flex items-center gap-1">
@@ -102,6 +108,7 @@ const tabs: applicationStatusTab[] = ['all', 'pending', 'in review', 'accepted',
                   </span>
                 </div>
               </div>
+
               <div class="flex items-center gap-3">
                 <ApplicationProgressBadge
                   :progress="application.progress"

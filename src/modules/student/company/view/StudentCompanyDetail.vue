@@ -3,13 +3,12 @@ import { useRoute, RouterLink } from 'vue-router'
 import { ArrowLeft, BadgeCheck, Globe, MapPin } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { useCompanyDetail } from '../composables/useCompanyDetail'
-import { mockInternships } from '@/data/internship'
+import { companyInternships } from '@/data/companies'
 
 const route = useRoute()
 const { company } = useCompanyDetail(Number(route.params.id))
 
-const getInternship = () =>
-  company.internshipId?.map((id) => mockInternships.find((intern) => intern.id === id)!)!
+const internship = companyInternships(company.internshipId)
 </script>
 
 <template>
@@ -69,12 +68,12 @@ const getInternship = () =>
 
       <div>
         <h2 class="mb-3 text-base font-semibold text-foreground">Open internships</h2>
-        <p v-if="getInternship().length === 0" class="text-sm text-muted-foreground">
+        <p v-if="!internship || internship.length === 0" class="text-sm text-muted-foreground">
           This company has no open internships right now.
         </p>
         <div v-else class="space-y-3">
           <RouterLink
-            v-for="i in getInternship()"
+            v-for="i in internship"
             :key="i.id"
             :to="{ name: 'studentInternshipDetail', params: { id: i.id } }"
             class="card-hover flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3"

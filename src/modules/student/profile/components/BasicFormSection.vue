@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import InputBase from '@/shared/components/InputBase.vue'
 import LabelBase from '@/shared/components/LabelBase.vue'
+import type { UserStudent } from '@/shared/types'
 import { Motion } from 'motion-v'
-import type { UserStudent } from '../type'
 
 const user = defineModel<UserStudent>('user', { required: true })
 </script>

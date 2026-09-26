@@ -4,6 +4,7 @@ import type { internshipCardPropType } from '../type'
 import { ArrowRight, Building2, Clock, DollarSign, MapPin } from '@lucide/vue'
 import type { internshipSetup } from '@/shared/types'
 import { RouterLink } from 'vue-router'
+import { internshipCompany } from '@/data/internship'
 
 const { internship, index } = defineProps<internshipCardPropType>()
 
@@ -20,6 +21,8 @@ const domainColors: Record<internshipSetup, string> = {
   remote: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
   'on site': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400',
 }
+
+const company = internshipCompany(internship.companyId)
 </script>
 
 <template>
@@ -35,7 +38,7 @@ const domainColors: Record<internshipSetup, string> = {
         class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-lg text-white shadow-md gradient-primary"
       >
         <img
-          v-if="internship.company"
+          v-if="company"
           src="https://www.gogol.com"
           alt=""
           class="w-full h-full rounded-xl object-cover"
@@ -49,7 +52,7 @@ const domainColors: Record<internshipSetup, string> = {
           {{ internship.title }}
         </h3>
         <p class="text-muted-foreground text-xs flex items-center gap-1">
-          <Building2 class="w-3 h-3" /> {{ internship.company?.company_name }}
+          <Building2 class="w-3 h-3" /> {{ company?.company_name }}
         </p>
       </div>
     </div>

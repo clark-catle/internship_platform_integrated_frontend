@@ -85,7 +85,6 @@ export type internship = {
   duration: number
   duration_unit: internshipDurationUnit
   internship_skill: skill[]
-  // company?: company
   companyId?: number
   deleted_at: null
 }

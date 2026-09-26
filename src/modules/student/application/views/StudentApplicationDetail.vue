@@ -7,13 +7,13 @@ import TimelineTracker from '../components/TimelineTracker.vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
-import { mockInternships } from '@/data/internship.ts'
 import { mockCompanies } from '@/data/companies.ts'
+import { applicationInternship } from '@/data/applications.ts'
 
 const route = useRoute()
 const { application } = useApplicationDetail(Number(route.params.id))
 
-const internship = mockInternships.find((val) => val.id === application?.internshipId)
+const internship = applicationInternship(application?.internshipId)
 
 const companyOfInternship = mockCompanies.find((val) => val.id === internship?.companyId)!
 </script>

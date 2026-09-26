@@ -1,6 +1,14 @@
 import type { company } from '@/shared/types'
 import { mockInternships } from './internship'
 
+/**
+ * return the internship info of the company `$id`
+ * @param id
+ * @returns
+ */
+export const companyInternships = (id: number[] | undefined) =>
+  id?.map((id) => mockInternships.find((val) => val.id === id)!)
+
 export const mockCompanies: company[] = [
   {
     id: 1,
