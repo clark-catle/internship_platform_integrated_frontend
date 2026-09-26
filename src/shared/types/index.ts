@@ -85,7 +85,8 @@ export type internship = {
   duration: number
   duration_unit: internshipDurationUnit
   internship_skill: skill[]
-  company?: company
+  // company?: company
+  companyId?: number
   deleted_at: null
 }
 
@@ -102,7 +103,8 @@ export type company = {
   is_verified: boolean
   location: LocationType
   logo_url: string
-  internship?: internship[]
+  // internship?: internship[]
+  internshipId?: number[]
 }
 
 export type LocationType = {
