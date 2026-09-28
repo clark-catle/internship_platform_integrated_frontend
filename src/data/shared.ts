@@ -3,7 +3,8 @@ import type {
   internshipCategory,
   internshipSetup,
   landingFeaturedSection,
-  studentNav,
+  navItems,
+  userRole,
   whyFeature,
   whySectionColor,
 } from '@/shared/types'
@@ -16,6 +17,7 @@ import {
   Globe,
   Heart,
   LayoutDashboard,
+  Menu,
   Search,
   Shield,
   TrendingUp,
@@ -170,10 +172,32 @@ export const whyFeatureSection: whyFeature[] = [
 ]
 
 const { unreadCount } = useNotif()
-export const studentNavItems: studentNav[] = [
-  { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
-  { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
-  { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
-  { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
-  { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
-]
+export const userNav = (role: userRole): navItems[] => {
+  switch (role) {
+    case 'company':
+      return [
+        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'companyDashboard' },
+        { icon: Building2, label: 'My Internships', hrefTo: 'companyInternship' },
+        { icon: FileText, label: 'Applications', hrefTo: 'companyApplication' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'companyNotification', badge: unreadCount },
+        { icon: User, label: 'My Profile', hrefTo: 'companyProfile' },
+      ]
+    case 'student':
+      return [
+        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
+        { icon: Briefcase, label: 'Internships', hrefTo: 'studentInternship' },
+        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
+        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
+        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
+      ]
+    case 'admin':
+      return [
+        { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
+        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
+        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
+        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
+      ]
+  }
+}

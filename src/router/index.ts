@@ -21,9 +21,14 @@ const router = createRouter({
     },
     {
       path: '/student',
-      component: () => import('@/layouts/StudentLayout.vue'),
-      redirect: { name: 'studentInternship' },
+      component: () => import('@/layouts/StudentNavLayout.vue'),
+      redirect: { name: 'studentDashboard' },
       children: [
+        {
+          path: 'dashboard',
+          name: 'studentDashboard',
+          component: () => import('@/modules/student/dashboard/view/StudentDashboard.vue'),
+        },
         {
           path: 'internship',
           name: 'studentInternship',
@@ -67,6 +72,51 @@ const router = createRouter({
           path: 'profile',
           name: 'studentProfile',
           component: () => import('@/modules/student/profile/views/StudentProfile.vue'),
+        },
+      ],
+    },
+    {
+      path: '/company',
+      component: () => import('@/layouts/ComapnyNavLayout.vue'),
+      redirect: { name: 'companyDashboard' },
+      children: [
+        {
+          path: 'dashboard',
+          name: 'companyDashboard',
+          component: () => import('@/modules/company/dashboard/view/CompanyDashboard.vue'),
+        },
+        {
+          path: 'internship',
+          name: 'companyInternship',
+          component: () => import('@/modules/company/internship/view/CompanyInternship.vue'),
+        },
+        // {
+        //   path: 'internship/:id',
+        //   name: 'companyinternshipDetail',
+        //   props: true,
+        //   component: () => import('@/modules/student/internship/views/StudentInternshipDetail.vue'),
+        // },
+        {
+          path: 'application',
+          name: 'companyApplication',
+          component: () => import('@/modules/company/application/view/CompanyApplication.vue'),
+        },
+        // {
+        //   path: 'application/:id',
+        //   name: 'studentApplicationDetail',
+        //   props: true,
+        //   component: () =>
+        //     import('@/modules/student/application/views/StudentApplicationDetail.vue'),
+        // },
+        {
+          path: 'notification',
+          name: 'companyNotification',
+          component: () => import('@/modules/company/notification/view/CompanyNotification.vue'),
+        },
+        {
+          path: 'profile',
+          name: 'companyProfile',
+          component: () => import('@/modules/company/profile/view/CompanyProfile.vue'),
         },
       ],
     },

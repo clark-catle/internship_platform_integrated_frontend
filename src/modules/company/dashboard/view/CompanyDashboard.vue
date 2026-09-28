@@ -1,0 +1,1 @@
+<template>company dashboard</template>

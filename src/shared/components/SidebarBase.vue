@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import { studentNavItems } from '@/data/shared'
 import { Briefcase, ChevronLeft, ChevronRight, LogOut } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import { useCollapseSidebar } from '../stores/useCollapseSidebar'
+import { userNav } from '@/data/shared'
+import type { userRole } from '../types'
 
 const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
 
+const { role } = defineProps<{ role: userRole }>()
+
 const logout = () => console.log('logging out')
 
-const navItems = studentNavItems
+const nav = userNav(role)
 </script>
 
 <template>
@@ -54,11 +57,7 @@ const navItems = studentNavItems
       </button>
 
       <nav class="flex-1 flex flex-col gap-2 px-3 py-4">
-        <RouterLink
-          v-for="navItem in navItems"
-          :key="navItem.hrefTo"
-          :to="{ name: navItem.hrefTo }"
-        >
+        <RouterLink v-for="navItem in nav" :key="navItem.hrefTo" :to="{ name: navItem.hrefTo }">
           <div
             class="sidebar-item"
             :class="[

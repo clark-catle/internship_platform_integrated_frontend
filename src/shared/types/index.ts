@@ -19,7 +19,7 @@ export type buttonBase = {
   size?: 'sm' | 'lg' | 'icon'
 }
 
-export type userRole = 'company' | 'student'
+export type userRole = 'company' | 'student' | 'admin'
 
 export type landingFeaturedSection = internshipDuration & {
   id: string
@@ -42,7 +42,7 @@ export type whyFeature = {
   color: whySectionColor
 }
 
-export type studentNav = {
+export type navItems = {
   icon: LucideIcon
   label: string
   hrefTo: string
