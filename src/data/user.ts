@@ -1,5 +1,6 @@
-import type { User, UserStudent } from '@/shared/types'
+import type { User, UserCompany, UserStudent } from '@/shared/types'
 import { mockStudent } from './student'
+import { mockCompanyUser } from './company'
 
 export const mockUserAdmin: User = {
   id: 1,
@@ -14,4 +15,12 @@ export const mockUserStudent: UserStudent = {
   status: 'active',
   role: 'student',
   student_info: mockStudent,
+}
+
+export const mockUserCompany: UserCompany = {
+  id: 2,
+  email: 'student@mock.com',
+  status: 'active',
+  role: 'student',
+  company_info: mockCompanyUser,
 }

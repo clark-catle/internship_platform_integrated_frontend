@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { testimonialsSectionItems } from '@/data/shared'
+import { testimonialsSectionItems } from '@/data/landing'
 import { Star } from '@lucide/vue'
 import { Motion } from 'motion-v'
 

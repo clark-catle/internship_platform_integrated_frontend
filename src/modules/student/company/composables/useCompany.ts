@@ -1,8 +1,8 @@
-import { mockCompanies } from '@/data/companies'
+import { mockStudentCompanies } from '@/data/companies'
 import { ref, watch } from 'vue'
 
 export const useCompany = () => {
-  const mainData = mockCompanies
+  const mainData = mockStudentCompanies
   const companies = ref(mainData)
   const isVerified = ref(false)
   const search = ref('')

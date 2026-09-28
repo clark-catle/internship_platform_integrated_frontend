@@ -2,7 +2,7 @@
 import { Briefcase } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import LoginForm from '../components/LoginForm.vue'
-import { loginAnalyticItem } from '@/data/shared.ts'
+import { loginAnalyticItem } from '@/data/landing.ts'
 
 const analyticItems = loginAnalyticItem
 </script>

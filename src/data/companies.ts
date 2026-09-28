@@ -1,5 +1,5 @@
 import type { company } from '@/shared/types'
-import { mockInternships } from './internship'
+import { mockStudentInternships } from './internship'
 
 /**
  * return the internship info of the company `$id`
@@ -7,9 +7,9 @@ import { mockInternships } from './internship'
  * @returns
  */
 export const companyInternships = (id: number[] | undefined) =>
-  id?.map((id) => mockInternships.find((val) => val.id === id)!)
+  id?.map((id) => mockStudentInternships.find((val) => val.id === id)!)
 
-export const mockCompanies: company[] = [
+export const mockStudentCompanies: company[] = [
   {
     id: 1,
     company_name: 'Opalus Technologies',

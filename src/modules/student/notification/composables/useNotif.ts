@@ -1,8 +1,8 @@
-import { mockNotifications } from '@/data/notification'
+import { mockStudentNotifications } from '@/data/notification'
 import { computed, ref } from 'vue'
 
 export const useNotif = () => {
-  const notifications = ref(mockNotifications)
+  const notifications = ref(mockStudentNotifications)
 
   const markAllRead = () => {
     notifications.value.forEach((val) =>

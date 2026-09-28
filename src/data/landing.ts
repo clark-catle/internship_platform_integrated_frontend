@@ -1,30 +1,11 @@
-import { useNotif } from '@/modules/student/notification/composables/useNotif'
 import type {
   internshipCategory,
   internshipSetup,
   landingFeaturedSection,
-  navItems,
-  userRole,
   whyFeature,
   whySectionColor,
 } from '@/shared/types'
-import {
-  Bell,
-  Briefcase,
-  Building,
-  Building2,
-  FileText,
-  Globe,
-  Heart,
-  LayoutDashboard,
-  Menu,
-  Search,
-  Shield,
-  TrendingUp,
-  User,
-  Users,
-  Zap,
-} from '@lucide/vue'
+import { Briefcase, Globe, Heart, Shield, TrendingUp, Users, Zap } from '@lucide/vue'
 
 export const loginAnalyticItem = [
   ['50K+', 'Students'],
@@ -170,34 +151,3 @@ export const whyFeatureSection: whyFeature[] = [
     color: 'amber',
   },
 ]
-
-const { unreadCount } = useNotif()
-export const userNav = (role: userRole): navItems[] => {
-  switch (role) {
-    case 'company':
-      return [
-        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'companyDashboard' },
-        { icon: Building2, label: 'My Internships', hrefTo: 'companyInternship' },
-        { icon: FileText, label: 'Applications', hrefTo: 'companyApplication' },
-        { icon: Bell, label: 'Notifications', hrefTo: 'companyNotification', badge: unreadCount },
-        { icon: User, label: 'My Profile', hrefTo: 'companyProfile' },
-      ]
-    case 'student':
-      return [
-        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
-        { icon: Briefcase, label: 'Internships', hrefTo: 'studentInternship' },
-        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
-        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
-        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
-        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
-      ]
-    case 'admin':
-      return [
-        { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
-        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
-        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
-        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
-        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
-      ]
-  }
-}

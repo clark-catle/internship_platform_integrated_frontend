@@ -1,7 +1,7 @@
-import { mockInternships } from '@/data/internship'
+import { mockStudentInternships } from '@/data/internship'
 
 export const useInternshipDetail = (id: number) => {
-  const internship = mockInternships.find((val) => val.id === id)!
+  const internship = mockStudentInternships.find((val) => val.id === id)!
 
   return { internship }
 }

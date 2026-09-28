@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowRight } from '@lucide/vue'
 import InternshipCard from './InternshipCard.vue'
-import { landingFeaturesItem } from '@/data/shared.ts'
+import { landingFeaturesItem } from '@/data/landing.ts'
 import type { landingFeaturedSection } from '@/shared/types/index.ts'
 
 const features: landingFeaturedSection[] = landingFeaturesItem

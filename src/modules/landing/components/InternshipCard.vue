@@ -3,7 +3,7 @@ import { Motion } from 'motion-v'
 import type { internshipCategory, internshipSetup, landingFeaturedSection } from '@/shared/types'
 import { ArrowRight, Bookmark, Clock, DollarSign, Heart, MapPin, Zap } from '@lucide/vue'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
-import { internshipCartCategoryColors, internshipCartTypeColors } from '@/data/shared'
+import { internshipCartCategoryColors, internshipCartTypeColors } from '@/data/landing'
 
 const props = defineProps<landingFeaturedSection>()
 

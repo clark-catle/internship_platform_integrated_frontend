@@ -1,7 +1,7 @@
-import { mockApplications } from '@/data/applications'
+import { mockStudentApplications } from '@/data/applications'
 
 export const useApplicationDetail = (id: number) => {
-  const application = mockApplications.find((val) => val.id === id)
+  const application = mockStudentApplications.find((val) => val.id === id)
 
   return { application }
 }

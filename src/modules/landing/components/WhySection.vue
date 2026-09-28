@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v'
-import { whyColorSection, whyFeatureSection } from '@/data/shared'
+import { whyColorSection, whyFeatureSection } from '@/data/landing'
 import type { whyFeature, whySectionColor } from '@/shared/types'
 
 const color: Record<whySectionColor, string> = whyColorSection

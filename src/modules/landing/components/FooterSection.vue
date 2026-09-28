@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { footerItems, footerLists } from '@/data/shared'
+import { footerItems, footerLists } from '@/data/landing'
 import { Briefcase } from '@lucide/vue'
 
 const lists = footerLists

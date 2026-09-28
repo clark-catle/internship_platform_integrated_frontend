@@ -1,10 +1,10 @@
 import { computed, reactive, ref, watch } from 'vue'
 import type { filtersType, filterTypeKey } from '../type'
-import { mockInternships } from '@/data/internship'
+import { mockStudentInternships } from '@/data/internship'
 import type { internship } from '@/shared/types'
 
 export const useInternship = () => {
-  const mockData = mockInternships // source of the mock
+  const mockData = mockStudentInternships // source of the mock
   const internships = ref(mockData) // result of the filter or search
   const loading = ref(false)
   const searchQuery = ref('')

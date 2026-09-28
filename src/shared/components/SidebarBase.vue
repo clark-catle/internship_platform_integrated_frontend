@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { Briefcase, ChevronLeft, ChevronRight, LogOut } from '@lucide/vue'
+import {
+  Bell,
+  Briefcase,
+  Building2,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  LayoutDashboard,
+  LogOut,
+  User,
+} from '@lucide/vue'
 import { Motion } from 'motion-v'
 import { useCollapseSidebar } from '../stores/useCollapseSidebar'
-import { userNav } from '@/data/shared'
 import type { userRole } from '../types'
+import { useNotif } from '@/modules/student/notification/composables/useNotif'
 
 const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
 
@@ -11,7 +21,37 @@ const { role } = defineProps<{ role: userRole }>()
 
 const logout = () => console.log('logging out')
 
-const nav = userNav(role)
+const { unreadCount } = useNotif()
+
+const userNav = () => {
+  switch (role) {
+    case 'company':
+      return [
+        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'companyDashboard' },
+        { icon: Briefcase, label: 'My Internships', hrefTo: 'companyInternship' },
+        { icon: FileText, label: 'Applications', hrefTo: 'companyApplication' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'companyNotification', badge: unreadCount },
+        { icon: User, label: 'My Profile', hrefTo: 'companyProfile' },
+      ]
+    case 'student':
+      return [
+        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
+        { icon: Briefcase, label: 'Internships', hrefTo: 'studentInternship' },
+        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
+        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
+        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
+      ]
+    case 'admin':
+      return [
+        { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
+        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
+        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
+        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
+      ]
+  }
+}
 </script>
 
 <template>
@@ -57,7 +97,11 @@ const nav = userNav(role)
       </button>
 
       <nav class="flex-1 flex flex-col gap-2 px-3 py-4">
-        <RouterLink v-for="navItem in nav" :key="navItem.hrefTo" :to="{ name: navItem.hrefTo }">
+        <RouterLink
+          v-for="navItem in userNav()"
+          :key="navItem.hrefTo"
+          :to="{ name: navItem.hrefTo }"
+        >
           <div
             class="sidebar-item"
             :class="[

@@ -2,7 +2,7 @@ import type { notificationIconType } from '@/modules/student/notification/type'
 import type { notification, notificationDataType } from '@/shared/types'
 import { Briefcase, CheckCircle, XCircle } from '@lucide/vue'
 
-export const mockNotifications: notification[] = [
+export const mockStudentNotifications: notification[] = [
   {
     id: 1,
     data: {

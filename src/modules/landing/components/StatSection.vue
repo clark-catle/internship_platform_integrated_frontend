@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { landingStatSection } from '@/data/shared'
+import { landingStatSection } from '@/data/landing'
 import { Motion } from 'motion-v'
 
 const stats = landingStatSection
