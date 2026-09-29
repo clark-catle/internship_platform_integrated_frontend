@@ -1,6 +1,7 @@
-import type { application } from '@/shared/types'
+import type { application, Student } from '@/shared/types'
 import { mockStudentInternships } from './internship'
 import { mockStudent } from './student'
+import { mockCourses } from './course'
 
 /**
  * check if the `studentId` hass applied to `internshipId`, will return bool if
@@ -10,17 +11,28 @@ import { mockStudent } from './student'
  * @returns bool
  */
 export const studentApplied = (internshipId: number, studentId: number) =>
-  mockStudentApplications.some(
-    (i) => i.internshipId === internshipId && i.student?.id === studentId,
-  )
+  mockApplication.some((i) => i.internshipId === internshipId && i.student?.id === studentId)
 
+/**
+ * returnns the internship info base on the application that was passed
+ * @param id
+ * @returns
+ */
 export const applicationInternship = (id: number | undefined) =>
   mockStudentInternships.find((val) => val.id === id)
+
+/**
+ * returns the count of application that was passed in the internship
+ * @param id
+ * @returns
+ */
+export const applicationCountByInternship = (id: number) =>
+  mockApplication.filter((val) => val.internshipId === id).length
 
 // Applications belonging to the logged-in mock student (id: 1).
 // `student` is intentionally omitted here — per the API shape, a student
 // viewing their own applications never receives their own StudentInfo back.
-export const mockStudentApplications: application[] = [
+export const mockApplication: application[] = [
   {
     id: 101,
     status: 'in review',

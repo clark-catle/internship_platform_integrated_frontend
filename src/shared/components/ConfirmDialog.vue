@@ -3,7 +3,6 @@ import { AnimatePresence, Motion } from 'motion-v'
 
 withDefaults(
   defineProps<{
-    open: boolean
     title: string
     description?: string
     confirmLabel?: string
@@ -23,7 +22,6 @@ const emit = defineEmits<{ confirm: []; cancel: [] }>()
 <template>
   <AnimatePresence>
     <Motion
-      v-if="open"
       as="div"
       :initial="{ opacity: 0 }"
       :animate="{ opacity: 1 }"

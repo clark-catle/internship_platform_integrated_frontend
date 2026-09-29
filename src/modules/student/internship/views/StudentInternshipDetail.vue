@@ -158,7 +158,7 @@ const { isDark } = useTheme()
     </template>
 
     <ConfirmDialog
-      :open="applyOpen"
+      v-if="applyOpen"
       title="Apply to this internship"
       :description="`Submitting as ${student.name.first_name} ${student.name.last_name}. Confirm the resume you'd like to attach.`"
       confirm-label="Submit application"
