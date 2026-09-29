@@ -101,13 +101,13 @@ const router = createRouter({
           name: 'companyApplication',
           component: () => import('@/modules/company/application/view/CompanyApplication.vue'),
         },
-        // {
-        //   path: 'application/:id',
-        //   name: 'studentApplicationDetail',
-        //   props: true,
-        //   component: () =>
-        //     import('@/modules/student/application/views/StudentApplicationDetail.vue'),
-        // },
+        {
+          path: 'application/:id',
+          name: 'companyApplicationDetail',
+          props: true,
+          component: () =>
+            import('@/modules/company/application/view/CompanyApplicationDetail.vue'),
+        },
         {
           path: 'notification',
           name: 'companyNotification',

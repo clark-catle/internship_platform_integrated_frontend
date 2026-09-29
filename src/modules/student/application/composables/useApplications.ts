@@ -1,6 +1,6 @@
 import { ref } from 'vue'
-import type { applicationStatusTab } from '../type'
 import { mockApplication } from '@/data/applications'
+import type { applicationStatusTab } from '@/shared/types'
 
 export const useApplication = () => {
   const applications = ref(mockApplication)

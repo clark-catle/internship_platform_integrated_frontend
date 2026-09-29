@@ -1,8 +1,6 @@
 import type { applicationProgress, applicationStatus } from '@/shared/types'
 import type { LucideIcon } from '@lucide/vue'
 
-export type applicationStatusTab = applicationStatus | 'all'
-
 export type applicationStatusDesign = {
   label: applicationStatus
   icon: LucideIcon

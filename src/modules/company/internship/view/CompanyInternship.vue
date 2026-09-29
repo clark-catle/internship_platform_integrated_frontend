@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useInternship } from '../composables/useInternship'
 import { Briefcase, Plus } from '@lucide/vue'
@@ -15,7 +14,6 @@ const {
   tab,
   viewingId,
   viewingInternship,
-  openView,
   closeView,
   formOpen,
   editingInternship,
@@ -37,7 +35,7 @@ function goToApplications(internshipId: number) {
 </script>
 
 <template>
-  <div class="space-y-6 max-w-4xl mx-auto">
+  <div class="space-y-6 max-w-6xl mx-auto">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div class="flex gap-1 rounded-xl bg-secondary p-1 w-fit">
         <button

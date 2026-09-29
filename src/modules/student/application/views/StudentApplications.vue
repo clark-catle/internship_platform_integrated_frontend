@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { useApplication } from '../composables/useApplications'
-import type { applicationStatusTab } from '../type'
 import { Building2, Calendar, FileText } from '@lucide/vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import { formatDistanceToNow } from 'date-fns'
 import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
 import { applicationInternship } from '@/data/applications.ts'
 import { internshipCompany } from '@/data/internship.ts'
+import type { applicationStatusTab } from '@/shared/types/index.ts'
 
 const { applications, filteredApplication, loading, activeTab, changeTab } = useApplication()
 
@@ -24,7 +24,7 @@ const company = (id: number | undefined) => internshipCompany(internship(id)?.co
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="px-4 sm:px-6 lg:px-8 py-8">
     <div class="mb-8">
       <h1 class="font-poppins font-bold text-2xl sm:text-3xl text-foreground">My Applications</h1>
       <p class="text-muted-foreground mt-1">Track the status of all your internship applications</p>

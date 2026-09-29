@@ -13,11 +13,14 @@ const sidebarWidth = computed(() => (collapsed.value ? 72 : 240))
     <slot name="nav" />
 
     <main
-      class="flex-1 min-h-screen transition-all duration-300 pb-5"
+      class="flex-1 min-h-screen transition-all duration-300"
       :style="{ marginLeft: sidebarWidth }"
     >
       <TopbarBase />
-      <router-view />
+
+      <div class="px-16 py-8">
+        <router-view />
+      </div>
     </main>
   </div>
 </template>

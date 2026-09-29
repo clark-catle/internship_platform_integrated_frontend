@@ -173,3 +173,5 @@ export type UserStudent = User & {
 export type UserCompany = User & {
   company_info: company
 }
+
+export type applicationStatusTab = applicationStatus | 'all'

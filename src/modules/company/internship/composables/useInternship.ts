@@ -1,6 +1,6 @@
 import { mockCompanyInternships } from '@/data/internship'
 import type { internship } from '@/shared/types'
-import { computed, reactive, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 
 export const useInternship = () => {
   const mainData = mockCompanyInternships
@@ -14,8 +14,6 @@ export const useInternship = () => {
   const viewingInternship = computed(() =>
     viewingId.value ? internships.value.find((val) => val.id === viewingId.value) : null,
   )
-
-  const openView = (id: number) => (viewingId.value = id)
 
   const closeView = () => (viewingId.value = null)
 
@@ -66,17 +64,20 @@ export const useInternship = () => {
     viewingId.value = null
   }
 
-  watch(tab, () => {
-    internships.value = mainData.filter((val) =>
+  const filter = () =>
+    (internships.value = mainData.filter((val) =>
       tab.value === 'active' ? !val.deleted_at : val.deleted_at,
-    )
-  })
+    ))
+
+  watch(tab, filter)
+
+  onMounted(filter)
+
   return {
     internships,
     tab,
     viewingId,
     viewingInternship,
-    openView,
     closeView,
     formOpen,
     editingInternship,
