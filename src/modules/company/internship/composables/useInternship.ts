@@ -46,9 +46,7 @@ export const useInternship = () => {
   }
 
   const activeIntenrship = (isActive: boolean) =>
-    computed(
-      () => internships.value.filter((val) => (isActive ? !val.deleted_at : val.deleted_at)).length,
-    )
+    mainData.filter((val) => (isActive ? !val.deleted_at : val.deleted_at)).length
 
   const requestDelete = (id: number) => {
     viewingId.value = null
@@ -69,7 +67,7 @@ export const useInternship = () => {
   }
 
   watch(tab, () => {
-    internships.value = internships.value.filter((val) =>
+    internships.value = mainData.filter((val) =>
       tab.value === 'active' ? !val.deleted_at : val.deleted_at,
     )
   })

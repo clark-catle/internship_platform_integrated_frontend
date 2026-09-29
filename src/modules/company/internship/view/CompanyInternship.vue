@@ -2,11 +2,12 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useInternship } from '../composables/useInternship'
-import { Briefcase } from '@lucide/vue'
+import { Briefcase, Plus } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import ViewInternship from '../components/ViewInternship.vue'
 import NewInternshipForm from '../components/NewInternshipForm.vue'
 import ConfirmDialog from '@/shared/components/ConfirmDialog.vue'
+import InternshipCard from '../components/InternshipCard.vue'
 
 const router = useRouter()
 const {
@@ -36,7 +37,7 @@ function goToApplications(internshipId: number) {
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="space-y-6 max-w-4xl mx-auto">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div class="flex gap-1 rounded-xl bg-secondary p-1 w-fit">
         <button
@@ -111,6 +112,7 @@ function goToApplications(internshipId: number) {
     />
 
     <NewInternshipForm
+      v-if="formOpen"
       :internship="editingInternship"
       @close="closeForm"
       @submit="handleFormSubmit"
