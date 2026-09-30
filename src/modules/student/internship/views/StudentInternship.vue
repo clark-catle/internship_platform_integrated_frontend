@@ -13,7 +13,7 @@ const { internships, loading, searchQuery, search, filter, addFilter, clearFilte
 
 <template>
   <div class="">
-    <div class="gradient-hero py-12 px-4 sm:px-6 lg:px-8">
+    <div class="gradient-hero main-wrapper">
       <div class="max-w-7xl mx-auto text-center">
         <Motion
           as="h1"

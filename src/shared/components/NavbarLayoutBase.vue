@@ -18,9 +18,7 @@ const sidebarWidth = computed(() => (collapsed.value ? 72 : 240))
     >
       <TopbarBase />
 
-      <div class="px-16 py-8">
-        <router-view />
-      </div>
+      <router-view />
     </main>
   </div>
 </template>

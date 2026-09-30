@@ -8,7 +8,7 @@ const { companies, isVerified, search } = useCompany()
 </script>
 
 <template>
-  <div class="space-y-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="space-y-6 main-wrapper">
     <SearchCompany
       v-model:search-model="search"
       v-model:isVerified="isVerified"

@@ -190,6 +190,9 @@
   .badge-primary {
     @apply bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400;
   }
+  .main-wrapper {
+    @apply px-4 sm:px-6 lg:px-8 py-8;
+  }
   .skeleton {
     background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
     background-size: 200% 100%;

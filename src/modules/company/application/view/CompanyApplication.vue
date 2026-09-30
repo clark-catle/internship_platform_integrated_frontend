@@ -19,7 +19,7 @@ const filters: { value: applicationStatusTab; label: string }[] = [
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="space-y-6 max-w-5xl mx-auto">
     <div class="flex gap-1 overflow-x-auto rounded-xl bg-secondary p-1 w-fit">
       <button
         v-for="f in filters"
