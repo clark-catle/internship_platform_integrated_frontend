@@ -1,14 +1,8 @@
+import type { ProfileSection } from '@/shared/types'
 import type { LucideIcon } from '@lucide/vue'
 
-export type ProfileSection = 'basic' | 'education' | 'password' | 'email'
+export type StudentProfileSection = Record<ProfileSection, LucideIcon>
 
-export type SectionData = {
-  key: ProfileSection
-  icon: LucideIcon
-}
-
-export type ChangePassword = {
-  oldPassword: string
-  newPassword: string
-  confirmPassword: string
+export type SectionBaseProp = {
+  section: ProfileSection[]
 }
