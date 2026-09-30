@@ -69,3 +69,9 @@ export const allowanceLabels: Record<string, string> = {
   provided: 'Allowance provided',
   discuss: 'Allowance negotiable',
 }
+
+export const progressLabel: Record<string, string> = {
+  applied: 'Applied',
+  interview: 'Interview',
+  decision: 'Decision',
+}
