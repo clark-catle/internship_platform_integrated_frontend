@@ -175,3 +175,11 @@ export type UserCompany = User & {
 }
 
 export type applicationStatusTab = applicationStatus | 'all'
+
+export type ProfileSection = 'basic' | 'education' | 'password' | 'email'
+
+export type ChangePassword = {
+  oldPassword: string
+  newPassword: string
+  confirmPassword: string
+}

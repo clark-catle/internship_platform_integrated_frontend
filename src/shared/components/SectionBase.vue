@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { GraduationCap, Key, Mail, User } from '@lucide/vue'
-import type { ProfileSection, SectionData } from '../type'
+import type { SectionBaseProp, StudentProfileSection } from '../../modules/student/profile/type'
+import type { ProfileSection } from '@/shared/types'
+
+const { section } = defineProps<SectionBaseProp>()
 
 const activeSection = defineModel<ProfileSection>('activeSection', { required: true })
 
-const sections: SectionData[] = [
-  { key: 'basic', icon: User },
-  { key: 'education', icon: GraduationCap },
-  { key: 'email', icon: Mail },
-  { key: 'password', icon: Key },
-]
+const sectionLogo: StudentProfileSection = {
+  basic: User,
+  education: GraduationCap,
+  email: Mail,
+  password: Key,
+}
 
 const change = (val: ProfileSection) => {
   activeSection.value = val
@@ -20,17 +23,17 @@ const change = (val: ProfileSection) => {
   <div class="lg:col-span-1">
     <div class="bg-card rounded-2xl border border-border shadow-card p-3">
       <button
-        v-for="s in sections"
-        :key="s.key"
+        v-for="(s, i) in section"
+        :key="i"
         class="capitalized w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
         :class="[
-          activeSection === s.key
+          activeSection === s
             ? 'gradient-primary text-white'
             : 'text-muted-foreground hover:bg-muted hover:text-foreground',
         ]"
-        @click="change(s.key)"
+        @click="change(s)"
       >
-        <component :is="s.icon" class="w-4 h-4" /> {{ s.key }}
+        <component :is="sectionLogo[s]" class="w-4 h-4" /> {{ s }}
       </button>
     </div>
   </div>
