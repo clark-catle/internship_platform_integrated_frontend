@@ -20,5 +20,9 @@ export const useProfile = () => {
     setTimeout(() => (loading.value = false), 1000)
   })
 
+<<<<<<< HEAD
   return { user, loading, saving, activeSection, changeEmail, changePassword }
+=======
+  return { user, loading, saving, activeSection, save, changeEmail, changePassword }
+>>>>>>> 6d9c077623ce7aab18a5e7a1134df24d7255decb
 }
