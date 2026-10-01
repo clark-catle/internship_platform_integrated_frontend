@@ -3,8 +3,8 @@ import { mockCourses } from './course'
 
 export const mockStudent: Student = {
   id: 1,
-  name: { first_name: 'Clark', last_name: 'Catle' },
-  school: 'Laguna State Polytechnic University',
+  name: { first_name: 'John', last_name: 'Doe' },
+  school: 'Cebu City Kalayaan College',
   cellphone_number: '09171234567',
   course: mockCourses[0]!,
   location: { region: 'Calabarzon', city: 'Tanauan City' },

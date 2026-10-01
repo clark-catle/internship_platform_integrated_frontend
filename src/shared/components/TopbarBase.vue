@@ -2,7 +2,7 @@
 import { Bell } from '@lucide/vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import { useTheme } from '../stores/useTheme'
-import { useNotif } from '@/modules/student/notification/composables/useNotif.ts'
+import { useNotif } from '../composables/useNotif.ts'
 
 const { isDark } = useTheme()
 const { unreadCount } = useNotif()

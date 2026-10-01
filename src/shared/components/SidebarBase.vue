@@ -13,7 +13,7 @@ import {
 import { Motion } from 'motion-v'
 import { useCollapseSidebar } from '../stores/useCollapseSidebar'
 import type { userRole } from '../types'
-import { useNotif } from '@/modules/student/notification/composables/useNotif'
+import { useNotif } from '../composables/useNotif'
 
 const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
 

@@ -183,3 +183,8 @@ export type ChangePassword = {
   newPassword: string
   confirmPassword: string
 }
+
+export type notificationProp = {
+  notification: notification
+  index: number
+}

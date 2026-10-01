@@ -116,3 +116,97 @@ export const notificationTypeIcons: Record<notificationDataType, notificationIco
     color: 'text-red-600 dark:text-red-400',
   },
 }
+
+export const mockCompanyNotifications: notification[] = [
+  {
+    id: 1,
+    data: {
+      type: 'success',
+      application_id: 301,
+      title: 'New application received',
+      message: 'Aria Chen applied to your Backend Developer Intern (Laravel) posting.',
+    },
+    read_at: null,
+    created_at: '2026-09-18T09:00:00+08:00',
+  },
+  {
+    id: 2,
+    data: {
+      type: 'success',
+      application_id: 302,
+      title: 'New application received',
+      message: 'Marcus Rivera applied to your Backend Developer Intern (Laravel) posting.',
+    },
+    read_at: null,
+    created_at: '2026-09-10T11:30:00+08:00',
+  },
+  {
+    id: 3,
+    data: {
+      type: 'info',
+      application_id: 303,
+      title: 'Interview stage reached',
+      message:
+        'Bea Villanueva was moved to the interview stage for Backend Developer Intern (Laravel).',
+    },
+    read_at: '2026-09-03T08:00:00+08:00',
+    created_at: '2026-09-02T14:20:00+08:00',
+  },
+  {
+    id: 4,
+    data: {
+      type: 'warning',
+      application_id: 304,
+      title: 'Decision needed',
+      message:
+        'Priya Santos is ready for a decision on the QA / Software Testing Intern application.',
+    },
+    read_at: null,
+    created_at: '2026-08-21T09:00:00+08:00',
+  },
+  {
+    id: 5,
+    data: {
+      type: 'success',
+      application_id: 305,
+      title: 'You accepted an applicant',
+      message: 'Julian Reyes was accepted for the QA / Software Testing Intern role.',
+    },
+    read_at: '2026-08-01T10:30:00+08:00',
+    created_at: '2026-08-01T10:15:00+08:00',
+  },
+  {
+    id: 6,
+    data: {
+      type: 'warning',
+      application_id: 0,
+      title: 'Posting removed by admin',
+      message:
+        'Your Data Entry Intern posting was force-deleted by an administrator. All linked applications were automatically rejected.',
+    },
+    read_at: '2026-07-15T10:00:00+08:00',
+    created_at: '2026-07-15T09:30:00+08:00',
+  },
+  {
+    id: 7,
+    data: {
+      type: 'info',
+      application_id: 0,
+      title: 'Complete your company profile',
+      message: 'Add a logo and description so students can recognize your postings.',
+    },
+    read_at: '2026-06-01T08:00:00+08:00',
+    created_at: '2026-06-01T07:45:00+08:00',
+  },
+  {
+    id: 8,
+    data: {
+      type: 'info',
+      application_id: 306,
+      title: 'Applicant rejected',
+      message: 'You rejected Priya Santos for the Backend Developer Intern (Laravel) role.',
+    },
+    read_at: '2026-07-25T13:30:00+08:00',
+    created_at: '2026-07-25T13:20:00+08:00',
+  },
+]

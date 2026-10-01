@@ -3,8 +3,8 @@ import { Clock } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import { computed } from 'vue'
 import { formatDistanceToNow } from 'date-fns'
-import type { notificationProp } from '../type'
 import { notificationTypeIcons } from '@/data/notification'
+import type { notificationProp } from '../types'
 
 const { notification, index } = defineProps<notificationProp>()
 

@@ -27,7 +27,7 @@ const student = mockStudent
 const alreadyApplied = computed(() => studentApplied(internship.id, student.id))
 
 const applyOpen = ref(false)
-const selectedResume = ref('clark')
+const selectedResume = ref('john doe')
 
 const onResumeChange = (event: Event) => {
   const file = (event.target as HTMLInputElement).files?.[0]
