@@ -229,7 +229,7 @@ export const mockCompanyInternships: internship[] = [
       { id: 8, name: 'UI/UX Design' },
     ],
     // Soft-deleted by the company itself — restorable.
-    deleted_at: new Date('2026-08-01T10:00:00+08:00'),
+    deleted_at: '2026-08-01T10:00:00+08:00',
   },
   {
     id: 5,
@@ -246,7 +246,7 @@ export const mockCompanyInternships: internship[] = [
     duration_unit: 'month',
     internship_skill: [{ id: 12, name: 'Communication' }],
     // Force-deleted by an admin — not restorable by the company.
-    deleted_at: new Date('2026-07-15T09:30:00+08:00'),
-    admin_deleted_at: new Date('2026-07-15T09:30:00+08:00'),
+    deleted_at: '2026-07-15T09:30:00+08:00',
+    admin_deleted_at: '2026-07-15T09:30:00+08:00',
   },
 ]

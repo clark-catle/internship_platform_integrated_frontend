@@ -188,3 +188,9 @@ export type notificationProp = {
   notification: notification
   index: number
 }
+
+export type notificationIconType = {
+  icon: LucideIcon
+  bg: string
+  color: string
+}
