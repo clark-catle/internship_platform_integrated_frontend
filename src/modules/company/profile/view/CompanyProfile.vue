@@ -3,9 +3,10 @@ import ProfileBase from '@/shared/components/ProfileBase.vue'
 import { useProfile } from '../composables/useProfile'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 import { Save } from '@lucide/vue'
-import EmailSection from '@/modules/student/profile/components/EmailSection.vue'
-import ChangePassword from '@/modules/student/profile/components/ChangePassword.vue'
 import SectionBase from '@/shared/components/SectionBase.vue'
+import EmailSection from '@/shared/components/EmailSection.vue'
+import ChangePassword from '@/shared/components/ChangePassword.vue'
+import CompanyFormSection from '../components/CompanyFormSection.vue'
 
 const { user, loading, saving, activeSection, changeEmail, changePassword } = useProfile()
 </script>
@@ -18,7 +19,7 @@ const { user, loading, saving, activeSection, changeEmail, changePassword } = us
 
     <template #save-action-button>
       <ButtonBase
-        v-if="activeSection === 'basic'"
+        v-if="activeSection === 'company'"
         onClick="{save}"
         :disabled="saving"
         class="gradient-primary text-white border-0 rounded-xl gap-2 shadow-glow hover:opacity-90"
@@ -30,12 +31,12 @@ const { user, loading, saving, activeSection, changeEmail, changePassword } = us
     <template #tab-section>
       <SectionBase
         v-model:activeSection="activeSection"
-        :section="['basic', 'email', 'password']"
+        :section="['company', 'email', 'password']"
       />
     </template>
 
     <template #form-section>
-      <BasicFormSection v-if="activeSection === 'basic'" v-model:user="user" />
+      <CompanyFormSection v-if="activeSection === 'company'" v-model:company="user.company_info" />
 
       <EmailSection
         v-model:user="user"

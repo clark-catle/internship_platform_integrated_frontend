@@ -5,7 +5,7 @@ import LabelBase from '@/shared/components/LabelBase.vue'
 import { Motion } from 'motion-v'
 import { Lock } from '@lucide/vue'
 import { usePassword } from '../composables/usePassword'
-import type { ChangePassword } from '../type'
+import type { ChangePassword } from '@/shared/types'
 
 const emit = defineEmits<{
   (e: 'changePassword', payload: ChangePassword): void

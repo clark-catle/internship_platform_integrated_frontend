@@ -8,7 +8,7 @@ export const useProfile = () => {
   const user = ref(mockUserCompany)
   const loading = ref(true)
   const saving = ref(false)
-  const activeSection = ref<CompanyProfileSection>('basic')
+  const activeSection = ref<CompanyProfileSection>('company')
 
   const changeEmail = (val: string) => {
     user.value.email = val

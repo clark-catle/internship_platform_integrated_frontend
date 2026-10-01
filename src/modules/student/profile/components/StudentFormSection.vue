@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import InputBase from '@/shared/components/InputBase.vue'
 import LabelBase from '@/shared/components/LabelBase.vue'
-import type { UserStudent } from '@/shared/types'
+import type { Student } from '@/shared/types'
+import { User } from '@lucide/vue'
 import { Motion } from 'motion-v'
 
-const user = defineModel<UserStudent>('user', { required: true })
+const student = defineModel<Student>('student', { required: true })
 </script>
 
 <template>
@@ -14,43 +15,29 @@ const user = defineModel<UserStudent>('user', { required: true })
     :animate="{ opacity: 1, x: 0 }"
     class="bg-card rounded-2xl border border-border shadow-card p-6 space-y-4"
   >
-    <h3 class="font-semibold text-foreground">Basic Information</h3>
+    <h3 class="font-semibold text-foreground flex items-center gap-2">
+      <User class="w-4 h-4" /> Basic Information
+    </h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div class="space-y-1.5">
         <LabelBase>First Name</LabelBase>
-        <InputBase
-          v-model="user.student_info.name.first_name"
-          disabled
-          class="rounded-xl bg-muted"
-        />
+        <InputBase v-model="student.name.first_name" disabled class="rounded-xl bg-muted" />
       </div>
       <div class="space-y-1.5">
         <LabelBase>Last Name</LabelBase>
-        <InputBase
-          v-model="user.student_info.name.last_name"
-          disabled
-          class="rounded-xl bg-muted"
-        />
+        <InputBase v-model="student.name.last_name" disabled class="rounded-xl bg-muted" />
       </div>
       <div class="space-y-1.5">
         <LabelBase>Cellphone Number</LabelBase>
-        <InputBase
-          v-model="user.student_info.cellphone_number"
-          disabled
-          class="rounded-xl bg-muted"
-        />
+        <InputBase v-model="student.cellphone_number" disabled class="rounded-xl bg-muted" />
       </div>
       <div class="space-y-1.5">
         <LabelBase>City</LabelBase>
-        <InputBase v-model="user.student_info.location.city" disabled class="rounded-xl bg-muted" />
+        <InputBase v-model="student.location.city" disabled class="rounded-xl bg-muted" />
       </div>
       <div class="space-y-1.5">
         <LabelBase>Region</LabelBase>
-        <InputBase
-          v-model="user.student_info.location.region"
-          disabled
-          class="rounded-xl bg-muted"
-        />
+        <InputBase v-model="student.location.region" disabled class="rounded-xl bg-muted" />
       </div>
     </div>
   </Motion>

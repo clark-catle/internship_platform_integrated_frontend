@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { GraduationCap, Key, Mail, User } from '@lucide/vue'
-import type { SectionBaseProp, StudentProfileSection } from '../../modules/student/profile/type'
+import type { SectionBaseProp, ProfileSectionLogo } from '../../modules/student/profile/type'
 import type { ProfileSection } from '@/shared/types'
 
 const { section } = defineProps<SectionBaseProp>()
 
 const activeSection = defineModel<ProfileSection>('activeSection', { required: true })
 
-const sectionLogo: StudentProfileSection = {
-  basic: User,
+const sectionLogo: ProfileSectionLogo = {
+  admin: User,
+  company: User,
+  student: User,
   education: GraduationCap,
   email: Mail,
   password: Key,
@@ -21,7 +23,7 @@ const change = (val: ProfileSection) => {
 
 <template>
   <div class="lg:col-span-1">
-    <div class="bg-card rounded-2xl border border-border shadow-card p-3">
+    <div class="bg-card rounded-2xl border border-border shadow-card p-3 space-y-1">
       <button
         v-for="(s, i) in section"
         :key="i"

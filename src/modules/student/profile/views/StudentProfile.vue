@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 import { useProfile } from '../composables/useProfile'
-import BasicFormSection from '../components/BasicFormSection.vue'
 import EducationFormSection from '../components/EducationFormSection.vue'
-import EmailSection from '../components/EmailSection.vue'
-import ChangePassword from '../components/ChangePassword.vue'
 import ProfileBase from '@/shared/components/ProfileBase.vue'
 import SectionBase from '@/shared/components/SectionBase.vue'
+import EmailSection from '@/shared/components/EmailSection.vue'
+import ChangePassword from '@/shared/components/ChangePassword.vue'
+import StudentFormSection from '../components/StudentFormSection.vue'
 
 const {
   user,
@@ -21,6 +21,7 @@ const {
 } = useProfile()
 
 const name = user.student_info.name.first_name + ' ' + user.student_info.name.last_name
+console.log(user.student_info)
 </script>
 
 <template>
@@ -33,7 +34,7 @@ const name = user.student_info.name.first_name + ' ' + user.student_info.name.la
 
     <template #save-action-button>
       <ButtonBase
-        v-if="activeSection === 'basic' || activeSection === 'education'"
+        v-if="activeSection === 'student' || activeSection === 'education'"
         onClick="{save}"
         :disabled="saving"
         class="gradient-primary text-white border-0 rounded-xl gap-2 shadow-glow hover:opacity-90"
@@ -45,12 +46,12 @@ const name = user.student_info.name.first_name + ' ' + user.student_info.name.la
     <template #tab-section>
       <SectionBase
         v-model:activeSection="activeSection"
-        :section="['basic', 'education', 'email', 'password']"
+        :section="['student', 'education', 'email', 'password']"
       />
     </template>
 
     <template #form-section>
-      <BasicFormSection v-if="activeSection === 'basic'" v-model:user="user" />
+      <StudentFormSection v-if="activeSection === 'student'" v-model:student="user.student_info" />
 
       <EducationFormSection
         v-else-if="activeSection === 'education'"

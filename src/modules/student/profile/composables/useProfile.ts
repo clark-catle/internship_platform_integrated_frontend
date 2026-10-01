@@ -3,12 +3,13 @@ import { mockUserStudent } from '@/data/user'
 import { mockSkills } from '@/data/skill'
 import { mockCourses } from '@/data/course'
 import type { ChangePassword, ProfileSection, UserStudent } from '@/shared/types'
+import type { StudentProfileSection } from '../type'
 
 export const useProfile = () => {
   const user = reactive<UserStudent>(mockUserStudent)
   const loading = ref(true)
   const saving = ref(false)
-  const activeSection = ref<ProfileSection>('basic')
+  const activeSection = ref<StudentProfileSection>('student')
 
   /**
    * removes the skill base on the `$id` that was passed
