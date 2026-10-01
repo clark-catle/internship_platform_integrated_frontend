@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
-import { Bell, Briefcase, ClipboardList, Clock, Trash2, UserCheck } from '@lucide/vue'
+import { Bell, Briefcase, ClipboardList, Trash2 } from '@lucide/vue'
 import { formatDate, timeAgo } from '@/utils/format'
 import { useCompanyDashboard } from '../composables/useCompanyDashboard'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
@@ -20,7 +19,7 @@ const {
 </script>
 
 <template>
-  <div class="space-y-6 max-w-6xl mx-auto main-wrapper">
+  <div class="space-y-6 main-wrapper">
     <div>
       <h2 class="text-lg font-semibold text-foreground">
         Welcome back, {{ company.company_name }}

@@ -14,14 +14,16 @@ import { Motion } from 'motion-v'
 import { useCollapseSidebar } from '../stores/useCollapseSidebar'
 import type { userRole } from '../types'
 import { useNotif } from '../composables/useNotif'
+import { useRoute } from 'vue-router'
 
 const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
 
 const { role } = defineProps<{ role: userRole }>()
 
-const logout = () => console.log('logging out')
-
+const route = useRoute()
 const { unreadCount } = useNotif()
+
+const logout = () => console.log('logging out')
 
 const userNav = () => {
   switch (role) {
@@ -52,6 +54,13 @@ const userNav = () => {
       ]
   }
 }
+
+const dashboardRoute = () => {
+  if (route.fullPath.includes('company')) return 'companyDashboard'
+  else if (route.fullPath.includes('student')) return 'studentDashboard'
+  else if (route.fullPath.includes('admin')) return 'studentDashboard'
+  else return 'landingPage'
+}
 </script>
 
 <template>
@@ -70,7 +79,10 @@ const userNav = () => {
     :style="{ background: 'hsl(var(--sidebar-background))' }"
   >
     <div class="flex flex-col h-full">
-      <div class="flex items-center h-16 px-4 border-b border-sidebar-border">
+      <RouterLink
+        :to="{ name: dashboardRoute() }"
+        class="flex items-center h-16 px-4 border-b border-sidebar-border"
+      >
         <div
           class="w-8 h-8 gradient-primary rounded-xl flex items-center justify-center shrink-0 shadow-glow"
         >
@@ -86,7 +98,7 @@ const userNav = () => {
         >
           InternMatch
         </Motion>
-      </div>
+      </RouterLink>
 
       <button
         @click="toggleCollapsed(!collapsed)"

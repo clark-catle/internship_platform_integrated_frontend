@@ -1,28 +1,18 @@
 <script lang="ts" setup>
-import { Bell } from '@lucide/vue'
 import ToggleDarkModeButton from './ToggleDarkModeButton.vue'
 import { useTheme } from '../stores/useTheme'
 import { useNotif } from '../composables/useNotif.ts'
+import NotificationBell from './NotificationBell.vue'
 
 const { isDark } = useTheme()
-const { unreadCount } = useNotif()
+const { notifications, unreadCount } = useNotif()
 </script>
 
 <template>
   <div class="py-4 px-10 flex justify-end items-center gap-3">
     <ToggleDarkModeButton />
 
-    <RouterLink :to="{ name: 'studentNotification' }">
-      <div class="relative rounded-xl p-2 mr-2 hover:bg-muted transition-colors cursor-pointer">
-        <Bell class="size-4" />
-        <span
-          v-if="unreadCount"
-          className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full text-white text-[10px] flex items-center justify-center font-bold"
-        >
-          {{ unreadCount }}
-        </span>
-      </div>
-    </RouterLink>
+    <NotificationBell :notifications="notifications" :unread-count="unreadCount" />
 
     <RouterLink :to="{ name: 'studentProfile' }">
       <div
