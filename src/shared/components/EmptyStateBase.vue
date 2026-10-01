@@ -19,7 +19,9 @@ const { icon, title, description, action } = defineProps<emptyStateProps>()
 
     <h3 className="font-poppins font-semibold text-lg text-foreground mb-2">{{ title }}</h3>
 
-    <p className="text-muted-foreground text-sm max-w-xs mb-6">{{ description }}</p>
+    <p v-if="description" className="text-muted-foreground text-sm max-w-xs mb-6">
+      {{ description }}
+    </p>
 
     <ButtonBase
       v-if="action"

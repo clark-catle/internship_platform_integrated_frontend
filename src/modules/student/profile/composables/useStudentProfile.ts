@@ -5,7 +5,7 @@ import { mockCourses } from '@/data/course'
 import type { ChangePassword, ProfileSection, UserStudent } from '@/shared/types'
 import type { StudentProfileSection } from '../type'
 
-export const useProfile = () => {
+export const useStudentProfile = () => {
   const user = reactive<UserStudent>(mockUserStudent)
   const loading = ref(true)
   const saving = ref(false)

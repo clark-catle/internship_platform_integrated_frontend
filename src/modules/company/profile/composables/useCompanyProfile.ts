@@ -4,7 +4,7 @@ import { onMounted, ref } from 'vue'
 import type { CompanyProfileSection } from '../type'
 import type { ChangePassword } from '@/shared/types'
 
-export const useProfile = () => {
+export const useCompanyProfile = () => {
   const user = ref(mockUserCompany)
   const loading = ref(true)
   const saving = ref(false)

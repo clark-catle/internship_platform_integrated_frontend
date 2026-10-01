@@ -54,7 +54,7 @@ export type notificationType = 'submitted' | 'accepted' | 'rejected' | 'report'
 export type emptyStateProps = {
   icon: LucideIcon
   title: string
-  description: string
+  description?: string
   action?: {
     action: () => void
     actionLabel: string

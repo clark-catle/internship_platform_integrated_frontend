@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ButtonBase from '@/shared/components/ButtonBase.vue'
-import { useProfile } from '../composables/useProfile'
+import { useStudentProfile } from '../composables/useStudentProfile.ts'
 import EducationFormSection from '../components/EducationFormSection.vue'
 import ProfileBase from '@/shared/components/ProfileBase.vue'
 import SectionBase from '@/shared/components/SectionBase.vue'
@@ -18,7 +18,7 @@ const {
   addCourse,
   changeEmail,
   changePassword,
-} = useProfile()
+} = useStudentProfile()
 
 const name = user.student_info.name.first_name + ' ' + user.student_info.name.last_name
 console.log(user.student_info)

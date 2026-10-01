@@ -17,6 +17,9 @@ export const useNotif = () => {
 
   const unreadCount = computed(() => notifications.value.filter((val) => !val.read_at).length)
 
+  const removeNotification = (id: number) =>
+    (notifications.value = notifications.value.filter((val) => val.id !== id))
+
   onMounted(() => {
     if (route.fullPath.includes('company')) return (notifications.value = mockCompanyNotifications)
     else if (route.fullPath.includes('student'))
@@ -25,5 +28,5 @@ export const useNotif = () => {
     else return (notifications.value = [])
   })
 
-  return { notifications, unreadCount, markAllRead }
+  return { notifications, unreadCount, markAllRead, removeNotification }
 }

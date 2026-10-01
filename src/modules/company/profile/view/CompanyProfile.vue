@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import ProfileBase from '@/shared/components/ProfileBase.vue'
-import { useProfile } from '../composables/useProfile'
+import { useCompanyProfile } from '../composables/useCompanyProfile.ts'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 import { Save } from '@lucide/vue'
 import SectionBase from '@/shared/components/SectionBase.vue'
@@ -8,7 +8,7 @@ import EmailSection from '@/shared/components/EmailSection.vue'
 import ChangePassword from '@/shared/components/ChangePassword.vue'
 import CompanyFormSection from '../components/CompanyFormSection.vue'
 
-const { user, loading, saving, activeSection, changeEmail, changePassword } = useProfile()
+const { user, loading, saving, activeSection, changeEmail, changePassword } = useCompanyProfile()
 </script>
 
 <template>
