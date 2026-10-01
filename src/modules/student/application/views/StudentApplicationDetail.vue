@@ -6,7 +6,7 @@ import { useApplicationDetail } from '../composables/useApplicationDetail'
 import TimelineTracker from '../components/TimelineTracker.vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { AnimatePresence, Motion } from 'motion-v'
-import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
+import ApplicationStatusBadge from '../components/ApplicationStatusBadge.vue/index.js'
 import { mockStudentCompanies } from '@/data/companies.ts'
 import { applicationInternship } from '@/data/applications.ts'
 
@@ -61,7 +61,7 @@ const companyOfInternship = mockStudentCompanies.find((val) => val.id === intern
                 </div>
               </div>
 
-              <ApplicationProgressBadge
+              <ApplicationStatusBadge
                 :progress="application.progress"
                 :status="application.status"
               />

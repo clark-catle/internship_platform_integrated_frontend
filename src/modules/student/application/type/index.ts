@@ -13,7 +13,7 @@ export type timelineTrackerProp = {
   status: applicationStatus
 }
 
-export type applicationProgressBadgeProps = {
+export type ApplicationStatusBadgeProps = {
   status: applicationStatus
   showIcon?: boolean
   small?: boolean

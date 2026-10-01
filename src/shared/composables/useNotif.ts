@@ -7,13 +7,15 @@ export const useNotif = () => {
   const notifications = ref<notification[]>([])
   const route = useRoute()
 
-  const markAllRead = () => {
+  const markAllRead = () =>
     notifications.value.forEach((val) =>
       val.read_at ? val : (val.read_at = new Date().toISOString()),
     )
 
-    console.log(notifications.value)
-  }
+  const markAsRead = (id: number) =>
+    notifications.value.forEach((val) =>
+      !val.read_at && val.id === id ? (val.read_at = new Date().toISOString()) : val,
+    )
 
   const unreadCount = computed(() => notifications.value.filter((val) => !val.read_at).length)
 
@@ -28,5 +30,5 @@ export const useNotif = () => {
     else return (notifications.value = [])
   })
 
-  return { notifications, unreadCount, markAllRead, removeNotification }
+  return { notifications, unreadCount, markAllRead, markAsRead, removeNotification }
 }

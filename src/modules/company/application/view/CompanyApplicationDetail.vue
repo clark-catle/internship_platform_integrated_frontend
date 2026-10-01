@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle2, FileText } from '@lucide/vue'
 import { formatDateTime, progressLabel } from '@/utils/format'
 import { useApplicationDetail } from '../composable/useApplicationDetail'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
-import ApplicationProgressBadge from '@/modules/student/application/components/ApplicationProgressBadge.vue'
+import ApplicationStatusBadge from '@/modules/student/application/components/ApplicationStatusBadge.vue'
 import { applicationInternship } from '@/data/applications'
 import ApplicationActionbuton from '../components/ApplicationActionbuton.vue'
 import StudentInfo from '../components/StudentInfo.vue'
@@ -73,7 +73,7 @@ const actionButton = (action: actionbutton, progress: applicationProgress) => {
               </p>
             </div>
           </div>
-          <ApplicationProgressBadge :status="application.status" />
+          <ApplicationStatusBadge :status="application.status" />
         </div>
         <p class="mt-3 text-xs text-muted-foreground">
           Applied on {{ formatDateTime(application.applied_at) }} · Progress:

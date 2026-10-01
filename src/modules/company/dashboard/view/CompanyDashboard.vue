@@ -6,7 +6,7 @@ import { useCompanyDashboard } from '../composables/useCompanyDashboard'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { applicationInternship } from '@/data/applications'
 import SectionCardBase from '@/shared/components/SectionCardBase.vue'
-import ApplicationProgressBadge from '@/modules/student/application/components/ApplicationProgressBadge.vue'
+import ApplicationStatusBadge from '@/modules/student/application/components/ApplicationStatusBadge.vue'
 
 const {
   company,
@@ -89,7 +89,7 @@ const {
                 </p>
               </div>
             </div>
-            <ApplicationProgressBadge :status="app.status" />
+            <ApplicationStatusBadge :status="app.status" />
           </RouterLink>
         </div>
       </SectionCardBase>

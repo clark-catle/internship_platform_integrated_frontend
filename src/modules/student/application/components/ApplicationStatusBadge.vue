@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { CheckCircle, Clock, Eye, XCircle } from '@lucide/vue'
-import type { applicationProgressBadgeProps, statusConfigType } from '../type'
+import type { ApplicationStatusBadgeProps, statusConfigType } from '../type'
 
-const prop = withDefaults(defineProps<applicationProgressBadgeProps>(), {
+const prop = withDefaults(defineProps<ApplicationStatusBadgeProps>(), {
   showIcon: true,
   small: true,
 })
+
 const statusConfig: statusConfigType = {
   pending: { label: 'pending', icon: Clock, class: 'badge-warning' },
   'in review': { label: 'in review', icon: Eye, class: 'badge-info' },

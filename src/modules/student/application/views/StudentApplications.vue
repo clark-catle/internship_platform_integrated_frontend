@@ -4,7 +4,7 @@ import { useApplication } from '../composables/useApplications'
 import { Building2, Calendar, FileText } from '@lucide/vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import { formatDistanceToNow } from 'date-fns'
-import ApplicationProgressBadge from '../components/ApplicationProgressBadge.vue'
+import ApplicationStatusBadge from '../components/ApplicationStatusBadge.vue/index.js'
 import { applicationInternship } from '@/data/applications.ts'
 import { internshipCompany } from '@/data/internship.ts'
 import type { applicationStatusTab } from '@/shared/types/index.ts'
@@ -110,7 +110,7 @@ const company = (id: number | undefined) => internshipCompany(internship(id)?.co
               </div>
 
               <div class="flex items-center gap-3">
-                <ApplicationProgressBadge
+                <ApplicationStatusBadge
                   :progress="application.progress"
                   :status="application.status"
                 />

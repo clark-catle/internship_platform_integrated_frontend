@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ClipboardList } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
-import ApplicationProgressBadge from '@/modules/student/application/components/ApplicationProgressBadge.vue'
+import ApplicationStatusBadge from '@/modules/student/application/components/ApplicationStatusBadge.vue'
 import { formatDate } from '@/utils/format'
 import type { applicationStatusTab } from '@/shared/types'
 import { useApplication } from '../composable/useApplication'
@@ -67,7 +67,7 @@ const filters: { value: applicationStatusTab; label: string }[] = [
         </div>
 
         <div class="flex items-center gap-3 sm:flex-col sm:items-end sm:gap-1.5">
-          <ApplicationProgressBadge :status="app.status" />
+          <ApplicationStatusBadge :status="app.status" />
           <span class="text-xs capitalize text-muted-foreground">
             {{ app.progress }} · {{ formatDate(app.applied_at) }}
           </span>
