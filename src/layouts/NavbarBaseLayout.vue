@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SidebarBase from '@/shared/components/SidebarBase.vue'
+import TopbarBase from '@/shared/components/TopbarBase.vue'
 import { useCollapseSidebar } from '@/shared/stores/useCollapseSidebar'
 import { roleFromUrl } from '@/utils/roleFromUrl'
 import { computed } from 'vue'

@@ -1,4 +1,4 @@
-import type { company } from '@/shared/types'
+import type { company, User } from '@/shared/types'
 
 export const mockCompanyUser: company = {
   id: 1,

@@ -17,7 +17,7 @@ const filters: { value: applicationStatusTab; label: string }[] = [
   { value: 'rejected', label: 'Rejected' },
 ]
 
-// this should be admin specific compoment
+this should be admin specific compoment
 </script>
 
 <template>

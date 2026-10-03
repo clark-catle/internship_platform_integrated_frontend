@@ -194,3 +194,5 @@ export type notificationIconType = {
   bg: string
   color: string
 }
+
+export type UserStatusWithoutDelete = Exclude<UserStatus, 'deleted'>
