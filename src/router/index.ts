@@ -83,40 +83,115 @@ const router = createRouter({
         {
           path: 'dashboard',
           name: 'companyDashboard',
-          component: () => import('@/modules/company/dashboard/view/CompanyDashboard.vue'),
+          component: () => import('@/modules/company/dashboard/views/CompanyDashboard.vue'),
         },
         {
           path: 'internship',
           name: 'companyInternship',
-          component: () => import('@/modules/company/internship/view/CompanyInternship.vue'),
+          component: () => import('@/modules/company/internship/views/CompanyInternship.vue'),
         },
         // {
         //   path: 'internship/:id',
         //   name: 'companyinternshipDetail',
         //   props: true,
-        //   component: () => import('@/modules/student/internship/views/StudentInternshipDetail.vue'),
+        //   component: () => import('@/modules/student/internship/viewss/StudentInternshipDetail.vue'),
         // },
         {
           path: 'application',
           name: 'companyApplication',
-          component: () => import('@/modules/company/application/view/CompanyApplication.vue'),
+          component: () => import('@/modules/company/application/views/CompanyApplication.vue'),
         },
         {
           path: 'application/:id',
           name: 'companyApplicationDetail',
           props: true,
           component: () =>
-            import('@/modules/company/application/view/CompanyApplicationDetail.vue'),
+            import('@/modules/company/application/views/CompanyApplicationDetail.vue'),
         },
         {
           path: 'notification',
           name: 'companyNotification',
-          component: () => import('@/modules/company/notification/view/CompanyNotification.vue'),
+          component: () => import('@/modules/company/notification/views/CompanyNotification.vue'),
         },
         {
           path: 'profile',
           name: 'companyProfile',
-          component: () => import('@/modules/company/profile/view/CompanyProfile.vue'),
+          component: () => import('@/modules/company/profile/views/CompanyProfile.vue'),
+        },
+      ],
+    },
+    {
+      path: '/admin',
+      component: () => import('@/layouts/ComapnyNavLayout.vue'),
+      redirect: { name: 'adminDashboard' },
+      children: [
+        {
+          path: 'dashboard',
+          name: 'adminDashboard',
+          component: () => import('@/modules/admin/dashboard/views/AdminDashboard.vue'),
+        },
+        {
+          path: 'users',
+          name: 'adminManageUsers',
+          component: () => import('@/modules/admin/manageUser/views/ManageUser.vue'),
+        },
+        {
+          path: 'companies',
+          name: 'adminManageCompanies',
+          component: () => import('@/modules/admin/manageCompany/views/ManageCompany.vue'),
+        },
+        {
+          path: 'students',
+          name: 'adminManageStudents',
+          component: () => import('@/modules/admin/manageStudent/views/ManageStudent.vue'),
+        },
+        {
+          path: 'company',
+          name: 'adminCompany',
+          component: () => import('@/modules/admin/company/views/StudentCompany.vue'),
+        },
+        {
+          path: 'company/:id',
+          name: 'adminCompanyDetail',
+          props: true,
+          component: () => import('@/modules/admin/company/views/StudentCompanyDetail.vue'),
+        },
+        {
+          path: 'internship',
+          name: 'adminInternship',
+          component: () => import('@/modules/admin/internship/views/StudentInternship.vue'),
+        },
+        {
+          path: 'internship/:id',
+          name: 'admininternshipDetail',
+          props: true,
+          component: () => import('@/modules/student/internship/views/StudentInternshipDetail.vue'),
+        },
+        {
+          path: 'application',
+          name: 'adminApplication',
+          component: () => import('@/modules/admin/application/views/CompanyApplication.vue'),
+        },
+        {
+          path: 'application/:id',
+          name: 'adminApplicationDetail',
+          props: true,
+          component: () => import('@/modules/admin/application/views/CompanyApplicationDetail.vue'),
+        },
+        {
+          path: 'tokens',
+          name: 'adminToken',
+          component: () => import('@/modules/admin/manageToken/views/ManageToken.vue'),
+        },
+        {
+          path: 'notification',
+          name: 'adminNotification',
+          component: () => import('@/modules/admin/notification/views/CompanyNotification.vue'),
+        },
+        {
+          path: 'profile',
+          name: 'adminProfile',
+          component: () => import('@/modules/admin/profile/views/adminProfile.vue'),
         },
       ],
     },

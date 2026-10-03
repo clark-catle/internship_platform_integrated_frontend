@@ -2,7 +2,7 @@
 import { useRoute, RouterLink } from 'vue-router'
 import { ArrowLeft, CheckCircle2, FileText } from '@lucide/vue'
 import { formatDateTime, progressLabel } from '@/utils/format'
-import { useApplicationDetail } from '../composable/useApplicationDetail'
+import { useApplicationDetail } from '../composable/useApplicationDetail.ts'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import ApplicationStatusBadge from '@/modules/student/application/components/ApplicationStatusBadge.vue'
 import { applicationInternship } from '@/data/applications'
@@ -36,6 +36,8 @@ const actionButton = (action: actionbutton, progress: applicationProgress) => {
       break
   }
 }
+
+this should be admin specific compoment
 </script>
 
 <template>

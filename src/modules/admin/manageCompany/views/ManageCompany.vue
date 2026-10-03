@@ -1,0 +1,1 @@
+<template>manage company</template>

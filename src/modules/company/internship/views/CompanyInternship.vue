@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { useInternship } from '../composables/useInternship'
+import { useInternship } from '../composables/useInternship.ts'
 import { Briefcase, Plus } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import ViewInternship from '../components/ViewInternship.vue'
