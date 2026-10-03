@@ -5,22 +5,24 @@ import {
   Building2,
   ChevronLeft,
   ChevronRight,
+  ClipboardList,
   FileText,
-  LayoutDashboard,
+  KeyRound,
+  LayoutGrid,
   LogOut,
   User,
+  Users,
 } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import { useCollapseSidebar } from '../stores/useCollapseSidebar'
 import type { userRole } from '../types'
 import { useNotif } from '../composables/useNotif'
-import { useRoute } from 'vue-router'
+import { roleFromUrl } from '@/utils/roleFromUrl'
 
 const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
 
 const { role } = defineProps<{ role: userRole }>()
 
-const route = useRoute()
 const { unreadCount } = useNotif()
 
 const logout = () => console.log('logging out')
@@ -29,7 +31,7 @@ const userNav = () => {
   switch (role) {
     case 'company':
       return [
-        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'companyDashboard' },
+        { icon: LayoutGrid, label: 'Dashboard', hrefTo: 'companyDashboard' },
         { icon: Briefcase, label: 'My Internships', hrefTo: 'companyInternship' },
         { icon: FileText, label: 'Applications', hrefTo: 'companyApplication' },
         { icon: Bell, label: 'Notifications', hrefTo: 'companyNotification', badge: unreadCount },
@@ -37,7 +39,7 @@ const userNav = () => {
       ]
     case 'student':
       return [
-        { icon: LayoutDashboard, label: 'Dashboard', hrefTo: 'studentDashboard' },
+        { icon: LayoutGrid, label: 'Dashboard', hrefTo: 'studentDashboard' },
         { icon: Briefcase, label: 'Internships', hrefTo: 'studentInternship' },
         { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
         { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
@@ -46,20 +48,33 @@ const userNav = () => {
       ]
     case 'admin':
       return [
-        { icon: LayoutDashboard, label: 'Internship', hrefTo: 'studentInternship' },
-        { icon: Building2, label: 'Companies', hrefTo: 'studentCompany' },
-        { icon: FileText, label: 'My Applications', hrefTo: 'studentApplication' },
-        { icon: Bell, label: 'Notifications', hrefTo: 'studentNotification', badge: unreadCount },
-        { icon: User, label: 'My Profile', hrefTo: 'studentProfile' },
+        { icon: LayoutGrid, label: 'Dashboard', hrefTo: 'adminDashboard' },
+        { icon: Users, label: 'Manage Users', hrefTo: 'adminManageUser' },
+        { icon: Building2, label: 'Manage Companies', hrefTo: 'adminManageCompany' },
+        { icon: Users, label: 'Manage Students', hrefTo: 'adminManageStudent' },
+        { icon: Building2, label: 'Companies', hrefTo: 'adminCompany' },
+        { icon: Briefcase, label: 'Internships', hrefTo: 'adminInternship' },
+        { icon: ClipboardList, label: 'Applications', hrefTo: 'adminApplication' },
+        { icon: KeyRound, label: 'Admin Tokens', hrefTo: 'adminToken' },
+        { icon: Bell, label: 'Notifications', hrefTo: 'adminNotification' },
+        { icon: User, label: 'My Profile', hrefTo: 'adminProfile' },
       ]
   }
 }
 
 const dashboardRoute = () => {
-  if (route.fullPath.includes('company')) return 'companyDashboard'
-  else if (route.fullPath.includes('student')) return 'studentDashboard'
-  else if (route.fullPath.includes('admin')) return 'studentDashboard'
-  else return 'landingPage'
+  const role = roleFromUrl()
+
+  switch (role) {
+    case 'company':
+      return 'companyDashboard'
+    case 'student':
+      return 'studentDashboard'
+    case 'admin':
+      return 'studentDashboard'
+    default:
+      return 'landingPage'
+  }
 }
 </script>
 

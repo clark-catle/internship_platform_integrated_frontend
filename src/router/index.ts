@@ -21,7 +21,7 @@ const router = createRouter({
     },
     {
       path: '/student',
-      component: () => import('@/layouts/StudentNavLayout.vue'),
+      component: () => import('@/layouts/NavbarBaseLayout.vue'),
       redirect: { name: 'studentDashboard' },
       children: [
         {
@@ -77,7 +77,7 @@ const router = createRouter({
     },
     {
       path: '/company',
-      component: () => import('@/layouts/ComapnyNavLayout.vue'),
+      component: () => import('@/layouts/NavbarBaseLayout.vue'),
       redirect: { name: 'companyDashboard' },
       children: [
         {
@@ -90,12 +90,6 @@ const router = createRouter({
           name: 'companyInternship',
           component: () => import('@/modules/company/internship/views/CompanyInternship.vue'),
         },
-        // {
-        //   path: 'internship/:id',
-        //   name: 'companyinternshipDetail',
-        //   props: true,
-        //   component: () => import('@/modules/student/internship/viewss/StudentInternshipDetail.vue'),
-        // },
         {
           path: 'application',
           name: 'companyApplication',
@@ -122,7 +116,7 @@ const router = createRouter({
     },
     {
       path: '/admin',
-      component: () => import('@/layouts/ComapnyNavLayout.vue'),
+      component: () => import('@/layouts/NavbarBaseLayout.vue'),
       redirect: { name: 'adminDashboard' },
       children: [
         {
@@ -132,17 +126,17 @@ const router = createRouter({
         },
         {
           path: 'users',
-          name: 'adminManageUsers',
+          name: 'adminManageUser',
           component: () => import('@/modules/admin/manageUser/views/ManageUser.vue'),
         },
         {
           path: 'companies',
-          name: 'adminManageCompanies',
+          name: 'adminManageCompany',
           component: () => import('@/modules/admin/manageCompany/views/ManageCompany.vue'),
         },
         {
           path: 'students',
-          name: 'adminManageStudents',
+          name: 'adminManageStudent',
           component: () => import('@/modules/admin/manageStudent/views/ManageStudent.vue'),
         },
         {
