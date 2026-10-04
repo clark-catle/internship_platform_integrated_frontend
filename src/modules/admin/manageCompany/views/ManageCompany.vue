@@ -1,5 +1,15 @@
-<script lang="ts" setup>
-much more usefull if the managecompany and company will be merge because its only for viewing company so is in the student
+<script setup lang="ts">
+import CompanyListBase from '@/shared/components/CompanyListBase.vue'
+import { useCompany } from '../composables/useManageCompany'
+
+const { companies, isVerified, search } = useCompany()
 </script>
 
-<template>manage company</template>
+<template>
+  <CompanyListBase
+    v-model:search="search"
+    v-model:is-verified="isVerified"
+    :companies="companies"
+    @toggle-is-verified="isVerified = !isVerified"
+  />
+</template>

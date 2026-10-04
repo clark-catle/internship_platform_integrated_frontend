@@ -9,7 +9,7 @@ import { mockStudentInternships } from './internship'
 export const companyInternships = (id: number[] | undefined) =>
   id?.map((id) => mockStudentInternships.find((val) => val.id === id)!)
 
-export const mockStudentCompanies: company[] = [
+export const mockCompanies: company[] = [
   {
     id: 1,
     company_name: 'Opalus Technologies',

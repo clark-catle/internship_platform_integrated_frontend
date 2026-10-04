@@ -134,21 +134,16 @@ const router = createRouter({
           name: 'adminManageCompany',
           component: () => import('@/modules/admin/manageCompany/views/ManageCompany.vue'),
         },
+        // {
+        //   path: 'company/:id',
+        //   name: 'adminCompanyDetail',
+        //   props: true,
+        //   component: () => import('@/modules/admin/company/views/StudentCompanyDetail.vue'),
+        // },
         {
           path: 'students',
           name: 'adminManageStudent',
           component: () => import('@/modules/admin/manageStudent/views/ManageStudent.vue'),
-        },
-        {
-          path: 'company',
-          name: 'adminCompany',
-          component: () => import('@/modules/admin/company/views/StudentCompany.vue'),
-        },
-        {
-          path: 'company/:id',
-          name: 'adminCompanyDetail',
-          props: true,
-          component: () => import('@/modules/admin/company/views/StudentCompanyDetail.vue'),
         },
         {
           path: 'internship',

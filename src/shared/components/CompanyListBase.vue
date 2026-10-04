@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
-import { useCompany } from '../composables/useCompany.ts'
 import { BadgeCheck, Building2, MapPin } from '@lucide/vue'
-import SearchCompany from '../components/SearchCompany.vue'
+import type { company } from '../types'
+import SearchCompany from './SearchCompany.vue'
 
-const { companies, isVerified, search } = useCompany()
+const search = defineModel<string>('search', { required: true })
+const isVerified = defineModel<boolean>('isVerified', { required: true })
 
-this should be admin specific compoment
+defineEmits<{
+  toggleIsVerified: []
+}>()
+
+defineProps<{
+  companies: company[]
+}>()
 </script>
 
 <template>
@@ -14,7 +21,7 @@ this should be admin specific compoment
     <SearchCompany
       v-model:search-model="search"
       v-model:isVerified="isVerified"
-      @toggleIsVerified="isVerified = !isVerified"
+      @toggleIsVerified="$emit('toggleIsVerified')"
     />
 
     <EmptyStateBase

@@ -25,8 +25,6 @@ export const useNotif = () => {
   onMounted(() => {
     const role = roleFromUrl()
 
-    console.log(role)
-
     switch (role) {
       case 'company':
         return (notifications.value = mockCompanyNotifications)

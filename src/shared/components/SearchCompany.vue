@@ -22,7 +22,7 @@ defineEmits<{ toggleIsVerified: [] }>()
       <button
         type="button"
         @click="$emit('toggleIsVerified')"
-        class="rounded-[4px] absolute right-6 top-2 px-3 py-1 text-xs font-medium transition-colors text-nowrap"
+        class="cursor-pointer rounded-lg absolute right-6 top-2 px-3 py-1 text-xs font-medium transition-colors text-nowrap"
         :class="
           isVerified
             ? 'bg-primary text-success-foreground hover:opacity-90'
