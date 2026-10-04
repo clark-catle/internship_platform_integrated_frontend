@@ -6,8 +6,6 @@ import NotificationBell from './NotificationBell.vue'
 
 const { isDark } = useTheme()
 const { notifications, unreadCount } = useNotif()
-
-console.log(notifications)
 </script>
 
 <template>

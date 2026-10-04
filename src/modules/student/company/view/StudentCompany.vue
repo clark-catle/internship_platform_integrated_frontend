@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCompany } from '@/modules/admin/company/composables/useCompany'
 import CompanyListBase from '@/shared/components/CompanyListBase.vue'
+import { useCompany } from '../composables/useCompany'
 
 const { companies, isVerified, search } = useCompany()
 </script>

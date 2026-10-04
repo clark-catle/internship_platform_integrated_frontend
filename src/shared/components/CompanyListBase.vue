@@ -3,6 +3,7 @@ import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { BadgeCheck, Building2, MapPin } from '@lucide/vue'
 import type { company } from '../types'
 import SearchCompany from './SearchCompany.vue'
+import { roleFromUrl } from '@/utils/roleFromUrl.ts'
 
 const search = defineModel<string>('search', { required: true })
 const isVerified = defineModel<boolean>('isVerified', { required: true })
@@ -14,6 +15,11 @@ defineEmits<{
 defineProps<{
   companies: company[]
 }>()
+
+const role = roleFromUrl()
+
+const linkName =
+  role === 'admin' ? 'adminManageCompanyDetail' : role === 'student' ? 'studentCompanyDetail' : ''
 </script>
 
 <template>
@@ -30,12 +36,11 @@ defineProps<{
       title="No companies found"
       description="Try a different search term."
     />
-
     <div v-else class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       <RouterLink
         v-for="c in companies"
         :key="c.id"
-        :to="{ name: 'studentCompanyDetail', params: { id: c.id } }"
+        :to="{ name: linkName, params: { id: c.id } }"
         class="card-hover flex flex-col rounded-2xl border border-border bg-card p-5"
       >
         <div class="flex items-start gap-4">

@@ -2,6 +2,7 @@
 import { Search } from '@lucide/vue'
 
 const search = defineModel<string>('searchModel', { required: true })
+
 defineProps<{ isVerified: boolean }>()
 
 defineEmits<{ toggleIsVerified: [] }>()

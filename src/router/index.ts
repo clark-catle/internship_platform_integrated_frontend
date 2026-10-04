@@ -130,16 +130,16 @@ const router = createRouter({
           component: () => import('@/modules/admin/manageUser/views/ManageUser.vue'),
         },
         {
-          path: 'companies',
+          path: 'company',
           name: 'adminManageCompany',
           component: () => import('@/modules/admin/manageCompany/views/ManageCompany.vue'),
         },
-        // {
-        //   path: 'company/:id',
-        //   name: 'adminCompanyDetail',
-        //   props: true,
-        //   component: () => import('@/modules/admin/company/views/StudentCompanyDetail.vue'),
-        // },
+        {
+          path: 'company/:id',
+          name: 'adminManageCompanyDetail',
+          props: true,
+          component: () => import('@/modules/admin/manageCompany/views/ManageCompanyDetail.vue'),
+        },
         {
           path: 'students',
           name: 'adminManageStudent',
@@ -152,7 +152,7 @@ const router = createRouter({
         },
         {
           path: 'internship/:id',
-          name: 'admininternshipDetail',
+          name: 'adminInternshipDetail',
           props: true,
           component: () => import('@/modules/student/internship/views/StudentInternshipDetail.vue'),
         },
