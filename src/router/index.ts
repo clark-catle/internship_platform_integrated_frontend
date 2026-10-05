@@ -148,7 +148,7 @@ const router = createRouter({
         {
           path: 'internship',
           name: 'adminInternship',
-          component: () => import('@/modules/admin/internship/views/StudentInternship.vue'),
+          component: () => import('@/modules/admin/internship/views/AdmintInternship.vue'),
         },
         {
           path: 'internship/:id',

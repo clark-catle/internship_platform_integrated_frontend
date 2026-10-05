@@ -6,7 +6,7 @@ import StudentModal from '../components/StudentModal.vue'
 import SkillChip from '@/shared/components/SkillChip.vue'
 import UserAccountInfo from '../components/UserAccountInfo.vue'
 import { mockUserStudent } from '@/data/user.ts'
-import StudentSearch from '../components/StudentSearch.vue'
+import StudentSearch from '../../../../shared/components/SearchBase.vue/index.js'
 
 const { students, search, viewingId, viewingInfo } = useManageStudents()
 </script>

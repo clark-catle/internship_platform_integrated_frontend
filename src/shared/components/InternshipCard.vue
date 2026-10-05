@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import { Motion } from 'motion-v'
-import type { internshipCardPropType } from '../type'
+import type { internshipCardPropType } from '../../modules/student/internship/type'
 import { ArrowRight, Building2, Clock, DollarSign, MapPin } from '@lucide/vue'
 import type { internshipSetup } from '@/shared/types'
 import { RouterLink } from 'vue-router'
 import { internshipCompany } from '@/data/internship'
+import { roleFromUrl } from '@/utils/roleFromUrl'
 
 const { internship, index } = defineProps<internshipCardPropType>()
 
@@ -23,6 +24,11 @@ const domainColors: Record<internshipSetup, string> = {
 }
 
 const company = internshipCompany(internship.companyId)
+
+const role = roleFromUrl()
+
+const linkName =
+  role === 'admin' ? 'adminInternshipDetail' : role === 'student' ? 'studentInternshipDetail' : ''
 </script>
 
 <template>
@@ -96,7 +102,7 @@ const company = internshipCompany(internship.companyId)
 
     <div class="flex items-center justify-between pt-3 border-t border-border">
       <RouterLink
-        :to="{ name: 'studentInternshipDetail', params: { id: internship.id } }"
+        :to="{ name: linkName, params: { id: internship.id } }"
         size="sm"
         class="gradient-primary text-white border-0 rounded-lg text-xs h-8 hover:opacity-90 flex flex-row items-center justify-center p-4"
       >
