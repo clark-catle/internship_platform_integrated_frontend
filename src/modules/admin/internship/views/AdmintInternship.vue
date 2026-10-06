@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import InternshipCard from '../components/InternshipCard.vue'
+import { useInternship } from '../composables/useInternship.ts'
 
-const { internships, loading, searchQuery, search, filter, addFilter, clearFilter, countFilter } =
-  useInternship()
+const { internships, search, filterSetup } = useInternship()
 </script>
 
 <template>

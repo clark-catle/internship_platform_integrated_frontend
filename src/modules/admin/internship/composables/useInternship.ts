@@ -1,18 +1,30 @@
-import { computed, reactive, ref, watch } from 'vue'
-import type { filtersType, filterTypeKey } from '../type'
+import { ref, watch } from 'vue'
+import type { filtersType } from '../type'
 import { mockStudentInternships } from '@/data/internship'
+import type { internshipSetup } from '@/shared/types'
 
 export const useInternship = () => {
   const mockData = mockStudentInternships // source of the mock
   const internships = ref(mockData) // result of the filter or search
-  const loading = ref(false)
-  const searchQuery = ref('')
-  const filter = reactive<filtersType>({ setup: 'all', allowance: 'all' })
+  const search = ref('')
+  const filterSetup = ref<internshipSetup | 'all'>('all')
+
+  watch([search, filterSetup], () => {
+    internships.value = mockData.filter((val) => {
+      const s = search.value.toLowerCase()
+
+      return (
+        val.title.toLowerCase().includes(s) ||
+        val.description.toLowerCase().includes(s) ||
+        val.internship_skill.some((is) => is.name.toLowerCase().includes(s)) ||
+        val.setup === filterSetup.value
+      )
+    })
+  })
 
   return {
     internships,
-    loading,
-    searchQuery,
-    filter,
+    search,
+    filterSetup,
   }
 }
