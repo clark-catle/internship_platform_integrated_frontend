@@ -154,7 +154,7 @@ const router = createRouter({
           path: 'internship/:id',
           name: 'adminInternshipDetail',
           props: true,
-          component: () => import('@/modules/student/internship/views/StudentInternshipDetail.vue'),
+          component: () => import('@/modules/admin/internship/views/AdminInternshpDetail.vue'),
         },
         {
           path: 'application',

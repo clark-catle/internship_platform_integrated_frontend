@@ -39,7 +39,6 @@ export const mockApplication: application[] = [
     progress: 'interview',
     applied_at: '2026-08-20T09:15:00+08:00',
     internshipId: 1,
-    student: mockStudent,
   },
   {
     id: 102,
@@ -78,7 +77,7 @@ export const mockApplication: application[] = [
     status: 'in review',
     progress: 'decision',
     applied_at: '2026-09-10T16:20:00+08:00',
-    internshipId: 1,
+    internshipId: 6,
     student: mockStudent,
   },
 ]
