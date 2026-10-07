@@ -6,7 +6,7 @@ import { useCompanyDashboard } from '../composables/useCompanyDashboard'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { applicationInternship } from '@/data/applications'
 import SectionCardBase from '@/shared/components/SectionCardBase.vue'
-import ApplicationStatusBadge from '@/modules/student/application/components/ApplicationStatusBadge.vue'
+import ApplicationStatusBadge from '@/shared/components/ApplicationStatusBadge.vue'
 
 const {
   company,

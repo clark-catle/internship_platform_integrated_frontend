@@ -8,7 +8,6 @@ const { section } = defineProps<SectionBaseProp>()
 const activeSection = defineModel<ProfileSection>('activeSection', { required: true })
 
 const sectionLogo: ProfileSectionLogo = {
-  admin: User,
   company: User,
   student: User,
   education: GraduationCap,
