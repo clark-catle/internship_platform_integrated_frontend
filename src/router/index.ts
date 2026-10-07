@@ -175,12 +175,12 @@ const router = createRouter({
         {
           path: 'notification',
           name: 'adminNotification',
-          component: () => import('@/modules/admin/notification/views/CompanyNotification.vue'),
+          component: () => import('@/modules/admin/notification/views/AdminNotification.vue'),
         },
         {
           path: 'profile',
           name: 'adminProfile',
-          component: () => import('@/modules/admin/profile/views/adminProfile.vue'),
+          component: () => import('@/modules/admin/profile/views/AdminProfile.vue'),
         },
       ],
     },

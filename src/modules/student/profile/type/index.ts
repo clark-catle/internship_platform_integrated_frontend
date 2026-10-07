@@ -7,4 +7,4 @@ export type SectionBaseProp = {
   section: ProfileSection[]
 }
 
-export type StudentProfileSection = Exclude<ProfileSection, 'admin' | 'company'>
+export type StudentProfileSection = Exclude<ProfileSection, 'company'>

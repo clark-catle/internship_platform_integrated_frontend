@@ -176,7 +176,7 @@ export type UserCompany = User & {
 
 export type applicationStatusTab = applicationStatus | 'all'
 
-export type ProfileSection = 'admin' | 'company' | 'student' | 'education' | 'password' | 'email'
+export type ProfileSection = 'company' | 'student' | 'education' | 'password' | 'email'
 
 export type ChangePassword = {
   oldPassword: string

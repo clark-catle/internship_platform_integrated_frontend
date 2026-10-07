@@ -1,3 +1,3 @@
 import type { ProfileSection } from '@/shared/types'
 
-export type CompanyProfileSection = Exclude<ProfileSection, 'education' | 'admin' | 'student'>
+export type CompanyProfileSection = Exclude<ProfileSection, 'education' | 'student'>
