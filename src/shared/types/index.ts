@@ -203,3 +203,10 @@ export type applicationActionButtonProps = {
 }
 
 export type actionbutton = 'nextStep' | 'accepted' | 'rejected' | 'revertReject'
+
+export type AdminToken = {
+  id: number
+  token: string
+  expiresAt: string
+  usedAt: string | null
+}
