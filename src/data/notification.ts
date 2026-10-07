@@ -209,3 +209,74 @@ export const mockCompanyNotifications: notification[] = [
     created_at: '2026-07-25T13:20:00+08:00',
   },
 ]
+
+export const mockAdminNotifications: notification[] = [
+  {
+    id: 1,
+    data: {
+      type: 'success',
+      application_id: 0,
+      title: 'New company registered',
+      message: 'Paperlane Media created a company account and is awaiting review.',
+    },
+    read_at: null,
+    created_at: '2026-09-20T09:00:00+08:00',
+  },
+  {
+    id: 2,
+    data: {
+      type: 'warning',
+      application_id: 0,
+      title: 'Posting flagged for review',
+      message:
+        'A student flagged the "Social Media Intern" posting from Paperlane Media as suspicious.',
+    },
+    read_at: null,
+    created_at: '2026-07-09T15:00:00+08:00',
+  },
+  {
+    id: 3,
+    data: {
+      type: 'warning',
+      application_id: 0,
+      title: 'Posting force-deleted',
+      message:
+        'You force-deleted the "Social Media Intern" posting. 1 linked application was auto-rejected.',
+    },
+    read_at: '2026-07-10T09:10:00+08:00',
+    created_at: '2026-07-10T09:00:00+08:00',
+  },
+  {
+    id: 4,
+    data: {
+      type: 'info',
+      application_id: 0,
+      title: 'Admin token redeemed',
+      message: 'Token ADM-7F2K-9QRT-3XLM was used to register a new admin account.',
+    },
+    read_at: '2026-06-08T08:00:00+08:00',
+    created_at: '2026-06-08T07:45:00+08:00',
+  },
+  {
+    id: 5,
+    data: {
+      type: 'info',
+      application_id: 0,
+      title: 'Account blocked',
+      message: 'Vantage Data Labs was blocked pending a billing dispute review.',
+    },
+    read_at: '2026-08-05T10:00:00+08:00',
+    created_at: '2026-08-05T09:40:00+08:00',
+  },
+  {
+    id: 6,
+    data: {
+      type: 'info',
+      application_id: 0,
+      title: 'Weekly platform summary',
+      message: '8 new applications and 2 new company registrations this week.',
+    },
+    read_at: '2026-09-01T08:00:00+08:00',
+    created_at: '2026-09-01T07:00:00+08:00',
+  },
+]

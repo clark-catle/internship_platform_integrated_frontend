@@ -1,6 +1,10 @@
 import { computed, onMounted, ref } from 'vue'
 import type { notification } from '../types'
-import { mockCompanyNotifications, mockStudentNotifications } from '@/data/notification'
+import {
+  mockAdminNotifications,
+  mockCompanyNotifications,
+  mockStudentNotifications,
+} from '@/data/notification'
 import { useRoute } from 'vue-router'
 import { roleFromUrl } from '@/utils/roleFromUrl'
 
@@ -31,7 +35,7 @@ export const useNotif = () => {
       case 'student':
         return (notifications.value = mockStudentNotifications)
       case 'admin':
-        return (notifications.value = [])
+        return (notifications.value = mockAdminNotifications)
       default:
         return (notifications.value = [])
     }
