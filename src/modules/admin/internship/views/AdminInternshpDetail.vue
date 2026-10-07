@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import InternshipDetailBase from '@/shared/components/InternshipDetailBase.vue'
-import { useInternshipDetail } from '@/shared/composables/useInternshipDetail'
+import { useInternshipDetail } from '../composables/useInternshipDetail'
 
 const { internship, company } = useInternshipDetail()
 </script>

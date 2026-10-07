@@ -5,7 +5,7 @@ import { CheckCircle2, FileText, Upload } from '@lucide/vue'
 import { studentApplied } from '@/data/applications'
 import { mockStudent } from '@/data/student'
 import InternshipDetailBase from '@/shared/components/InternshipDetailBase.vue'
-import { useInternshipDetail } from '@/shared/composables/useInternshipDetail'
+import { useInternshipDetail } from '@/modules/student/internship/composables/useInternshipDetail'
 import ConfirmDialog from '@/shared/components/ConfirmDialog.vue'
 
 const router = useRouter()

@@ -4,8 +4,8 @@ import { mockStudentInternships } from '@/data/internship'
 import type { internshipSetup } from '@/shared/types'
 
 export const useInternship = () => {
-  const mockData = mockStudentInternships // source of the mock
-  const internships = ref(mockData) // result of the filter or search
+  const mockData = mockStudentInternships
+  const internships = ref(mockData)
   const search = ref('')
   const filterSetup = ref<internshipSetup | 'all'>('all')
 
