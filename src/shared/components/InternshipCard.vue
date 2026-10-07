@@ -106,7 +106,8 @@ const linkName =
         size="sm"
         class="gradient-primary text-white border-0 rounded-lg text-xs h-8 hover:opacity-90 flex flex-row items-center justify-center p-4"
       >
-        Apply Now <ArrowRight class="w-3 h-3 ml-1" />
+        {{ role === 'student' ? 'Apply Now' : 'View Internship' }}
+        <ArrowRight class="w-3 h-3 ml-1" />
       </RouterLink>
     </div>
   </Motion>

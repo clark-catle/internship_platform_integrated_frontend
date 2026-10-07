@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import InternshipCard from '../components/InternshipCard.vue'
+import InternshipCard from '@/shared/components/InternshipCard.vue'
 import { useInternship } from '../composables/useInternship.ts'
+import AdminInternshipFilter from '../components/AdminInternshipFilter.vue'
 
 const { internships, search, filterSetup } = useInternship()
 </script>
 
 <template>
-  <div class="">
+  <div class="main-wrapper space-y-8">
+    <AdminInternshipFilter
+      v-model:search="search"
+      v-model:filter-model="filterSetup"
+      @add-filter-setup="(e) => (filterSetup = e)"
+    />
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <InternshipCard
         v-for="(internship, i) in internships"

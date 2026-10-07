@@ -13,12 +13,18 @@ export const useInternship = () => {
     internships.value = mockData.filter((val) => {
       const s = search.value.toLowerCase()
 
-      return (
+      const searching =
+        s === '' ||
         val.title.toLowerCase().includes(s) ||
+        val.requirements.toLowerCase().includes(s) ||
         val.description.toLowerCase().includes(s) ||
-        val.internship_skill.some((is) => is.name.toLowerCase().includes(s)) ||
-        val.setup === filterSetup.value
-      )
+        val.location.city.toLowerCase().includes(s) ||
+        val.location.region.toLowerCase().includes(s) ||
+        val.internship_skill.some((is) => is.name.toLowerCase().includes(s))
+
+      const filtering = filterSetup.value === 'all' || val.setup === filterSetup.value
+
+      return searching && filtering
     })
   })
 
