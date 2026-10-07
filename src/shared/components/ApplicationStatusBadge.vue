@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { CheckCircle, Clock, Eye, XCircle } from '@lucide/vue'
-import type { ApplicationStatusBadgeProps, statusConfigType } from '../type'
+import type {
+  ApplicationStatusBadgeProps,
+  statusConfigType,
+} from '../../modules/student/application/type'
+import { computed } from 'vue'
 
 const prop = withDefaults(defineProps<ApplicationStatusBadgeProps>(), {
   showIcon: true,
@@ -18,7 +22,7 @@ const statusConfig: statusConfigType = {
   rejected: { label: 'rejected', icon: XCircle, class: 'badge-danger' },
 }
 
-const config = statusConfig[prop.status]
+const config = computed(() => statusConfig[prop.status])
 </script>
 
 <template>

@@ -196,3 +196,10 @@ export type notificationIconType = {
 }
 
 export type UserStatusWithoutDelete = Exclude<UserStatus, 'deleted'>
+
+export type applicationActionButtonProps = {
+  status: applicationStatus
+  progress: applicationProgress
+}
+
+export type actionbutton = 'nextStep' | 'accepted' | 'rejected' | 'revertReject'

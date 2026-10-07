@@ -6,7 +6,7 @@ import SectionCardBase from '@/shared/components/SectionCardBase.vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { applicationInternship } from '@/data/applications'
 import { internshipCompany } from '@/data/internship'
-import ApplicationStatusBadge from '../../application/components/ApplicationStatusBadge.vue'
+import ApplicationStatusBadge from '@/shared/components/ApplicationStatusBadge.vue'
 
 const { student, statCards, recentApplications, recentNotifications, markAsRead, completeness } =
   useStudentDashboard()

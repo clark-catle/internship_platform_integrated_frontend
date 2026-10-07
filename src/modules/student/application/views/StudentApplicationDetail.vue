@@ -6,9 +6,9 @@ import { useApplicationDetail } from '../composables/useApplicationDetail'
 import TimelineTracker from '../components/TimelineTracker.vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { AnimatePresence, Motion } from 'motion-v'
-import ApplicationStatusBadge from '../components/ApplicationStatusBadge.vue'
 import { mockCompanies } from '@/data/companies.ts'
 import { applicationInternship } from '@/data/applications.ts'
+import ApplicationStatusBadge from '@/shared/components/ApplicationStatusBadge.vue'
 
 const route = useRoute()
 const { application } = useApplicationDetail(Number(route.params.id))

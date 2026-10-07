@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { actionbutton, applicationActionButtonProps } from '../type'
 import { ArrowRight, CheckCircle2, RotateCcw, XCircle } from '@lucide/vue'
+import type { applicationActionButtonProps, actionbutton } from '@/shared/types'
 
 const { status, progress } = defineProps<applicationActionButtonProps>()
 

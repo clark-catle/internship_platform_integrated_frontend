@@ -159,13 +159,13 @@ const router = createRouter({
         {
           path: 'application',
           name: 'adminApplication',
-          component: () => import('@/modules/admin/application/views/CompanyApplication.vue'),
+          component: () => import('@/modules/admin/application/views/AdminApplication.vue'),
         },
         {
           path: 'application/:id',
           name: 'adminApplicationDetail',
           props: true,
-          component: () => import('@/modules/admin/application/views/CompanyApplicationDetail.vue'),
+          component: () => import('@/modules/admin/application/views/AdminApplicationDetail.vue'),
         },
         {
           path: 'tokens',

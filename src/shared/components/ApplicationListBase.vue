@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ClipboardList } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
-import ApplicationStatusBadge from '@/modules/student/application/components/ApplicationStatusBadge.vue'
 import { formatDate } from '@/utils/format'
 import type { application as ApplicationType, applicationStatusTab } from '@/shared/types'
 import { applicationInternship } from '@/data/applications'
 import { roleFromUrl } from '@/utils/roleFromUrl'
+import ApplicationStatusBadge from './ApplicationStatusBadge.vue'
 
 const applications = defineModel<ApplicationType[]>('applications', { required: true })
 

@@ -4,10 +4,10 @@ import { useApplication } from '../composables/useApplications'
 import { Building2, Calendar, FileText } from '@lucide/vue'
 import { AnimatePresence, Motion } from 'motion-v'
 import { formatDistanceToNow } from 'date-fns'
-import ApplicationStatusBadge from '../components/ApplicationStatusBadge.vue'
 import { applicationInternship } from '@/data/applications.ts'
 import { internshipCompany } from '@/data/internship.ts'
 import type { applicationStatusTab } from '@/shared/types/index.ts'
+import ApplicationStatusBadge from '@/shared/components/ApplicationStatusBadge.vue'
 
 const { applications, filteredApplication, loading, activeTab, changeTab } = useApplication()
 
