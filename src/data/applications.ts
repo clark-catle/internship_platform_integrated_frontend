@@ -2,6 +2,7 @@ import type { application, Student } from '@/shared/types'
 import { mockStudentInternships } from './internship'
 import { mockStudent } from './student'
 import { mockCourses } from './course'
+import { mockStudents } from './students'
 
 /**
  * check if the `studentId` hass applied to `internshipId`, will return bool if
