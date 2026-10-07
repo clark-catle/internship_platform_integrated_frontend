@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { ArrowLeft, BadgeCheck, BadgeX, Globe, MapPin } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import { roleFromUrl } from '@/utils/roleFromUrl'
@@ -14,10 +14,9 @@ defineEmits<{
   toggleVerify: []
 }>()
 
-const role = roleFromUrl()
+const router = useRouter()
 
-const backCompanyPage =
-  role === 'admin' ? 'adminManageCompany' : role === 'student' ? 'studentCompany' : ''
+const role = roleFromUrl()
 
 const internshipPage =
   role === 'admin' ? 'adminInternshipDetail' : role === 'student' ? 'studentInternshipDetail' : ''
@@ -25,13 +24,13 @@ const internshipPage =
 
 <template>
   <div class="mx-auto max-w-3xl space-y-6">
-    <RouterLink
-      :to="{ name: backCompanyPage }"
-      class="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+    <div
+      @click="router.back()"
+      class="cursor-pointer inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
     >
       <ArrowLeft class="h-4 w-4" />
-      Back to companies
-    </RouterLink>
+      Back
+    </div>
 
     <EmptyStateBase
       v-if="!company"

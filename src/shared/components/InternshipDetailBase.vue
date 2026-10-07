@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { ArrowLeft, BadgeCheck, Clock, MapPin, Wallet } from '@lucide/vue'
 import EmptyStateBase from '@/shared/components/EmptyStateBase.vue'
 import SkillChip from '@/shared/components/SkillChip.vue'
@@ -12,12 +12,11 @@ defineProps<{
   company: companyType | undefined
 }>()
 
+const router = useRouter()
+
 const { isDark } = useTheme()
 
 const role = roleFromUrl()
-
-const backToInternshipName =
-  role === 'admin' ? 'adminInternship' : role === 'student' ? 'studentInternship' : ''
 
 const viewCompanyName =
   role === 'admin' ? 'adminManageCompanyDetail' : role === 'student' ? 'studentCompanyDetail' : ''
@@ -25,13 +24,13 @@ const viewCompanyName =
 
 <template>
   <div class="mx-auto max-w-3xl space-y-6">
-    <RouterLink
-      :to="{ name: backToInternshipName }"
-      class="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+    <div
+      @click="router.back()"
+      class="cursor-pointer inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
     >
       <ArrowLeft class="h-4 w-4" />
-      Back to internships
-    </RouterLink>
+      Back
+    </div>
 
     <EmptyStateBase
       v-if="!internship"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRoute, RouterLink } from 'vue-router'
+import { useRoute, RouterLink, useRouter } from 'vue-router'
 import { ArrowLeft, CheckCircle2, FileText } from '@lucide/vue'
 import { formatDateTime, progressLabel } from '@/utils/format'
 import { useApplicationDetail } from '../composable/useApplicationDetail.ts'
@@ -13,6 +13,7 @@ import type { actionbutton } from '../type/index.ts'
 import type { applicationProgress } from '@/shared/types/index.ts'
 
 const route = useRoute()
+const router = useRouter()
 const { application } = useApplicationDetail(Number(route.params.id))
 
 const actionButton = (action: actionbutton, progress: applicationProgress) => {
@@ -40,13 +41,13 @@ const actionButton = (action: actionbutton, progress: applicationProgress) => {
 
 <template>
   <div class="mx-auto max-w-3xl space-y-6">
-    <RouterLink
-      :to="{ name: 'companyApplication' }"
-      class="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
+    <div
+      @click="router.back()"
+      class="cursor-pointer inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground"
     >
       <ArrowLeft class="h-4 w-4" />
       Back to applications
-    </RouterLink>
+    </div>
 
     <EmptyStateBase
       v-if="!application"
