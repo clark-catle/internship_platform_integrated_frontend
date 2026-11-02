@@ -1,8 +1,7 @@
 import { reactive, ref } from 'vue'
 import type { signInForm, signUpForm } from '../types'
-import type { userRole } from '@/shared/types'
+import type { RegisterValidRole, userRole } from '@/shared/types'
 import { useRouter } from 'vue-router'
-import auth from '@/api/auth'
 
 export const useSignIn = () => {
   const form = reactive<signInForm>({
@@ -39,7 +38,7 @@ export const useSignIn = () => {
 }
 
 export const useSignUp = () => {
-  const form = reactive<{ acc: signUpForm; role?: userRole }>({
+  const form = reactive<{ acc: signUpForm; role?: RegisterValidRole }>({
     acc: { email: '', password: '', confirmPassword: '' },
     role: undefined,
   })
@@ -50,7 +49,7 @@ export const useSignUp = () => {
 
   const router = useRouter()
 
-  const changeRole = (value: userRole) => {
+  const changeRole = (value: RegisterValidRole) => {
     step.value = 2
     form.role = value
   }
@@ -71,7 +70,7 @@ export const useSignUp = () => {
 
     toggleLoading()
 
-    const res = auth.register(form.acc)
+    // const res = auth.register(form.acc)
   }
 
   return { form, loading, step, changeRole, addAcc }

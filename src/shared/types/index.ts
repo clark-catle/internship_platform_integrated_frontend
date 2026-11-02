@@ -1,3 +1,4 @@
+import type { signInForm, signUpForm } from '@/modules/auth/types'
 import type { LucideIcon } from '@lucide/vue'
 import type { ComputedRef } from 'vue'
 
@@ -20,6 +21,8 @@ export type buttonBase = {
 }
 
 export type userRole = 'company' | 'student' | 'admin'
+
+export type RegisterValidRole = Exclude<userRole, 'admin'>
 
 export type landingFeaturedSection = internshipDuration & {
   id: string
@@ -72,7 +75,10 @@ export type requestArg<T> = {
   body?: T
   method?: apiMethod
   version?: string
+  options?: RequestInit
 }
+
+export type ApiResponse<R> = R | ErrorResponse
 
 export type internship = {
   id: number
@@ -210,3 +216,12 @@ export type AdminToken = {
   expiresAt: string
   usedAt: string | null
 }
+
+export type ErrorResponse<T extends string = string> = {
+  message: string
+  errors: Partial<Record<T, string[]>>
+}
+
+export type LoginPayload = signInForm
+
+export type RegisterPayload = signUpForm & { role: RegisterValidRole }
