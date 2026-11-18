@@ -2,6 +2,8 @@ import { reactive, ref } from 'vue'
 import type { signInForm, signUpForm } from '../types'
 import type { RegisterValidRole, userRole } from '@/shared/types'
 import { useRouter } from 'vue-router'
+import { auth } from '@/api/authentication'
+import { renderError } from '@/utils/renderError'
 
 export const useSignIn = () => {
   const form = reactive<signInForm>({
@@ -13,28 +15,32 @@ export const useSignIn = () => {
 
   const router = useRouter()
 
-  const toggleLoading = () => (loading.value = !loading.value)
+  const error = ref<string | null>(null)
 
-  // simmulating a real api call
-  const signIn = () => {
-    toggleLoading()
-    console.log('logging in')
-    console.log()
-    console.log('credentials')
-    console.log('email: ' + form.email)
-    console.log('password: ' + form.password)
-    console.log('calling api')
+  const fieldErrors = ref<Partial<Record<keyof signInForm, string[]>>>({})
 
-    setTimeout(async () => {
-      console.log('done calling api')
+  const signIn = async () => {
+    loading.value = true
+    error.value = null
+    fieldErrors.value = {}
 
-      toggleLoading()
+    try {
+      const res = await auth.login(form.email, form.password)
 
-      await router.replace({ name: 'studentInternship' })
-    }, 2000)
+      localStorage.setItem('token', res.token)
+      localStorage.setItem('user', JSON.stringify(res.user))
+
+      await router.replace({ name: `${res.user.role}Dashboard` })
+    } catch (e) {
+      const parsed = renderError<keyof signInForm>(e)
+      error.value = parsed.message
+      fieldErrors.value = parsed.fieldErrors
+    } finally {
+      loading.value = false
+    }
   }
 
-  return { form, signIn, loading }
+  return { form, signIn, loading, error, fieldErrors }
 }
 
 export const useSignUp = () => {

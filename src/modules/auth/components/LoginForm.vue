@@ -6,7 +6,7 @@ import InputBase from '@/shared/components/InputBase.vue'
 import InputPass from '@/shared/components/InputPass.vue'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
 
-const { form, signIn, loading } = useSignIn()
+const { form, signIn, loading, error, fieldErrors } = useSignIn()
 </script>
 
 <template>
@@ -23,6 +23,7 @@ const { form, signIn, loading } = useSignIn()
           required
         />
       </div>
+      <p v-if="fieldErrors.email" class="text-xs text-destructive">{{ fieldErrors.email[0] }}</p>
     </div>
 
     <div class="space-y-2">
@@ -32,7 +33,12 @@ const { form, signIn, loading } = useSignIn()
       </div>
 
       <InputPass v-model="form.password" />
+      <p v-if="fieldErrors.password" class="text-xs text-destructive">
+        {{ fieldErrors.password[0] }}
+      </p>
     </div>
+
+    <p v-if="error" class="text-sm text-destructive">{{ error }}</p>
 
     <ButtonBase
       type="submit"

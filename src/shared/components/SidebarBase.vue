@@ -14,18 +14,13 @@ import {
   Users,
 } from '@lucide/vue'
 import { Motion } from 'motion-v'
-import { useCollapseSidebar } from '../stores/useCollapseSidebar'
-import type { userRole } from '../types'
-import { useNotif } from '../composables/useNotif'
+import { useLogout } from '../composables/useLogout'
 import { roleFromUrl } from '@/utils/roleFromUrl'
-
-const { collapsed, toggleCollapsed, currentUrlName } = useCollapseSidebar()
+import type { userRole } from '../types'
 
 const { role } = defineProps<{ role: userRole }>()
 
-const { unreadCount } = useNotif()
-
-const logout = () => console.log('logging out')
+const { collapsed, toggleCollapsed, currentUrlName, unreadCount, logout } = useLogout()
 
 const userNav = () => {
   switch (role) {

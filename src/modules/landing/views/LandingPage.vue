@@ -7,6 +7,9 @@ import NavbarLanding from '../components/NavbarLanding.vue'
 import StatSection from '../components/StatSection.vue'
 import TestimonialSection from '../components/TestimonialSection.vue'
 import WhySection from '../components/WhySection.vue'
+import { useLanding } from '../composables/landing.ts'
+
+useLanding();
 </script>
 
 <template>

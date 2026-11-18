@@ -225,3 +225,8 @@ export type ErrorResponse<T extends string = string> = {
 export type LoginPayload = signInForm
 
 export type RegisterPayload = signUpForm & { role: RegisterValidRole }
+
+export type LoginResponse = {
+  token: string
+  user: User
+}
