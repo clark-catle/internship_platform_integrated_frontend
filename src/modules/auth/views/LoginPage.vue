@@ -3,6 +3,9 @@ import { Briefcase } from '@lucide/vue'
 import { Motion } from 'motion-v'
 import LoginForm from '../components/LoginForm.vue'
 import { loginAnalyticItem } from '@/data/landing.ts'
+import { useSignIn } from '../composables/auth.ts'
+
+const { form, signIn, loading, error, fieldErrors } = useSignIn()
 
 const analyticItems = loginAnalyticItem
 </script>
@@ -63,7 +66,13 @@ const analyticItems = loginAnalyticItem
           </p>
         </div>
 
-        <LoginForm />
+        <LoginForm
+          @signIn="signIn"
+          v-model:form="form"
+          :loading="loading"
+          :error="error"
+          :fieldErrors="fieldErrors"
+        />
       </Motion>
     </div>
   </div>

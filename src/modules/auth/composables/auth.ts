@@ -1,5 +1,5 @@
 import { reactive, ref } from 'vue'
-import type { signInForm, signUpForm } from '../types'
+import type { SigninError, signInForm, SignupError, signUpForm } from '../types'
 import type { RegisterValidRole, userRole } from '@/shared/types'
 import { useRouter } from 'vue-router'
 import { auth } from '@/api/authentication'
@@ -10,14 +10,10 @@ export const useSignIn = () => {
     email: '',
     password: '',
   })
-
   const loading = ref(false)
-
   const router = useRouter()
-
   const error = ref<string | null>(null)
-
-  const fieldErrors = ref<Partial<Record<keyof signInForm, string[]>>>({})
+  const fieldErrors = ref<SigninError>({})
 
   const signIn = async () => {
     loading.value = true
@@ -45,39 +41,46 @@ export const useSignIn = () => {
 
 export const useSignUp = () => {
   const form = reactive<{ acc: signUpForm; role?: RegisterValidRole }>({
-    acc: { email: '', password: '', confirmPassword: '' },
+    acc: { email: '', password: '', confirm_password: '' },
     role: undefined,
   })
-
   const step = ref<number>(1)
-
   const loading = ref(false)
-
+  const error = ref<string | null>(null)
   const router = useRouter()
+  const fieldErrors = ref<SignupError>({})
 
   const changeRole = (value: RegisterValidRole) => {
     step.value = 2
     form.role = value
   }
 
-  const addAcc = async (val: signUpForm) => {
-    form.acc.email = val.email
-    form.acc.password = val.password
-    form.acc.confirmPassword = val.confirmPassword
-
-    signUp()
-  }
-
   const toggleLoading = () => (loading.value = !loading.value)
 
-  // simmulating a real api call
-  const signUp = () => {
+  const signUp = async () => {
     if (!form.role) return
 
     toggleLoading()
 
-    // const res = auth.register(form.acc)
+    try {
+      const res = await auth.register(
+        form.acc.email,
+        form.acc.password,
+        form.acc.confirm_password,
+        form.role,
+      )
+
+      console.log(res.message) // message response
+
+      await router.replace({ name: 'landingPage' })
+    } catch (e) {
+      const parsed = renderError<keyof signUpForm>(e)
+      error.value = parsed.message
+      fieldErrors.value = parsed.fieldErrors
+    } finally {
+      loading.value = false
+    }
   }
 
-  return { form, loading, step, changeRole, addAcc }
+  return { form, loading, step, changeRole, signUp, error, fieldErrors }
 }

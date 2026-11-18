@@ -230,3 +230,5 @@ export type LoginResponse = {
   token: string
   user: User
 }
+
+export type GenericResponse = { message: string }

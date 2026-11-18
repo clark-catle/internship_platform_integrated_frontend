@@ -5,21 +5,12 @@ import InputPass from '@/shared/components/InputPass.vue'
 import LabelBase from '@/shared/components/LabelBase.vue'
 import { ArrowRight } from '@lucide/vue'
 import { Motion } from 'motion-v'
-import type { signUpForm } from '../types'
-import type { userRole } from '@/shared/types'
-import { reactive } from 'vue'
+import type { RegisterComponentProp, signUpForm } from '../types'
+import FormError from '@/shared/components/FormError.vue'
 
-const props = defineProps<{ form: signUpForm; role?: userRole; loading: boolean }>()
-
+const props = defineProps<RegisterComponentProp>()
+const form = defineModel<signUpForm>('form', { required: true })
 const emit = defineEmits(['submit'])
-
-const form = reactive<signUpForm>(props.form)
-
-const handleSignUp = () => {
-  if (form.email === '' || form.confirmPassword === '' || form.password === '') return
-
-  emit('submit', form)
-}
 </script>
 
 <template>
@@ -38,7 +29,7 @@ const handleSignUp = () => {
       <span v-else>Start finding top talent</span>
     </p>
 
-    <form class="space-y-5" @submit.prevent="handleSignUp">
+    <form class="space-y-5" @submit.prevent="emit('submit')">
       <div class="space-y-4">
         <div class="space-y-1.5">
           <LabelBase>Email</LabelBase>
@@ -49,20 +40,28 @@ const handleSignUp = () => {
             type="email"
             required
           />
+
+          <FormError :error="props.fieldErrors.email" />
         </div>
 
         <div class="space-y-1.5">
           <LabelBase>Password</LabelBase>
 
           <InputPass v-model="form.password" />
+
+          <FormError :error="props.fieldErrors.password" />
         </div>
 
         <div class="space-y-1.5">
           <LabelBase>Confirm Password</LabelBase>
 
-          <InputPass v-model="form.confirmPassword" />
+          <InputPass v-model="form.confirm_password" />
+
+          <FormError :error="props.fieldErrors.confirm_password" />
         </div>
       </div>
+
+      <FormError :error="error ? [error] : undefined" />
 
       <ButtonBase
         type="submit"

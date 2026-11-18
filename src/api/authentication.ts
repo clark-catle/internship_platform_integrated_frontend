@@ -1,5 +1,6 @@
 import { request } from '@/lib/api-client'
 import type {
+  GenericResponse,
   LoginPayload,
   LoginResponse,
   RegisterPayload,
@@ -14,10 +15,10 @@ export const auth = {
       options: { method: 'POST' },
     }),
 
-  register: (email: string, password: string, confirmPassword: string, role: RegisterValidRole) =>
-    request<RegisterPayload>({
+  register: (email: string, password: string, confirm_password: string, role: RegisterValidRole) =>
+    request<RegisterPayload, GenericResponse>({
       endpoint: '/register/',
-      body: { email, password, confirmPassword, role },
+      body: { email, password, confirm_password, role },
       options: { method: 'POST' },
     }),
 

@@ -6,8 +6,10 @@ export type signInForm = {
   password: string
 }
 
-export type signUpForm = signInForm & {
-  confirmPassword: string
+export type signUpForm = {
+  email: string
+  password: string
+  confirm_password: string
 }
 
 export type cardRole = {
@@ -15,4 +17,22 @@ export type cardRole = {
   icon: LucideIcon
   title: string
   desc: string
+}
+
+export type SigninError = Partial<Record<keyof signInForm, string[]>>
+
+export type SignupError = Partial<Record<keyof signUpForm, string[]>>
+
+export type LoginComponentProp = {
+  fieldErrors: SigninError
+  error: string | null
+  loading: boolean
+}
+
+export type RegisterComponentProp = {
+  fieldErrors: SignupError
+  form: signUpForm
+  error: string | null
+  role?: userRole
+  loading: boolean
 }

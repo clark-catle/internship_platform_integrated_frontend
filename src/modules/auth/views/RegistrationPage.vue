@@ -6,7 +6,7 @@ import ButtonBase from '@/shared/components/ButtonBase.vue'
 import RegisterFormStep1 from '../components/RegisterFormStep1.vue'
 import RegisterFormStep2 from '../components/RegisterFormStep2.vue'
 
-const { form, loading, step, changeRole, addAcc } = useSignUp()
+const { form, loading, step, changeRole,signUp, error, fieldErrors } = useSignUp()
 </script>
 
 <template>
@@ -62,8 +62,10 @@ const { form, loading, step, changeRole, addAcc } = useSignUp()
 
           <RegisterFormStep2
             v-else
-            @submit="addAcc"
-            :form="form.acc"
+            @submit="signUp"
+            v-model:form="form.acc"
+            :error="error"
+            :fieldErrors="fieldErrors"
             :loading="loading"
             :role="form.role"
           />

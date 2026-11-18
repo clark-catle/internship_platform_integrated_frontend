@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import LabelBase from '@/shared/components/LabelBase.vue'
-import { useSignIn } from '../composables/auth'
 import { ArrowRight, Mail } from '@lucide/vue'
 import InputBase from '@/shared/components/InputBase.vue'
 import InputPass from '@/shared/components/InputPass.vue'
 import ButtonBase from '@/shared/components/ButtonBase.vue'
+import FormError from '@/shared/components/FormError.vue'
+import type { LoginComponentProp, signInForm } from '../types'
 
-const { form, signIn, loading, error, fieldErrors } = useSignIn()
+defineEmits<{ signIn: [] }>()
+const form = defineModel<signInForm>('form', { required: true })
+defineProps<LoginComponentProp>()
 </script>
 
 <template>
-  <form class="space-y-5" @submit.prevent="signIn">
+  <form class="space-y-5" @submit.prevent="$emit('signIn')">
     <div class="space-y-2">
       <LabelBase htmlFor="email" class="text-sm font-medium">Email address</LabelBase>
       <div class="relative">
@@ -23,7 +26,8 @@ const { form, signIn, loading, error, fieldErrors } = useSignIn()
           required
         />
       </div>
-      <p v-if="fieldErrors.email" class="text-xs text-destructive">{{ fieldErrors.email[0] }}</p>
+
+      <FormError :error="fieldErrors.email" />
     </div>
 
     <div class="space-y-2">
@@ -33,12 +37,11 @@ const { form, signIn, loading, error, fieldErrors } = useSignIn()
       </div>
 
       <InputPass v-model="form.password" />
-      <p v-if="fieldErrors.password" class="text-xs text-destructive">
-        {{ fieldErrors.password[0] }}
-      </p>
+
+      <FormError :error="fieldErrors.password" />
     </div>
 
-    <p v-if="error" class="text-sm text-destructive">{{ error }}</p>
+    <FormError :error="error ? [error] : undefined" />
 
     <ButtonBase
       type="submit"
